@@ -46,6 +46,19 @@ RSpec.describe UsersController, :type => :controller do
     end
   end
 
+  describe "GET edit" do
+    it "display edit form" do
+      user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", rank: "user")
+
+      get :edit, id: user.id
+      expect(response).to have_http_status(:success)
+
+      expect(response.body).to include("Jean")
+      expect(response.body).to include("Bon")
+      expect(response.body).to include("jean@bon.by")
+    end
+  end
+
   # describe "GET update" do
   #   it "returns http success" do
   #     put :update
