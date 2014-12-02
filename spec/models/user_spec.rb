@@ -42,4 +42,12 @@ RSpec.describe User, :type => :model do
     user.email = "jean@bon.by"
     expect(user.valid?).to eq(true)
   end
+
+  it "user email is unique" do
+    user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", rank: "user")
+    expect(user.valid?).to eq(true)
+
+    other_user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", rank: "user")
+    expect(other_user.valid?).to eq(false)
+  end
 end
