@@ -28,4 +28,18 @@ RSpec.describe User, :type => :model do
     user.rank = "user"
     expect(user.valid?).to eq(true)
   end
+
+  it "requires a valid email" do
+    user = User.new(firstname: "Jean", lastname: "Bon", rank: "user")
+    expect(user.valid?).to eq(false)
+
+    user.email = "jean"
+    expect(user.valid?).to eq(false)
+
+    user.email = "jean@bon"
+    expect(user.valid?).to eq(false)
+
+    user.email = "jean@bon.by"
+    expect(user.valid?).to eq(true)
+  end
 end
