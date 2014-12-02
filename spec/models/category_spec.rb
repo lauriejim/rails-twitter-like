@@ -20,4 +20,11 @@ RSpec.describe Category, :type => :model do
     category.icon = "http://www.google.png"
     expect(category.valid?).to eq(true)
   end
+
+  it "display all categories" do
+    category = Category.create(title: "Basket-ball", icon: "http://www.google.png")
+    other_category = Category.create(title: "Football", icon: "http://www.google.png")
+
+    expect(Category.published).to eq([category, other_category])
+  end
 end
