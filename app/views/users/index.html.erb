@@ -2,5 +2,6 @@
 <p>Find me in app/views/users/index.html.erb</p>
 
 <% @users.each do |user| %>
-  <%= user.firstname %>
+  <%= user.firstname %> 
+  <%= link_to "Show", user %><br>
 <% end %>
