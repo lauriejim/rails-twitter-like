@@ -1,6 +1,6 @@
-class CreateCategories < ActiveRecord::Migration
+class CreateSports < ActiveRecord::Migration
   def change
-    create_table :categories do |t|
+    create_table :sports do |t|
       t.string :title
       t.string :icon
 
