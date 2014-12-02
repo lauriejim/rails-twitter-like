@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe UsersController, :type => :controller do
 
+  render_views
+
   describe "GET index" do
     it "display user list" do
       user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", rank: "user")
