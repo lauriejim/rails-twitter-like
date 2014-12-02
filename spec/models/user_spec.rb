@@ -11,4 +11,21 @@ RSpec.describe User, :type => :model do
     expect(found.email).to eq("jean@bon.by")
     expect(found.rank).to eq("user")
   end
+
+  it "require firstname lastname and email" do
+    user = User.new
+    expect(user.valid?).to eq(false)
+
+    user.firstname = "Jean"
+    expect(user.valid?).to eq(false)
+
+    user.lastname = "Bon"
+    expect(user.valid?).to eq(false)
+
+    user.email = "jean@bon.by"
+    expect(user.valid?).to eq(false)
+
+    user.rank = "user"
+    expect(user.valid?).to eq(true)
+  end
 end
