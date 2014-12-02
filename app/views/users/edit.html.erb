@@ -2,8 +2,11 @@
 <p>Find me in app/views/users/update.html.erb</p>
 
 <%= form_for @user do |f| %>
-  <%= f.text_field :firstname %>
-  <%= f.text_field :lastname %>
-  <%= f.text_field :email %>
+  Firstname: 
+  <%= f.text_field :firstname %><br>
+  Lastname: 
+  <%= f.text_field :lastname %><br>
+  Email: 
+  <%= f.text_field :email %><br>
   <%= f.submit %>
 <% end %>
