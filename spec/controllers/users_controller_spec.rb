@@ -59,12 +59,20 @@ RSpec.describe UsersController, :type => :controller do
     end
   end
 
-  # describe "GET update" do
-  #   it "returns http success" do
-  #     put :update
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "GET update" do
+    it "update user" do
+      user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", rank: "user")
+
+      post :update, id: user.id, user: {firstname: "Coucou", lastname: "LOL", email: "coucou@lol.by"}
+      expect(response).to redirect_to('/users/' + user.id.to_s)
+
+      user = User.find(user.id)
+      expect(user.firstname).to eq("Coucou")
+      expect(user.lastname).to eq("LOL")
+      expect(user.email).to eq("coucou@lol.by")
+      expect(user.rank).to eq("user")
+    end
+  end
 
   # describe "GET destroy" do
   #   it "returns http success" do
