@@ -35,10 +35,10 @@ RSpec.describe UsersController, :type => :controller do
   describe "POST create" do
     it "create new user" do
 
-      post :create, post: {firstname: "Jean", lastname: "Bon", email: "jean@bon.by", rank: "user"}
-      expect(response).to have_http_status(:success)
+      post :create, user: {firstname: "Jean", lastname: "Bon", email: "jean@bon.by"}
 
       user = User.last
+      expect(response).to redirect_to('/users/' + user.id.to_s)
       expect(user.firstname).to eq("Jean")
       expect(user.lastname).to eq("Bon")
       expect(user.email).to eq("jean@bon.by")
