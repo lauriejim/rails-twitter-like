@@ -1,7 +1,8 @@
-<h1>Sport#edit</h1>
-<%= form_for @sport do |f| %>
-  Titre: <%= f.text_field :title %><br />
-  Icon : <%= f.text_field :icon %><br />
-  <%= f.submit %>
-<% end %>
-
+<h1>Edit sport</h1>
+<div class="col-lg-6">
+  <%= simple_form_for @sport do |f| %>
+    <%= f.input :title %>
+    <%= f.input :icon %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

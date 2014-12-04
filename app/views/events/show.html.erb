@@ -1,3 +1,4 @@
-<h1>Events#show</h1>
-<%= @event.title %> in category <%= @event.sport.title %></li>
+<h1><%= @event.title %></h1>
 
+<h2><%= @event.sport.title %></h2>
+<%= link_to "Edit", { :controller =>"events", :action=> "edit" }, :id=> @event, :class=>"btn btn-default" %>

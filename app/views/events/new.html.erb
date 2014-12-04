@@ -1,10 +1,11 @@
-<h1>Event#new</h1>
-<%= form_for @event do |f| %>
-  Catégorie : <%= f.select :sport_id, Sport.all.map{|u| [u.title, u.id]} %><br><br>
-  Titre: <%= f.text_field :title %><br />
-  Cover : <%= f.text_field :cover %><br />
-  Description : <%= f.text_area :description %><br />
-  Adresse : <%= f.text_field :adresse %><br />
-  <%= f.submit %>
-<% end %>
-
+<h1>Create a new event</h1>
+<div class="col-lg-6">
+  <%= simple_form_for @event do |f| %>
+    <%= f.input :sport_id, :collection => Sport.all.map{|u| [u.title, u.id]} %>
+    <%= f.input :title %>
+    <%= f.input :cover %>
+    <%= f.input :description %>
+    <%= f.input :adresse %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

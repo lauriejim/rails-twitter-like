@@ -1,7 +1,25 @@
-<h1>Sport#displayAll</h1>
-<ul>
-<% @sports.each do |sport| %>
-  <li><%= sport.title %> & icon <%= sport.icon %></li>
-<% end %>
-</ul>
-
+<h1>Sports</h1>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Icon</th>
+            <th>More</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sports.each do |sport| %>
+            <tr>
+              <td><%= sport.title %></td>
+              <td><%= image_tag(sport.icon) %></td>
+              <td><%= link_to "Show", sport, :class => "btn btn-xs btn-default" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
