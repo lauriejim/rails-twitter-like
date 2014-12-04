@@ -32,7 +32,7 @@ RSpec.describe Event, :type => :model do
     event = Event.new(sport: sport)
     event.save!
 
-    expect(Event.findOne(event.id)).to eq(event)
+    expect(Event.find_one(event.id)).to eq(event)
   end
 
   it "display all events in sport" do
@@ -43,6 +43,6 @@ RSpec.describe Event, :type => :model do
     other_event = Event.new(sport: sport)
     other_event.save!
 
-    expect(Event.findBySport(sport.id)).to eq([event, other_event])
+    expect(Event.find_by_sport(sport.id)).to eq([event, other_event])
   end
 end

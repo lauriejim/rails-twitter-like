@@ -7,7 +7,7 @@ class Sport < ActiveRecord::Base
     Sport.all
   end
 
-  def self.findOne(sport_id)
+  def self.find_one(sport_id)
     Sport.find_by_id(sport_id)
   end
 end

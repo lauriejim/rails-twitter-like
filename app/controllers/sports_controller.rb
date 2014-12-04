@@ -5,7 +5,7 @@ class SportsController < ApplicationController
   end
 
   def show
-    @sport = Sport.findOne(params[:id])
+    @sport = Sport.find_one(params[:id])
   end
 
   def new
@@ -13,11 +13,11 @@ class SportsController < ApplicationController
   end
 
   def edit
-    @sport = Sport.findOne(params[:id])
+    @sport = Sport.find_one(params[:id])
   end
 
   def update
-    @sport = Sport.findOne(params[:id])
+    @sport = Sport.find_one(params[:id])
     @sport.update(sport_params)
 
     redirect_to edit_sport_path(@sport)

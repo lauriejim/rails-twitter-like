@@ -4,13 +4,13 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
-  def displayBySport
-    @events = Event.findBySport(params[:id])
+  def display_by_sport
+    @events = Event.find_by_sport(params[:id])
   end
 
   def show
     begin 
-      @event = Event.findOne(params[:id])
+      @event = Event.find_one(params[:id])
     rescue 
       redirect_to events_path
     end
@@ -22,7 +22,7 @@ class EventsController < ApplicationController
 
   def edit
     begin 
-      @event = Event.findOne(params[:id])
+      @event = Event.find_one(params[:id])
     rescue 
       redirect_to edit_event_path
     end
@@ -30,7 +30,7 @@ class EventsController < ApplicationController
 
   def update
     begin 
-      @event = Event.findOne(params[:id])
+      @event = Event.find_one(params[:id])
     rescue 
       redirect_to edit_event_path
     end

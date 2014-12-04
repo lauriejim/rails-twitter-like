@@ -36,7 +36,7 @@ RSpec.describe EventsController, :type => :controller do
       other_event.save!
 
 
-      get "displayBySport", id: sport.id
+      get "display_by_sport", id: sport.id
 
       expect(response).to have_http_status(:success)
 
@@ -53,7 +53,7 @@ RSpec.describe EventsController, :type => :controller do
       event.sport = sport
       event.save!
 
-      get "displayBySport", id: event.id
+      get "display_by_sport", id: event.id
       expect(response).to have_http_status(:success)
 
       expect(response.body).to include("#{event.title} in category #{sport.title}")

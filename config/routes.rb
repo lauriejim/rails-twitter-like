@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
  
-  get 'events/displayBySport'
+  get 'events/display_by_sport'
 
   resources :events
   resources :sports
