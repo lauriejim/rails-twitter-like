@@ -12,7 +12,7 @@ RSpec.describe SportsController, :type => :controller do
       other_sport = Sport.create(title: "Basket-ball 2", icon: "http://www.google.png")
       other_sport.save!
 
-      get :displayAll
+      get :index
       expect(response).to have_http_status(:success)
 
       expect(response.body).to include("#{sport.title} & icon #{sport.icon}")

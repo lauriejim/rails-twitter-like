@@ -16,7 +16,7 @@ RSpec.describe EventsController, :type => :controller do
       other_event.sport = other_sport
       other_event.save!
 
-      get :displayAll
+      get :index
       expect(response).to have_http_status(:success)
 
       expect(response.body).to include("#{event.title} in category #{sport.title}")
