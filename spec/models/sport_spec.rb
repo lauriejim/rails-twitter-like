@@ -27,6 +27,6 @@ RSpec.describe Sport, :type => :model do
     other_sport = Sport.create(title: "Football", icon: "http://www.google.png")
     other_sport.save!
 
-    expect(Sport.display).to eq([sport, other_sport])
+    expect(Sport.find).to eq([sport, other_sport])
   end
 end
