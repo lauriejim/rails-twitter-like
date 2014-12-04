@@ -32,7 +32,7 @@ RSpec.describe Event, :type => :model do
     event = Event.new(sport: sport)
     event.save!
 
-    expect(Event.findOne(event.id)).to eq([event])
+    expect(Event.findOne(event.id)).to eq(event)
   end
 
   it "display all events in sport" do
