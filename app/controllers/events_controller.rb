@@ -6,6 +6,7 @@ class EventsController < ApplicationController
 
   def display_by_sport
     @events = Event.find_by_sport(params[:id])
+    @sport = Sport.find_one(params[:id])
   end
 
   def show
