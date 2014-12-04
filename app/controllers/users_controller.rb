@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params);
     user.save!
+
+    redirect_to "/users/#{user.id}"
   end
 
   def edit
@@ -21,6 +23,10 @@ class UsersController < ApplicationController
   end
 
   def update
+    user = User.find(params[:id])
+    user.update(user_params);
+
+    redirect_to "/users/#{user.id}"
   end
 
   def destroy
@@ -28,6 +34,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-   params.require(:post).permit(:firstname, :lastname, :email, :rank)
+   params.require(:user).permit(:firstname, :lastname, :email)
   end
 end
