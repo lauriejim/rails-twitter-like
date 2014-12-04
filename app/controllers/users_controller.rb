@@ -25,8 +25,8 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if params[:rank]
-      user.update(user_params.merge({rank: params[:rank]}))
+    if params[:user][:rank]
+      user.update(user_params.merge({rank: params[:user][:rank]}))
     else
       user.update(user_params)
     end
