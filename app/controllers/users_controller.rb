@@ -25,7 +25,11 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    user.update(user_params);
+    if params[:rank]
+      user.update(user_params.merge({rank: params[:rank]}))
+    else
+      user.update(user_params)
+    end
 
     redirect_to "/users/#{user.id}"
   end
