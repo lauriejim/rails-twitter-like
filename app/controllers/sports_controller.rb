@@ -1,12 +1,20 @@
 class SportsController < ApplicationController
 
   def displayAll
-    @sports = Sport.all
+    @sports = Sport.find()
+  end
+
+  def show
+    @sports = Sport.findOne(params[:id])
+  end
+
+  def new
+    @sport = Sport.new
   end
   
   def create
-    Sport.create(title: params[:post][:title], icon: params[:post][:icon])
-    redirect_to posts_path
+    Sport.create(title: params[:sport][:title], icon: params[:sport][:icon])
+    redirect_to new_sport_path
   end
 
 end

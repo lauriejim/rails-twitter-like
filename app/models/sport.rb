@@ -6,4 +6,8 @@ class Sport < ActiveRecord::Base
   def self.find
     Sport.all
   end
+
+  def self.findOne(sport_id)
+    Sport.where(:id => sport_id)
+  end
 end
