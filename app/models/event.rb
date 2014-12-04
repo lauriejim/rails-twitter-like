@@ -7,6 +7,6 @@ class Event < ActiveRecord::Base
   end
 
   def self.findOne(event_id)
-    Event.find(event_id)
+    Event.find(event_id) 
   end
 end

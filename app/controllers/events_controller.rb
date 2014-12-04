@@ -9,7 +9,11 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    begin 
+      @event = Event.findOne(params[:id])
+    rescue 
+      redirect_to events_path
+    end
   end
 
   def new
@@ -17,11 +21,20 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.findOne(params[:id])
+    begin 
+      @event = Event.findOne(params[:id])
+    rescue 
+      redirect_to edit_event_path
+    end
   end
 
   def update
-    @event = Event.findOne(params[:id])
+    begin 
+      @event = Event.findOne(params[:id])
+    rescue 
+      redirect_to edit_event_path
+    end
+
     @event.update(event_params)
 
     redirect_to edit_event_path(@event)
