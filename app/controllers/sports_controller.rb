@@ -1,7 +1,7 @@
 class SportsController < ApplicationController
 
-  def displayAll
-    @sports = Sport.find()
+  def index
+    @sports = Sport.index()
   end
 
   def show

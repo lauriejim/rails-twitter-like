@@ -4,7 +4,7 @@ RSpec.describe SportsController, :type => :controller do
 
   render_views
 
-  describe "GET displayAll" do
+  describe "GET index" do
     it "returns all sports" do
       sport = Sport.create(title: "Basket-ball", icon: "http://www.google.png")
       sport.save!

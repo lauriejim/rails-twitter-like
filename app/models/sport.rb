@@ -3,7 +3,7 @@ class Sport < ActiveRecord::Base
   validates :icon, presence: true
   validates :title, presence: true, uniqueness: true
 
-  def self.find
+  def self.index
     Sport.all
   end
 
