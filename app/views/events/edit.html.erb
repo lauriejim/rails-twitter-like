@@ -1,0 +1,9 @@
+<h1>Sport#edit</h1>
+<%= form_for @event do |f| %>
+Catégorie : <%= f.select :sport_id, Sport.all.map{|u| [u.title, u.id]} %><br><br>
+  Titre: <%= f.text_field :title %><br />
+  Cover : <%= f.text_field :cover %><br />
+  Description : <%= f.text_area :description %><br />
+  Adresse : <%= f.text_field :adresse %><br />
+  <%= f.submit %>
+<% end %>

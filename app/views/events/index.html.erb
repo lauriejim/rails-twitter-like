@@ -1,0 +1,7 @@
+<h1>Events#index</h1>
+<ul>
+<% @events.each do |event| %>
+  <li><%= event.title %> in category <%= event.sport.title %></li>
+<% end %>
+</ul>
+

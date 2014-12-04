@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
-  get 'events/displayAll'
 
-  get 'events/display'
-
-  get 'events/displayBySport'
-
+  resources :events
   resources :sports
 
   # The priority is based upon order of creation: first created -> highest priority.

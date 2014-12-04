@@ -8,6 +8,6 @@ class Sport < ActiveRecord::Base
   end
 
   def self.findOne(sport_id)
-    Sport.where(:id => sport_id)
+    Sport.find(sport_id)
   end
 end
