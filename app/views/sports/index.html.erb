@@ -8,6 +8,7 @@
             <th>Title</th>
             <th>Icon</th>
             <th>More</th>
+            <th>Events</th>
           </tr>
         </thead>
         <tbody>
@@ -16,6 +17,7 @@
               <td><%= sport.title %></td>
               <td><%= image_tag(sport.icon) %></td>
               <td><%= link_to "Show", sport, :class => "btn btn-xs btn-default" %></td>
+              <td><%= link_to "Events", { controller: "events", action: "display_by_sport", id: sport }, :class => "btn btn-xs btn-default" %></td>
             </tr>
           <% end %>
         </tbody>
