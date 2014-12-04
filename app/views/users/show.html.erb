@@ -1,8 +1,5 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.firstname + " "+ @user.lastname %></h1>
 
-<%= @user.firstname %>
-<%= @user.lastname %>
-<%= @user.email %>
-<%= @user.rank %>
-<%= link_to "Edit", controller: "users", action: "edit", id: @user %>
+<h2><%= @user.email %></h2>
+<h3><%= @user.rank %></h3>
+<%= link_to "Edit", { :controller =>"users", :action=> "edit" }, :id=> @user, :class=>"btn btn-default" %>
