@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @ranks = RailsTwitterLike::Application::RANKS
     @user = User.find(params[:id])
   end
 
