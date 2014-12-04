@@ -9,9 +9,9 @@ class EventsController < ApplicationController
   end
 
   def show
-    begin 
+    begin
       @event = Event.find_one(params[:id])
-    rescue 
+    rescue
       redirect_to events_path
     end
   end
@@ -21,17 +21,17 @@ class EventsController < ApplicationController
   end
 
   def edit
-    begin 
+    begin
       @event = Event.find_one(params[:id])
-    rescue 
+    rescue
       redirect_to edit_event_path
     end
   end
 
   def update
-    begin 
+    begin
       @event = Event.find_one(params[:id])
-    rescue 
+    rescue
       redirect_to edit_event_path
     end
 
@@ -39,7 +39,7 @@ class EventsController < ApplicationController
 
     redirect_to edit_event_path(@event)
   end
-  
+
   def create
     @event = Event.create(event_params)
     @event.save!
