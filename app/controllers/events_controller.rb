@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     @events = Event.findBySport(params[:id])
   end
 
-  def display(event_id)
-    @events = Event.findOne(event_id)
+  def display
+    @events = Event.findOne(params[:id])
   end
 end

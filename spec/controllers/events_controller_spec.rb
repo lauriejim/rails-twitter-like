@@ -45,4 +45,19 @@ RSpec.describe EventsController, :type => :controller do
     end
   end
 
+  describe "GET displayBySport" do
+    it "display one event" do
+      sport = Sport.create(title: "Basket-ball", icon: "http://www.google.png")
+      sport.save!
+      event = Event.create(title: "Basket-ball event", cover:"http://www.google.png", likes:"0", description:"This is a short description", adresse:"Tour Eiffel, Paris, 75000")
+      event.sport = sport
+      event.save!
+
+      get "displayBySport", id: event.id
+      expect(response).to have_http_status(:success)
+
+      expect(response.body).to include("#{event.title} in category #{sport.title}")
+    end
+  end
+
 end

@@ -1,2 +1,4 @@
 <h1>Events#display</h1>
-<p>Find me in app/views/events/display.html.erb</p>
+<% @events.each do |event| %>
+  <%= event.title %> in category <%= event.sport.title %></li>
+<% end %>
