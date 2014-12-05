@@ -1,18 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  it "create a user" do
-    user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", rank: "user")
+  it "create a user with full infos" do
+    user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
     user.save!
 
     found = User.last
     expect(found.firstname).to eq("Jean")
     expect(found.lastname).to eq("Bon")
     expect(found.email).to eq("jean@bon.by")
+    expect(found.password).to eq("pcw123")
     expect(found.rank).to eq("user")
   end
 
-  it "require firstname lastname and email" do
+  it "require firstname lastname email password and rank" do
     user = User.new
     expect(user.valid?).to eq(false)
 
@@ -23,6 +24,9 @@ RSpec.describe User, :type => :model do
     expect(user.valid?).to eq(false)
 
     user.email = "jean@bon.by"
+    expect(user.valid?).to eq(false)
+
+    user.password = "pcw123"
     expect(user.valid?).to eq(false)
 
     user.rank = "user"
@@ -49,5 +53,13 @@ RSpec.describe User, :type => :model do
 
     other_user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", rank: "user")
     expect(other_user.valid?).to eq(false)
+  end
+
+  it "password is hashed" do
+    user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
+    user.save!
+
+    found = User.last
+    expect(found.password).to_not eq(user.password)
   end
 end

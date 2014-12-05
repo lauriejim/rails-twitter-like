@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @ranks = RailsTwitterLike::Application::RANKS
   end
 
   def create
