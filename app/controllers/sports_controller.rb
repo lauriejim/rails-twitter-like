@@ -29,21 +29,12 @@ class SportsController < ApplicationController
   end
 
   def create
-    uploaded_io = params[:sport][:icon]
+    hash = upload(params[:sport][:icon], sport_params, "icon")
 
-    tmp_hash1 = sport_params
-    tmp_hash2 = {"icon" => uploaded_io.original_filename}
-    tmp_hash1.merge!(tmp_hash2)
-
-    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
-      file.write(uploaded_io.read)
-    end
-
-    @sport = Sport.create(tmp_hash1)
+    @sport = Sport.create(hash)
     @sport.save!
 
     redirect_to new_sport_path
-    render :layout => "admin"
   end
 
   private
