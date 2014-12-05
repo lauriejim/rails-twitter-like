@@ -6,18 +6,24 @@ class EventsController < ApplicationController
   end
 
   def display_by_sport
-    @events = Event.find_by_sport(params[:id])
-    @sport = Sport.find_one(params[:id])
-    render :layout => "admin"
+    begin
+      @events = Event.find_by_sport(params[:id])
+      @sport = Sport.find_one(params[:id])
+      render :layout => "admin"
+    rescue => e
+      logger.warn "#{e}" 
+      redirect_to sport_path
+    end
   end
 
   def show
     begin
       @event = Event.find_one(params[:id])
-    rescue
+      render :layout => "admin"
+    rescue => e
+      logger.warn "#{e}" 
       redirect_to events_path
     end
-    render :layout => "admin"
   end
 
   def new
@@ -28,16 +34,18 @@ class EventsController < ApplicationController
   def edit
     begin
       @event = Event.find_one(params[:id])
-    rescue
+      render :layout => "admin"
+    rescue => e
+      logger.warn "#{e}" 
       redirect_to edit_event_path
     end
-    render :layout => "admin"
   end
 
   def update
     begin
       @event = Event.find_one(params[:id])
-    rescue
+    rescue => e
+      logger.warn "#{e}" 
       redirect_to edit_event_path
     end
 
