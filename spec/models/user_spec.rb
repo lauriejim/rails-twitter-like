@@ -3,14 +3,13 @@ require 'rails_helper'
 RSpec.describe User, :type => :model do
   it "create a user with full infos" do
     user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
-    user.save!
 
     found = User.last
-    expect(found.firstname).to eq("Jean")
-    expect(found.lastname).to eq("Bon")
-    expect(found.email).to eq("jean@bon.by")
-    expect(found.password).to eq("pcw123")
-    expect(found.rank).to eq("user")
+    expect(found.firstname).to eq(user.firstname)
+    expect(found.lastname).to eq(user.lastname)
+    expect(found.email).to eq(user.email)
+    expect(found.password).to_not eq("pcw123")
+    expect(found.rank).to eq(user.rank)
   end
 
   it "require firstname lastname email password and rank" do
@@ -54,9 +53,8 @@ RSpec.describe User, :type => :model do
 
   it "password is hashed" do
     user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
-    user.save!
 
     found = User.last
-    expect(found.password).to_not eq(user.password)
+    expect(found.password).to_not eq("pcw123")
   end
 end
