@@ -9,11 +9,12 @@ class EventsController < ApplicationController
     begin
       @events = Event.find_by_sport(params[:id])
       @sport = Sport.find_one(params[:id])
-      render :layout => "admin"
     rescue => e
       logger.warn "#{e}" 
       redirect_to events_path
     end
+
+    render :layout => "admin"
   end
 
   def show
@@ -34,11 +35,12 @@ class EventsController < ApplicationController
   def edit
     begin
       @event = Event.find_one(params[:id])
-      render :layout => "admin"
     rescue => e
       logger.warn "#{e}" 
       redirect_to edit_event_path
     end
+
+    render :layout => "admin"
   end
 
   def update
@@ -48,24 +50,26 @@ class EventsController < ApplicationController
       logger.warn "#{e}" 
       redirect_to edit_event_path
     end
+    
+    hash = upload(params[:event][:cover], event_params, "cover")
 
-    @event.update(event_params)
+    @event.update(hash)
 
     redirect_to edit_event_path(@event)
-    render :layout => "admin"
   end
 
   def create
-    @event = Event.create(event_params)
+    hash = upload(params[:event][:cover], event_params, "cover")
+
+    @event = Event.create(hash)
     @event.save!
 
     redirect_to new_event_path
-    render :layout => "admin"
   end
 
   private
     def event_params
-      params.require(:event).permit(:title, :cover, :likes, :description, :adresse, :sport_id)
+      params.require(:event).permit(:title, :likes, :description, :adresse, :sport_id, :cover => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
     end
 
 end

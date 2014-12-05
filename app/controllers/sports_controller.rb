@@ -37,8 +37,10 @@ class SportsController < ApplicationController
       logger.warn "#{e}" 
       redirect_to sport_path
     end
+
+    hash = upload(params[:sport][:icon], sport_params, "icon")
     
-    @sport.update(sport_params)
+    @sport.update(hash)
 
     redirect_to edit_sport_path(@sport)
   end

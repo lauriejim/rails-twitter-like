@@ -3,7 +3,7 @@
   <%= simple_form_for @event do |f| %>
     <%= f.input :sport_id, :collection => Sport.all.map{|u| [u.title, u.id]} %>
     <%= f.input :title %>
-    <%= f.input :cover %>
+    <%= f.file_field(:cover, accept: 'image/png,image/gif,image/jpeg') %>
     <%= f.input :description %>
     <%= f.input :adresse %>
     <%= f.button :submit %>
