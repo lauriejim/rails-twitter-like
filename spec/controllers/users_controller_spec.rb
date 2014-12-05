@@ -2,7 +2,62 @@ require 'rails_helper'
 
 RSpec.describe UsersController, :type => :controller do
 
-  # render_views
+  render_views
+
+  describe "User creation" do
+    it "display creation form" do
+      get :new
+      expect(response).to have_http_status(:success)
+
+      expect(response.body).to include("firstname")
+      expect(response.body).to include("lastname")
+      expect(response.body).to include("email")
+      expect(response.body).to include("password")
+      expect(response.body).to include("rank")
+
+      ranks = RailsTwitterLike::Application::RANKS
+      ranks.each do |r|
+        expect(response.body).to include(r)
+      end
+
+      expect(response.body).to include("Create User")
+    end
+
+    it "create user" do
+      post :create, user: {firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user"}
+      expect(response).to redirect_to(users_path)
+
+      user = User.last
+      expect(user.firstname).to eq("Jean")
+      expect(user.lastname).to eq("Bon")
+      expect(user.email).to eq("jean@bon.by")
+      expect(user.password).to_not eq("pcw123")
+      expect(user.rank).to eq("user")
+    end
+
+    it "handle errors" do
+      post :create, user: {firstname: "Jean"}
+      count = User.last
+      expect(count).to eq(nil)
+      expect(response.body).to include("Jean")
+
+      post :create, user: {firstname: "Jean", lastname: "Bon"}
+      count = User.last
+      expect(count).to eq(nil)
+      expect(response.body).to include("Jean")
+      expect(response.body).to include("Bon")
+
+      post :create, user: {firstname: "Jean", lastname: "Bon", email: "jean@bon.by"}
+      count = User.last
+      expect(count).to eq(nil)
+      expect(response.body).to include("Jean")
+      expect(response.body).to include("Bon")
+      expect(response.body).to include("jean@bon.by")
+
+      post :create, user: {firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user"}
+      expect(response).to redirect_to(users_path)
+    end
+  end
 
   # describe "GET index" do
   #   it "display user list" do
