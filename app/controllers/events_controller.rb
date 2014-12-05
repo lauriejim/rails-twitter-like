@@ -2,11 +2,13 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    render :layout => "admin"
   end
 
   def display_by_sport
     @events = Event.find_by_sport(params[:id])
     @sport = Sport.find_one(params[:id])
+    render :layout => "admin"
   end
 
   def show
@@ -15,10 +17,12 @@ class EventsController < ApplicationController
     rescue
       redirect_to events_path
     end
+    render :layout => "admin"
   end
 
   def new
     @event = Event.new
+    render :layout => "admin"
   end
 
   def edit
@@ -27,6 +31,7 @@ class EventsController < ApplicationController
     rescue
       redirect_to edit_event_path
     end
+    render :layout => "admin"
   end
 
   def update
@@ -39,6 +44,7 @@ class EventsController < ApplicationController
     @event.update(event_params)
 
     redirect_to edit_event_path(@event)
+    render :layout => "admin"
   end
 
   def create
@@ -46,6 +52,7 @@ class EventsController < ApplicationController
     @event.save!
 
     redirect_to new_event_path
+    render :layout => "admin"
   end
 
   private
