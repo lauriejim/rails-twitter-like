@@ -23,11 +23,12 @@ class SportsController < ApplicationController
   def edit
     begin
       @sport = Sport.find_one(params[:id])
-      render :layout => "admin"
     rescue => e
       logger.warn "#{e}" 
       redirect_to sport_path
     end
+
+    render :layout => "admin"
   end
 
   def update
