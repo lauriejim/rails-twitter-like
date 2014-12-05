@@ -25,7 +25,6 @@ class SportsController < ApplicationController
     @sport.update(sport_params)
 
     redirect_to edit_sport_path(@sport)
-    render :layout => "admin"
   end
 
   def create
