@@ -67,6 +67,15 @@ class EventsController < ApplicationController
     redirect_to new_event_path
   end
 
+  def destroy
+    begin
+      Event.destroy(params[:id])
+    rescue => e
+      logger.warn "#{e}" 
+      redirect_to edit_event_path
+    end
+  end
+
   private
     def event_params
       params.require(:event).permit(:title, :likes, :description, :adresse, :sport_id, :cover => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])

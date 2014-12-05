@@ -55,6 +55,15 @@ class SportsController < ApplicationController
     redirect_to new_sport_path
   end
 
+  def destroy
+    begin
+      Sport.destroy(params[:id])
+    rescue => e
+      logger.warn "#{e}" 
+      redirect_to edit_event_path
+    end
+  end
+
   private
     def sport_params
       params.require(:sport).permit(:title, :icon => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
