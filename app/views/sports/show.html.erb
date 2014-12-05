@@ -1,4 +1,4 @@
 <h1><%= @sport.title %></h1>
 
-<h2><%= image_tag(@sport.icon) %></h2>
+<h2><%= image_tag("/uploads/"+@sport.icon) %></h2>
 <%= link_to "Edit", { :controller =>"sports", :action=> "edit" }, :id=> @sport, :class=>"btn btn-default" %>

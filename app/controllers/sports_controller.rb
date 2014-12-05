@@ -24,7 +24,17 @@ class SportsController < ApplicationController
   end
   
   def create
-    @sport = Sport.create(sport_params)
+    uploaded_io = params[:sport][:icon]
+
+    tmp_hash1 = sport_params
+    tmp_hash2 = {"icon" => uploaded_io.original_filename}
+    tmp_hash1.merge!(tmp_hash2)
+
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+
+    @sport = Sport.create(tmp_hash1)
     @sport.save!
 
     redirect_to new_sport_path
@@ -32,7 +42,7 @@ class SportsController < ApplicationController
 
   private
     def sport_params
-      params.require(:sport).permit(:title, :icon)
+      params.require(:sport).permit(:title, :icon => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
     end
 
 end
