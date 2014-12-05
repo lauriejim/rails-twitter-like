@@ -6,8 +6,13 @@ class SportsController < ApplicationController
   end
 
   def show
-    @sport = Sport.find_one(params[:id])
-    render :layout => "admin"
+    begin
+      @sport = Sport.find_one(params[:id])
+      render :layout => "admin"
+    rescue => e
+      logger.warn "#{e}" 
+      redirect_to sport_path
+    end
   end
 
   def new
@@ -16,12 +21,23 @@ class SportsController < ApplicationController
   end
 
   def edit
-    @sport = Sport.find_one(params[:id])
-    render :layout => "admin"
+    begin
+      @sport = Sport.find_one(params[:id])
+      render :layout => "admin"
+    rescue => e
+      logger.warn "#{e}" 
+      redirect_to sport_path
+    end
   end
 
   def update
-    @sport = Sport.find_one(params[:id])
+    begin
+      @sport = Sport.find_one(params[:id])
+    rescue => e
+      logger.warn "#{e}" 
+      redirect_to sport_path
+    end
+    
     @sport.update(sport_params)
 
     redirect_to edit_sport_path(@sport)

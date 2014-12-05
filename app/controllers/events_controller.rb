@@ -12,7 +12,7 @@ class EventsController < ApplicationController
       render :layout => "admin"
     rescue => e
       logger.warn "#{e}" 
-      redirect_to sport_path
+      redirect_to events_path
     end
   end
 
