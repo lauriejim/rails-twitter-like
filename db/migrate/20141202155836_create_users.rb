@@ -4,9 +4,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :firstname
       t.string :lastname
       t.string :email
-      t.string :picture
-      t.string :description
-      t.string :rang
+      t.string :password
+      t.string :rank, default: true
 
       t.timestamps
     end

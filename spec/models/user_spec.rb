@@ -27,14 +27,11 @@ RSpec.describe User, :type => :model do
     expect(user.valid?).to eq(false)
 
     user.password = "pcw123"
-    expect(user.valid?).to eq(false)
-
-    user.rank = "user"
     expect(user.valid?).to eq(true)
   end
 
   it "requires a valid email" do
-    user = User.new(firstname: "Jean", lastname: "Bon", rank: "user")
+    user = User.create(firstname: "Jean", lastname: "Bon", password: "pcw123", rank: "user")
     expect(user.valid?).to eq(false)
 
     user.email = "jean"
@@ -48,10 +45,10 @@ RSpec.describe User, :type => :model do
   end
 
   it "user email is unique" do
-    user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", rank: "user")
+    user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
     expect(user.valid?).to eq(true)
 
-    other_user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", rank: "user")
+    other_user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
     expect(other_user.valid?).to eq(false)
   end
 
