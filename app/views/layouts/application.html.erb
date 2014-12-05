@@ -46,10 +46,12 @@
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
           <li>
-            <a href="/users"><i class="fa fa-fw fa-dashboard"></i> Users</a>
+            <%= link_to " Users", { :controller =>"users", :action=> "index" }, :class=>"fa fa-fw fa-dashboard" %>
+            <!-- <a href="/users"><i class="fa fa-fw fa-dashboard"></i> Users</a> -->
           </li>
           <li class="active">
-            <a href="/users/new"><i class="fa fa-fw fa-bar-chart-o"></i> Create User</a>
+            <%= link_to " Create User", { :controller =>"users", :action=> "new" }, :class=>"fa fa-fw fa-dashboard" %>
+            <!-- <a href="/users/new"><i class="fa fa-fw fa-bar-chart-o"></i> Create User</a> -->
           </li>
         </ul>
       </div>
