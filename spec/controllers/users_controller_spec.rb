@@ -73,6 +73,20 @@ RSpec.describe UsersController, :type => :controller do
       expect(response.body).to include("admin")
       expect(response.body).to_not include(user.password)
     end
+
+    it "update user" do
+      user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
+      user_update_informations = {firstname: "Jean1", lastname: "Bon1", email: "jean1@bon.by", password: "pcw1234", rank: "admin"}
+
+      post :update, id: user.id, user: user_update_informations
+      expect(response).to redirect_to(user)
+
+      found = User.last
+      expect(found.firstname).to eq(user_update_informations[:firstname])
+      expect(found.lastname).to eq(user_update_informations[:lastname])
+      expect(found.email).to eq(user_update_informations[:email])
+      expect(found.rank).to eq(user_update_informations[:rank])
+    end
   end
 
   # describe "GET show" do
