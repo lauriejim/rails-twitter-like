@@ -59,20 +59,21 @@ RSpec.describe UsersController, :type => :controller do
     end
   end
 
-  # describe "GET index" do
-  #   it "display user list" do
-  #     user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", rank: "user")
-  #     user_1 = User.create(firstname: "Jean1", lastname: "Bon", email: "jean1@bon.by", rank: "user")
-  #     user_2 = User.create(firstname: "Jean2", lastname: "Bon", email: "jean2@bon.by", rank: "user")
+  describe "User edit" do
+    it "set user infos in form" do
+      user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
 
-  #     get :index
-  #     expect(response).to have_http_status(:success)
+      get :edit, id: user.id
+      expect(response).to have_http_status(:success)
 
-  #     expect(response.body).to include("#{user.firstname}")
-  #     expect(response.body).to include("#{user_1.firstname}")
-  #     expect(response.body).to include("#{user_2.firstname}")
-  #   end
-  # end
+      expect(response.body).to include(user.firstname)
+      expect(response.body).to include(user.lastname)
+      expect(response.body).to include(user.email)
+      expect(response.body).to include(user.rank)
+      expect(response.body).to include("admin")
+      expect(response.body).to_not include(user.password)
+    end
+  end
 
   # describe "GET show" do
   #   it "display user" do
