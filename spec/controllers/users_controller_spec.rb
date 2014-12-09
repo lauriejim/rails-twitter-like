@@ -90,11 +90,16 @@ RSpec.describe UsersController, :type => :controller do
     end
   end
 
-  # describe "GET destroy" do
-  #   it "returns http success" do
-  #     delete :destroy
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "User edit" do
+    it "delete one user" do
+      user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
+      expect(User.count()).to eq(1)
+
+      post :destroy, id: user.id
+      expect(response).to redirect_to(users_path)
+
+      expect(User.count()).to eq(0)
+    end
+  end
 
 end

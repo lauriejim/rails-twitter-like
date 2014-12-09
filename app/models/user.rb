@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_one(user_id)
-    User.find(event_id) 
+    User.find(user_id) 
   end
 
   def self.count
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   end
 
   def self.delete_one(user_id)
-    User.destroy(event_id)
+    User.destroy(user_id)
   end
 
   private
