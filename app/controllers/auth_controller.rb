@@ -5,9 +5,7 @@ class AuthController < ApplicationController
   def register
   end
 
-  def new
-  end
-
+  # set user in session
   def create
   end
 end
