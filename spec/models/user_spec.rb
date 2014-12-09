@@ -57,4 +57,14 @@ RSpec.describe User, :type => :model do
     found = User.last
     expect(found.password).to_not eq("pcw123")
   end
+
+  it "delete one user" do
+    user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
+
+    expect(User.count()).to eq(1)
+    
+    User.delete_one(user.id)
+
+    expect(User.count()).to eq(0)
+  end
 end
