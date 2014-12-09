@@ -42,26 +42,27 @@
           </ul>
         </li>
       </ul>
+
       <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
           <li>
-            <a href="/users"><i class="fa fa-fw fa-dashboard"></i>List users</a>
+            <%= link_to "List users", users_path, class: currentPath(users_path) %>
           </li>
           <li>
-            <a href="/users/new"><i class="fa fa-fw fa-bar-chart-o"></i>Create user</a>
+            <%= link_to "Create user", new_user_path, class: currentPath(new_user_path) %>
           </li>
           <li>
-            <a href="/sports"><i class="fa fa-fw fa-bar-chart-o"></i>List sports</a>
+            <%= link_to "List sports", sports_path, class: currentPath(sports_path) %>
           </li>
           <li>
-            <a href="/sports/new"><i class="fa fa-fw fa-bar-chart-o"></i>Create sport</a>
+            <%= link_to "Create sport", new_sport_path, class: currentPath(new_sport_path) %>
           </li>
           <li>
-            <a href="/events"><i class="fa fa-fw fa-bar-chart-o"></i>List events</a>
+            <%= link_to "List events", events_path, class: currentPath(events_path) %>
           </li>
-          <li class="active">
-            <a href="/events/new"><i class="fa fa-fw fa-bar-chart-o"></i>Create event</a>
+          <li>
+            <%= link_to "Create event", new_event_path, class: currentPath(new_event_path) %>
           </li>
         </ul>
       </div>

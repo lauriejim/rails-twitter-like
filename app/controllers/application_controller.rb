@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :upload
+  helper_method :upload, :currentPath
   
   def upload(uploaded_io, strong_parameters, entry)
     
@@ -15,5 +15,9 @@ class ApplicationController < ActionController::Base
     end
 
     tmp_hash1 
+  end
+
+  def currentPath(path)
+    'active' if request.original_url.include?(path)
   end
 end
