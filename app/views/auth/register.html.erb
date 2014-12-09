@@ -1,10 +1,14 @@
 <h1>Login</h1>
 <div class="col-lg-6">
-  <%= form_tag("/auth/create", method: "post") do %>
+  <%= form_tag("/users/create", method: "post") do %>
+    <%= label_tag(:firstname, "Firstname:") %>
+    <%= text_field_tag(:firstname) %>
+    <%= label_tag(:lastname, "Lastname:") %>
+    <%= text_field_tag(:lastname) %>
     <%= label_tag(:email, "Email:") %>
-    <%= text_field_tag(:email) %>
+    <%= email_field_tag(:email) %>
     <%= label_tag(:password, "Password :") %>
-    <%= text_field_tag(:password) %>
-    <%= submit_tag("Auth") %>
+    <%= password_field_tag(:password) %>
+    <%= submit_tag("Register") %>
   <% end %>
 </div>
