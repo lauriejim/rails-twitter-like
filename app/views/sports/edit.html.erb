@@ -1,0 +1,9 @@
+<h1>Edit sport</h1>
+<div class="col-lg-6">
+  <%= simple_form_for @sport do |f| %>
+    <%= f.input :title %>
+    <%= image_tag("/uploads/"+@sport.icon, size: "150") %>
+    <%= f.file_field(:icon, accept: 'image/png,image/gif,image/jpeg') %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

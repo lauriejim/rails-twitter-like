@@ -1,15 +1,18 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    render :layout => "admin"
   end
 
   def show
     @user = User.find(params[:id])
+    render :layout => "admin"
   end
 
   def new
     @user = User.new
     @ranks = RailsTwitterLike::Application::RANKS
+    render :layout => "admin"
   end
 
   def create
@@ -25,6 +28,7 @@ class UsersController < ApplicationController
   def edit
     @ranks = RailsTwitterLike::Application::RANKS
     @user = User.find(params[:id])
+    render :layout => "admin"
   end
 
   def update

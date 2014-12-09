@@ -1,0 +1,8 @@
+<h1>Create a new sport</h1>
+<div class="col-lg-6">
+  <%= simple_form_for @sport do |f| %>
+    <%= f.input :title %>
+    <%= f.input :icon, :as => :file, :accept => 'image/png,image/gif,image/jpeg' %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

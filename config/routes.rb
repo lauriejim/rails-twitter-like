@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  resources :events
+  resources :sports
+  resources :users
+ 
+  get 'events/display_by_sport/:id', to: 'events#display_by_sport'
 
-  resources :users, path: '/admin/users'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

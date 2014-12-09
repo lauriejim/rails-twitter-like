@@ -1,0 +1,5 @@
+<h1><%= @event.title %></h1>
+
+<h2><%= @event.sport.title %></h2>
+<h2><%= image_tag("/uploads/"+@event.cover, size: "150") %></h2>
+<%= link_to "Edit", { :controller =>"events", :action=> "edit" }, :id=> @event, :class=>"btn btn-default" %>
