@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   validates :password, presence: true, :on => :create
   validates :email, uniqueness: true
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  before_create :hash
-  before_update :hash
+  before_create :encrypt
+  before_update :encrypt
 
   def self.index
     User.all
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
 
   private
-  def hash
+  def encrypt
     if self.password
       self.password = Digest::MD5.hexdigest(self.password)
     else
