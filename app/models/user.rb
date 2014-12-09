@@ -12,16 +12,16 @@ class User < ActiveRecord::Base
     User.all
   end
 
-  def self.find_one(event_id)
-    User.find(event_id) 
+  def self.find_one(user_id)
+    User.find(user_id) 
   end
 
   def self.count
     User.all.size()
   end
 
-  def self.delete_one(event_id)
-    User.destroy(event_id)
+  def self.delete_one(user_id)
+    User.destroy(user_id)
   end
 
   def self.auth(auth_info)
