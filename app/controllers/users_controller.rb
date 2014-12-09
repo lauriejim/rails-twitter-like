@@ -1,18 +1,17 @@
 class UsersController < ApplicationController
+  layout "admin"
+
   def index
     @users = User.index
-    render :layout => "admin"
   end
 
   def show
     @user = User.find_one(params[:id])
-    render :layout => "admin"
   end
 
   def new
     @user = User.new
     @ranks = RailsTwitterLike::Application::RANKS
-    render :layout => "admin"
   end
 
   def create
@@ -28,15 +27,14 @@ class UsersController < ApplicationController
   def edit
     @ranks = RailsTwitterLike::Application::RANKS
     @user = User.find_one(params[:id])
-    render :layout => "admin"
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find_one(params[:id])
     if @user.update_attributes(user_params)
       redirect_to @user
     else
-      render :layout => "admin", :action => 'edit'
+      render :action => 'edit'
     end
   end
 

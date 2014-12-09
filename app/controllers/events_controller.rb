@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
+  layout "admin"
 
   def index
     @events = Event.all
-    render :layout => "admin"
   end
 
   def display_by_sport
@@ -13,14 +13,11 @@ class EventsController < ApplicationController
       logger.warn "#{e}" 
       redirect_to events_path
     end
-
-    render :layout => "admin"
   end
 
   def show
     begin
       @event = Event.find_one(params[:id])
-      render :layout => "admin"
     rescue => e
       logger.warn "#{e}" 
       redirect_to events_path
@@ -29,7 +26,6 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    render :layout => "admin"
   end
 
   def edit
@@ -39,8 +35,6 @@ class EventsController < ApplicationController
       logger.warn "#{e}" 
       redirect_to edit_event_path
     end
-
-    render :layout => "admin"
   end
 
   def update
@@ -50,10 +44,13 @@ class EventsController < ApplicationController
       logger.warn "#{e}" 
       redirect_to edit_event_path
     end
-    
-    hash = upload(params[:event][:cover], event_params, "cover")
 
-    @event.update(hash)
+    if params[:event].key?('cover')
+      hash = upload(params[:event][:cover], event_params, "cover")
+      @event.update(hash)
+    else
+      @event.update(event_params)
+    end
 
     redirect_to edit_event_path(@event)
   end

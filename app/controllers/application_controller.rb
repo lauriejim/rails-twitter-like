@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :upload
   
   def upload(uploaded_io, strong_parameters, entry)
+    
     tmp_hash1 = strong_parameters
     tmp_hash2 = {entry => uploaded_io.original_filename}
     tmp_hash1.merge!(tmp_hash2)
