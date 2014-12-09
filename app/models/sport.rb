@@ -8,7 +8,7 @@ class Sport < ActiveRecord::Base
   end
 
   def self.find_one(sport_id)
-    Sport.find_by_id(sport_id)
+    Sport.find(sport_id)
   end
 
   def self.count
@@ -16,6 +16,6 @@ class Sport < ActiveRecord::Base
   end
 
   def self.delete_one(sport_id)
-    Sport.destroy(sport_id)
+    Sport.destroy(event_id)
   end
 end
