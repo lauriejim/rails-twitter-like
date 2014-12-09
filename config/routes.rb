@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 
   get 'auth/register'
 
-  get 'auth/new'
-
-  get 'auth/create'
+  post 'auth/create'
 
   get 'events/display_by_sport/:id', to: 'events#display_by_sport'
   

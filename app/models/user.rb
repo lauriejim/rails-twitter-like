@@ -24,6 +24,11 @@ class User < ActiveRecord::Base
     User.destroy(event_id)
   end
 
+  def self.auth(auth_info)
+    password = Digest::MD5.hexdigest(auth_info['password'])
+    user = User.where("email = ?", auth_info['email']).take!
+  end
+
   private
   def hash
     if self.password

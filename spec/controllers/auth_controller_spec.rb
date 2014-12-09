@@ -2,31 +2,15 @@ require 'rails_helper'
 
 RSpec.describe AuthController, :type => :controller do
 
-  describe "GET login" do
-    it "returns http success" do
-      get :login
-      expect(response).to have_http_status(:success)
-    end
-  end
+  render_views
 
-  describe "GET register" do
-    it "returns http success" do
-      get :register
-      expect(response).to have_http_status(:success)
-    end
-  end
+  describe "Authentification" do
+    it "match one user" do
+      user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
 
-  describe "GET new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
+      post :create, user: {email: user.email, password: user.password}
 
-  describe "GET create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+      expect(session[:user].email).to eq(user.email)
     end
   end
 
