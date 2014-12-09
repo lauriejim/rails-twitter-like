@@ -32,6 +32,7 @@ RSpec.describe UsersController, :type => :controller do
       expect(user.lastname).to eq("Bon")
       expect(user.email).to eq("jean@bon.by")
       expect(user.password).to_not eq("pcw123")
+      expect(user.password).to_not eq("")
       expect(user.rank).to eq("user")
     end
 
