@@ -69,7 +69,7 @@ class EventsController < ApplicationController
 
   def destroy
     begin
-      Event.destroy(params[:id])
+      Event.delete_one(params[:id])
     rescue => e
       logger.warn "#{e}" 
       redirect_to edit_event_path

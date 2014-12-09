@@ -65,19 +65,4 @@ RSpec.describe EventsController, :type => :controller do
     end
   end
 
-  describe "DELETE event" do
-    it "delete one event" do
-      sport = Sport.create(title: "Basket-ball", icon: "http://www.google.png")
-      sport.save!
-      event = Event.new(sport: sport)
-      event.save!
-
-      expect{ 
-        delete :destroy, :id => event.id
-      }.to change(Event, :count).by(-1)
-
-      puts response
-    end
-end
-
 end
