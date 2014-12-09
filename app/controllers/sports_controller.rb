@@ -1,14 +1,13 @@
-class SportsController < ApplicationController
+  class SportsController < ApplicationController
+    layout "admin"
 
   def index
     @sports = Sport.index()
-    render :layout => "admin"
   end
 
   def show
     begin
       @sport = Sport.find_one(params[:id])
-      render :layout => "admin"
     rescue => e
       logger.warn "#{e}" 
       redirect_to sport_path
@@ -17,7 +16,6 @@ class SportsController < ApplicationController
 
   def new
     @sport = Sport.new
-    render :layout => "admin"
   end
 
   def edit
@@ -27,8 +25,6 @@ class SportsController < ApplicationController
       logger.warn "#{e}" 
       redirect_to sport_path
     end
-
-    render :layout => "admin"
   end
 
   def update
@@ -39,9 +35,12 @@ class SportsController < ApplicationController
       redirect_to sport_path
     end
 
-    hash = upload(params[:sport][:icon], sport_params, "icon")
-    
-    @sport.update(hash)
+    if params[:sport].key?('icon')
+      hash = upload(params[:sport][:icon], sport_params, "icon")
+      @sport.update(hash)
+    else
+      @sport.update(event_params)
+    end
 
     redirect_to edit_sport_path(@sport)
   end
