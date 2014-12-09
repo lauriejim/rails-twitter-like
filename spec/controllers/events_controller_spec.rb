@@ -6,13 +6,13 @@ RSpec.describe EventsController, :type => :controller do
 
   describe "GET displayAll" do
     it "returns all events" do
-      sport = Sport.create(title: "Basket-ball", icon: "http://www.google.png")
-      event = Event.create(title: "Basket-ball event", cover:"http://www.google.png", likes:"0", description:"This is a short description", adresse:"Tour Eiffel, Paris, 75000")
+      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
+      event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", likes:"0", description:"Basket-ball event", adresse:"Paris, Basket")
       event.sport = sport
       event.save!
 
-      other_sport = Sport.create(title: "Basket-ball 2", icon: "http://www.google.png")
-      other_event = Event.create(title: "Basket-ball event 2", cover:"http://www.yahoo.png", likes:"10", description:"This is a short", adresse:"Tour, Paris, 75000")
+      other_sport = Sport.create(title: "Football", icon: "http://www.fff.png")
+      other_event = Event.create(title: "Tournoi de football à Paris", cover:"http://www.fff.png", likes:"10", description:"Football event", adresse:"Paris, Foot")
       other_event.sport = other_sport
       other_event.save!
 
@@ -28,12 +28,12 @@ RSpec.describe EventsController, :type => :controller do
 
   describe "GET displayBySport" do
     it "returns all events" do
-      sport = Sport.create(title: "Basket-ball", icon: "http://www.google.png")
-      event = Event.create(title: "Basket-ball event", cover:"http://www.google.png", likes:"0", description:"This is a short description", adresse:"Tour Eiffel, Paris, 75000")
+      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
+      event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", likes:"0", description:"Basket-ball event", adresse:"Paris, Basket")
       event.sport = sport
       event.save!
 
-      other_event = Event.create(title: "Basket-ball event 2", cover:"http://www.google.png", likes:"0", description:"This is a short description", adresse:"Tour Eiffel, Paris, 75000")
+      other_event = Event.create(title: "Tournoi de football à Montreuil", cover:"http://www.ffbbm.png", likes:"0", description:"Basket-ball event in Montreuil", adresse:"Montreuil, Basket")
       other_event.sport = sport
       other_event.save!
 
@@ -51,9 +51,9 @@ RSpec.describe EventsController, :type => :controller do
 
   describe "GET displayBySport" do
     it "display one event" do
-      sport = Sport.create(title: "Basket-ball", icon: "http://www.google.png")
+      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
       sport.save!
-      event = Event.create(title: "Basket-ball event", cover:"http://www.google.png", likes:"0", description:"This is a short description", adresse:"Tour Eiffel, Paris, 75000")
+      event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", likes:"0", description:"Basket-ball event", adresse:"Paris, Basket")
       event.sport = sport
       event.save!
 

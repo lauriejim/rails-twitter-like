@@ -6,10 +6,10 @@ RSpec.describe SportsController, :type => :controller do
 
   describe "GET index" do
     it "returns all sports" do
-      sport = Sport.create(title: "Basket-ball", icon: "http://www.google.png")
+      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
       sport.save!
 
-      other_sport = Sport.create(title: "Basket-ball 2", icon: "http://www.google.png")
+      other_sport = Sport.create(title: "Football", icon: "http://www.fff.png")
       other_sport.save!
 
       get :index
