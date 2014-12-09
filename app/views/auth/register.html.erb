@@ -1,2 +1,10 @@
-<h1>Auth#register</h1>
-<p>Find me in app/views/auth/register.html.erb</p>
+<h1>Login</h1>
+<div class="col-lg-6">
+  <%= form_tag("/auth/create", method: "post") do %>
+    <%= label_tag(:email, "Email:") %>
+    <%= text_field_tag(:email) %>
+    <%= label_tag(:password, "Password :") %>
+    <%= text_field_tag(:password) %>
+    <%= submit_tag("Auth") %>
+  <% end %>
+</div>
