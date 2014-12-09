@@ -31,16 +31,6 @@
           <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li>
-              <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-            </li>
-            <li class="divider"></li>
-            <li>
               <%= link_to "Logout", controller: "auth", action: "destroy" %>
             </li>
           </ul>
@@ -50,22 +40,22 @@
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
           <li>
-            <a href="/users"><i class="fa fa-fw fa-dashboard"></i>List users</a>
+            <%= link_to "Create user", controller: "users", action: "new"%>
           </li>
           <li>
-            <a href="/users/new"><i class="fa fa-fw fa-bar-chart-o"></i>Create user</a>
+            <%= link_to "List users", controller: "users", action: "index"%>
           </li>
           <li>
-            <a href="/sports"><i class="fa fa-fw fa-bar-chart-o"></i>List sports</a>
+            <%= link_to "Create sport", controller: "sports", action: "new"%>
           </li>
           <li>
-            <a href="/sports/new"><i class="fa fa-fw fa-bar-chart-o"></i>Create sport</a>
+            <%= link_to "List sport", controller: "sports", action: "index"%>
           </li>
           <li>
-            <a href="/events"><i class="fa fa-fw fa-bar-chart-o"></i>List events</a>
+            <%= link_to "Create event", controller: "events", action: "new"%>
           </li>
-          <li class="active">
-            <a href="/events/new"><i class="fa fa-fw fa-bar-chart-o"></i>Create event</a>
+          <li>
+            <%= link_to "List sports", controller: "events", action: "index"%>
           </li>
         </ul>
       </div>
