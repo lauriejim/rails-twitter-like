@@ -11,7 +11,10 @@ RSpec.describe AuthController, :type => :controller do
       post :create, email: user.email, password: 'pcw123'
       expect(response).to redirect_to(users_path)
 
-      expect(session[:user].email).to eq(user.email)
+      expect(session[:user_firstname]).to eq(user.firstname)
+      expect(session[:user_lastname]).to eq(user.lastname)
+      expect(session[:user_rank]).to eq(user.rank)
+      expect(session[:user_id]).to eq(user.id)
     end
 
     it "redirect on login on fail" do

@@ -11,7 +11,10 @@ class AuthController < ApplicationController
   def create
     user = User.auth(auth_params)
     if user
-      session[:user] = user
+      session[:user_id] = user.id
+      session[:user_rank] = user.rank
+      session[:user_firstname] = user.firstname
+      session[:user_lastname] = user.lastname
       redirect_to users_path
     else
       render :login
