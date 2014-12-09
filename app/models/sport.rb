@@ -10,4 +10,12 @@ class Sport < ActiveRecord::Base
   def self.find_one(sport_id)
     Sport.find_by_id(sport_id)
   end
+
+  def self.count
+    Sport.all.size()
+  end
+
+  def self.delete_one(sport_id)
+    Sport.destroy(sport_id)
+  end
 end
