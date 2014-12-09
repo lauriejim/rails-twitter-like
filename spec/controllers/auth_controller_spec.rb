@@ -33,7 +33,7 @@ RSpec.describe AuthController, :type => :controller do
       session[:user_firstname] = user.firstname
       session[:user_lastname] = user.lastname
 
-      post :destroy
+      get :destroy
 
       expect(session[:user_firstname]).to eq(nil)
       expect(session[:user_lastname]).to eq(nil)
