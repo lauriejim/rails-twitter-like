@@ -1,0 +1,140 @@
+@font-face {
+    font-family: 'kelson_sansbold';
+    src: url('kelson_sans_bold-webfont.eot');
+    src: url('kelson_sans_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('kelson_sans_bold-webfont.woff2') format('woff2'),
+         url('kelson_sans_bold-webfont.woff') format('woff'),
+         url('kelson_sans_bold-webfont.ttf') format('truetype'),
+         url('kelson_sans_bold-webfont.svg#kelson_sansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'kelson_sansregular';
+    src: url('kelson_sans_regular-webfont.eot');
+    src: url('kelson_sans_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('kelson_sans_regular-webfont.woff2') format('woff2'),
+         url('kelson_sans_regular-webfont.woff') format('woff'),
+         url('kelson_sans_regular-webfont.ttf') format('truetype'),
+         url('kelson_sans_regular-webfont.svg#kelson_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'source_sans_proregular';
+    src: url('sourcesanspro-regular-webfont.eot');
+    src: url('sourcesanspro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('sourcesanspro-regular-webfont.woff2') format('woff2'),
+         url('sourcesanspro-regular-webfont.woff') format('woff'),
+         url('sourcesanspro-regular-webfont.ttf') format('truetype'),
+         url('sourcesanspro-regular-webfont.svg#source_sans_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'source_sans_prolight';
+    src: url('sourcesanspro-light-webfont.eot');
+    src: url('sourcesanspro-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('sourcesanspro-light-webfont.woff2') format('woff2'),
+         url('sourcesanspro-light-webfont.woff') format('woff'),
+         url('sourcesanspro-light-webfont.ttf') format('truetype'),
+         url('sourcesanspro-light-webfont.svg#source_sans_prolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'source_sans_prosemibold';
+    src: url('sourcesanspro-semibold-webfont.eot');
+    src: url('sourcesanspro-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('sourcesanspro-semibold-webfont.woff2') format('woff2'),
+         url('sourcesanspro-semibold-webfont.woff') format('woff'),
+         url('sourcesanspro-semibold-webfont.ttf') format('truetype'),
+         url('sourcesanspro-semibold-webfont.svg#source_sans_prosemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+$white: #fefefe;
+$grey: #a6a6a6;
+$dark-grey: #2f2e2c;
+$black: #232325;
+$orange: #ffa505;
+$dark-orange: #c47e04;
+
+body{
+  background-color: #fafafa;
+  background-image: url('motif-fond.png');
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -ms-font-feature-settings: "liga", "dlig";
+  -webkit-font-feature-settings: "liga", "dlig";
+  -o-font-feature-settings: "liga", "dlig";
+  font-feature-settings: "liga", "dlig";
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;;
+  -o-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+}
+input{
+  background-color: $black;
+  border: 1px solid $dark-grey;
+  color: $grey;
+  font: 1.4rem/2rem 'source_sans_prolight', arial, sans-serif;
+  margin-bottom: 1.5rem;
+  outline: none;
+  padding: 1.5rem;
+  width: 100%;
+  &[type="submit"]{
+    border: 0;
+    background-color: $orange;
+    @include box-shadow($dark-orange 3px 3px 0);
+    color: $white;
+    margin-right: 0.3rem;
+    height: 3.5rem;
+    float: right;
+    font:  1.2rem/2rem 'source_sans_prosemibold', arial, sans-serif;
+    padding: 0;
+    text-transform: uppercase;
+    width: 7.4rem;
+  }
+  &:focus {
+    outline:none;
+  }
+}
+
+.container{
+  background-color: $black;
+  margin: 7rem auto 7rem auto;
+  padding-bottom: 11rem;
+}
+
+header{
+  border-bottom: 1px solid $dark-grey;
+  height: 26.8rem;
+  vertical-align: middle;
+  h1{
+    color: $white;
+    display: inline-block;
+    font: 3rem/3.1rem 'kelson_sansbold', arial, sans-serif;
+    margin-right: 2rem;
+    padding: 7.2rem 0 0 8.4rem;
+    text-transform: uppercase;
+    white-space: pre;
+  }
+  h2{
+    color: $white;
+    display: inline-block;
+    font: 1.4rem/1.9rem 'source_sans_proregular', arial, sans-serif;
+  }
+}
