@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = User.index
     render :layout => "admin"
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_one(params[:id])
     render :layout => "admin"
   end
 
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   def edit
     @ranks = RailsTwitterLike::Application::RANKS
-    @user = User.find(params[:id])
+    @user = User.find_one(params[:id])
     render :layout => "admin"
   end
 
@@ -40,8 +40,8 @@ class UsersController < ApplicationController
     end
   end
 
-  # def destroy
-  # end
+  def destroy
+  end
 
   private
   def user_params
