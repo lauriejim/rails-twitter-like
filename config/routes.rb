@@ -7,11 +7,13 @@ Rails.application.routes.draw do
 
   get 'auth/destroy'
 
-  get 'events/display_by_sport/:id', to: 'events#display_by_sport'
-  
-  resources :events
-  resources :sports
-  resources :users
+  scope '/admin' do
+    get 'events/display_by_sport/:id', to: 'events#display_by_sport'
+    
+    resources :events
+    resources :sports
+    resources :users
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
