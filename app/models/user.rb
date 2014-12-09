@@ -26,7 +26,11 @@ class User < ActiveRecord::Base
 
   def self.auth(auth_info)
     password = Digest::MD5.hexdigest(auth_info['password'])
-    user = User.where("email = ?", auth_info['email']).take!
+    begin
+      user = User.where(email: auth_info['email'], password: password).take!
+    rescue ActiveRecord::RecordNotFound 
+      user = nil
+    end
   end
 
   private

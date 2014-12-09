@@ -13,6 +13,8 @@ class AuthController < ApplicationController
     if user
       session[:user] = user
       redirect_to users_path
+    else
+      render :login
     end
   end
 
