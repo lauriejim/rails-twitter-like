@@ -4,7 +4,7 @@ class AuthController < ApplicationController
   end
 
   def register
-    # render creation user form
+    @user = User.new
   end
 
   # set user in session
