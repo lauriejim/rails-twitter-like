@@ -8,6 +8,22 @@ class User < ActiveRecord::Base
   before_create :hash
   before_update :hash
 
+  def self.index
+    User.all
+  end
+
+  def self.find_one(event_id)
+    User.find(event_id) 
+  end
+
+  def self.count
+    User.all.size()
+  end
+
+  def self.delete_one(event_id)
+    User.destroy(event_id)
+  end
+
   private
   def hash
     if self.password
