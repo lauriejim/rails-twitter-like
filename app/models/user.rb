@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     User.all
   end
 
-  def self.find_one(event_id)
+  def self.find_one(user_id)
     User.find(event_id) 
   end
 
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
     User.all.size()
   end
 
-  def self.delete_one(event_id)
+  def self.delete_one(user_id)
     User.destroy(event_id)
   end
 
