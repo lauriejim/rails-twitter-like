@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(user_params)
       redirect_to @user
     else
-      render 'edit'
+      render :layout => "admin", :action => 'edit'
     end
   end
 
