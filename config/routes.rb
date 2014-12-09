@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :events
   resources :sports
   resources :users
- 
 
 
   # The priority is based upon order of creation: first created -> highest priority.
