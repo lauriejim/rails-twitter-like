@@ -13,6 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20141204130111) do
 
+  create_table "categories", force: true do |t|
+    t.string   "title"
+    t.string   "icon"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", force: true do |t|
     t.string   "title"
     t.string   "cover"
@@ -21,6 +28,7 @@ ActiveRecord::Schema.define(version: 20141204130111) do
     t.integer  "likes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
     t.integer  "sport_id"
   end
 
@@ -35,11 +43,10 @@ ActiveRecord::Schema.define(version: 20141204130111) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "email"
-    t.string   "picture"
-    t.string   "description"
+    t.string   "password"
+    t.string   "rank",       default: "t"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "rank",        default: "user"
   end
 
 end

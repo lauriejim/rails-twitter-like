@@ -9,4 +9,12 @@ class Event < ActiveRecord::Base
   def self.find_one(event_id)
     Event.find(event_id) 
   end
+
+  def self.count
+    Event.all.size()
+  end
+
+  def self.delete_one(event_id)
+    Event.destroy(event_id)
+  end
 end

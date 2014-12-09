@@ -1,0 +1,11 @@
+<h1>Edit user</h1>
+<div class="col-lg-6">
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :firstname %>
+    <%= f.input :lastname %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :rank, :collection => @ranks %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

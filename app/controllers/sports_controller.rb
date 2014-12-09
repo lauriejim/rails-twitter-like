@@ -57,7 +57,7 @@ class SportsController < ApplicationController
 
   def destroy
     begin
-      Sport.destroy(params[:id])
+      Sport.delete_one(params[:id])
     rescue => e
       logger.warn "#{e}" 
       redirect_to edit_event_path

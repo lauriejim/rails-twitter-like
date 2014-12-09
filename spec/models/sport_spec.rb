@@ -29,4 +29,15 @@ RSpec.describe Sport, :type => :model do
 
     expect(Sport.index).to eq([sport, other_sport])
   end
+
+  it "delete one sport" do
+    sport = Sport.create(title: "Basket-ball", icon: "http://www.google.png")
+    sport.save!
+
+    count = Sport.count()
+    Sport.delete_one(sport.id)
+
+    expect(Sport.count()).to eq(count-1)
+
+  end
 end

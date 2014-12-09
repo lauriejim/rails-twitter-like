@@ -19,8 +19,10 @@ RSpec.describe EventsController, :type => :controller do
       get :index
       expect(response).to have_http_status(:success)
 
-      expect(response.body).to include("#{event.title} #{sport.title}")
-      expect(response.body).to include("#{other_event.title} #{other_sport.title}")
+      expect(response.body).to include("#{event.title}")
+      expect(response.body).to include("#{sport.title}")
+      expect(response.body).to include("#{other_event.title}")
+      expect(response.body).to include("#{other_sport.title}")
     end
   end
 
@@ -40,8 +42,10 @@ RSpec.describe EventsController, :type => :controller do
 
       expect(response).to have_http_status(:success)
 
-      expect(response.body).to include("#{event.title}  #{sport.title}")
-      expect(response.body).to include("#{other_event.title} #{sport.title}")
+      expect(response.body).to include("#{event.title}")
+      expect(response.body).to include("#{sport.title}")
+      expect(response.body).to include("#{other_event.title}")
+      expect(response.body).to include("#{sport.title}")
     end
   end
 
@@ -56,23 +60,9 @@ RSpec.describe EventsController, :type => :controller do
       get "display_by_sport", id: event.id
       expect(response).to have_http_status(:success)
 
-      expect(response.body).to include("#{event.title} #{sport.title}")
+      expect(response.body).to include("#{event.title}")
+      expect(response.body).to include("#{sport.title}")
     end
   end
-
-  describe "DELETE event" do
-    it "delete one event" do
-      sport = Sport.create(title: "Basket-ball", icon: "http://www.google.png")
-      sport.save!
-      event = Event.new(sport: sport)
-      event.save!
-
-      expect{ 
-        delete :destroy, :id => event.id
-      }.to change(Event, :count).by(-1)
-
-      puts response
-    end
-end
 
 end

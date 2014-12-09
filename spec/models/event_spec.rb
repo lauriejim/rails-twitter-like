@@ -45,4 +45,17 @@ RSpec.describe Event, :type => :model do
 
     expect(Event.find_by_sport(sport.id)).to eq([event, other_event])
   end
+
+  it "delete one event" do
+    sport = Sport.create(title: "Basket-ball", icon: "http://www.google.png")
+    sport.save!
+    event = Event.new(sport: sport)
+    event.save!
+
+    count = Event.count()
+    Event.delete_one(event.id)
+
+    expect(Event.count()).to eq(count-1)
+
+  end
 end
