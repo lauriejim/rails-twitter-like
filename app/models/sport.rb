@@ -16,6 +16,6 @@ class Sport < ActiveRecord::Base
   end
 
   def self.delete_one(sport_id)
-    Sport.destroy(event_id)
+    Sport.destroy(sport_id)
   end
 end
