@@ -21,6 +21,14 @@ class AuthController < ApplicationController
     end
   end
 
+  def destroy
+    session[:user_id] = nil
+    session[:user_rank] = nil
+    session[:user_firstname] = nil
+    session[:user_lastname] = nil
+    redirect_to users_path
+  end
+
   private
   def auth_params
     params.permit(:email, :password)

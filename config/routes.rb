@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   post 'auth/create'
 
+  post 'auth/destroy'
+
   get 'events/display_by_sport/:id', to: 'events#display_by_sport'
   
   resources :events

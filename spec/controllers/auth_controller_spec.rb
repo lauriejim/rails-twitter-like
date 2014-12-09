@@ -25,6 +25,21 @@ RSpec.describe AuthController, :type => :controller do
 
       expect(session[:user]).to eq(nil)
     end
+
+    it "logout" do
+      user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
+      session[:user_id] = user.id
+      session[:user_rank] = user.rank
+      session[:user_firstname] = user.firstname
+      session[:user_lastname] = user.lastname
+
+      post :destroy
+
+      expect(session[:user_firstname]).to eq(nil)
+      expect(session[:user_lastname]).to eq(nil)
+      expect(session[:user_rank]).to eq(nil)
+      expect(session[:user_id]).to eq(nil)
+    end
   end
 
 end
