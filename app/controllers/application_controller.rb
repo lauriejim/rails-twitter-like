@@ -18,6 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def currentPath(path)
-    'active' if request.original_url.include?(path)
+    'active' if request.fullpath.eql?(path)
   end
 end
