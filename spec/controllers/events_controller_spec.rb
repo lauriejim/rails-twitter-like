@@ -6,6 +6,7 @@ RSpec.describe EventsController, :type => :controller do
 
   describe "GET displayAll" do
     it "returns all events" do
+      session[:user_rank] = "admin"
       sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
       event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket")
       event.sport = sport
@@ -28,6 +29,7 @@ RSpec.describe EventsController, :type => :controller do
 
   describe "GET displayBySport" do
     it "returns all events" do
+      session[:user_rank] = "admin"
       sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
       event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket")
       event.sport = sport
@@ -51,6 +53,7 @@ RSpec.describe EventsController, :type => :controller do
 
   describe "GET displayBySport" do
     it "display one event" do
+      session[:user_rank] = "admin"
       sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
       sport.save!
       event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket")
