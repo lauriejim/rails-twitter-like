@@ -69,7 +69,9 @@
 $white: #fefefe;
 $grey: #a6a6a6;
 $dark-grey: #2f2e2c;
+$black-grey: #2e2e2e;
 $black: #232325;
+$dark-black: #1c1c1c;
 $orange: #ffa505;
 $dark-orange: #c47e04;
 
@@ -113,10 +115,10 @@ input{
   }
 }
 
+
 .container{
   background-color: $black;
-  margin: 7rem auto 7rem auto;
-  padding-bottom: 11rem;
+  margin: 7rem auto 0 auto;
 }
 
 header{
@@ -127,7 +129,7 @@ header{
     color: $white;
     display: inline-block;
     font: 3rem/3.1rem 'kelson_sansbold', arial, sans-serif;
-    margin-right: 2rem;
+    margin: 0 2rem 0 0;
     padding: 7.2rem 0 0 8.4rem;
     text-transform: uppercase;
     white-space: pre;
@@ -136,5 +138,13 @@ header{
     color: $white;
     display: inline-block;
     font: 1.4rem/1.9rem 'source_sans_proregular', arial, sans-serif;
+    margin: 0;
+  }
+  h3{
+    color: $grey;
+    font: 1.6rem/2rem 'kelson_sansregular', arial, sans-serif;
+    margin: 0;
+    padding-top: 6.4rem;
+    text-align: center;
   }
 }
