@@ -184,6 +184,10 @@ header {
   letter-spacing: 0.02em;
   padding: 1.2rem;
   text-transform: uppercase; }
+  
+a:hover {
+  text-decoration: none;
+}
 
 .top-user {
   display: inline-block;
