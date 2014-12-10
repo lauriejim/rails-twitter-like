@@ -1,4 +1,6 @@
 class AuthController < ApplicationController
+  skip_before_action :require_login_admin
+
   def login
     # render login form
   end
@@ -15,7 +17,11 @@ class AuthController < ApplicationController
       session[:user_rank] = user.rank
       session[:user_firstname] = user.firstname
       session[:user_lastname] = user.lastname
-      redirect_to '/'
+      if user.rank == "admin"
+        redirect_to users_path
+      else
+        redirect_to '/'
+      end
     else
       render :login
     end
