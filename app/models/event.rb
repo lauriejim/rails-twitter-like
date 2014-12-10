@@ -10,6 +10,10 @@ class Event < ActiveRecord::Base
     Event.find(event_id) 
   end
 
+  def self.find_all
+    Event.all
+  end
+
   def self.count
     Event.all.size()
   end

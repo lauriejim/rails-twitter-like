@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   layout "admin"
 
   def home
-
+    @events = Event.find_all
     render '/home', layout: 'application'
   end
 
