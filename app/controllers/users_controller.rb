@@ -56,6 +56,9 @@ class UsersController < ApplicationController
   def user_params
     if request.fullpath == '/users/create'
       params.permit(:firstname, :lastname, :email, :password)
+    end
+    if !session[:user_rank] || session[:user_rank] == 'user'
+      params.require(:user).permit(:firstname, :lastname, :email, :password)
     else
       params.require(:user).permit(:firstname, :lastname, :email, :password, :rank)
     end
