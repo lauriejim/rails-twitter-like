@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/', to: 'events#home'
+
   get 'auth/login'
 
   get 'auth/register'

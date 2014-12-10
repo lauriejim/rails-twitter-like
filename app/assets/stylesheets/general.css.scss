@@ -66,6 +66,19 @@
 
 }
 
+@font-face {
+    font-family: 'source_sans_probold';
+    src: url('sourcesanspro-bold-webfont.eot');
+    src: url('sourcesanspro-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('sourcesanspro-bold-webfont.woff2') format('woff2'),
+         url('sourcesanspro-bold-webfont.woff') format('woff'),
+         url('sourcesanspro-bold-webfont.ttf') format('truetype'),
+         url('sourcesanspro-bold-webfont.svg#source_sans_probold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 $white: #fefefe;
 $grey: #a6a6a6;
 $dark-grey: #2f2e2c;
@@ -117,13 +130,14 @@ input{
 
 
 .container{
-  background-color: $black;
-  margin: 7rem auto 0 auto;
+  margin: 0 auto 0 auto;
+  width: 1000px;
 }
 
 header{
+  background-color: $black;
   border-bottom: 1px solid $dark-grey;
-  height: 26.8rem;
+  min-height: 26.8rem;
   vertical-align: middle;
   h1{
     color: $white;
@@ -146,5 +160,122 @@ header{
     margin: 0;
     padding-top: 6.4rem;
     text-align: center;
+  }
+
+  nav{
+    border-top: 1px solid $black-grey;
+    height: 6.9rem;
+    margin: 0 -1.5rem 0 -1.5rem;
+    padding: 2.4rem 0em 2.4rem 3rem;
+  }
+
+}
+
+.icon-filtre{
+  color: $white;
+  display: inline-block;
+}
+
+.filter{
+  color: $white;
+  display: inline-block;
+  font: 1.6rem/1.9rem 'source_sans_proregular', arial, sans-serif;
+  margin-left: 1.6rem;
+}
+
+.filter-sports{
+  display: inline-block;
+  margin-top: -2.5rem;
+  padding-top: 2.5rem;
+  margin-bottom: 0;
+  padding-bottom: 2.5rem;
+  float: right;
+  li{
+    position: relative;
+    color: $grey;
+    display: inline;
+    font:  1.4rem 'source_sans_prosemibold', arial, sans-serif;
+    margin-right: 3rem;
+    text-transform: uppercase;
+    &:before{
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 4px;
+      left: 50%;
+      margin-left: -10px;
+      top: -27px;
+    }
+    &.basket{
+      &:before{
+        background-color: $orange;
+      }
+    }
+    &.football{
+      &:before{
+        background-color: green;
+      }
+    }
+  }
+  .border{
+    border-top: 1px solid $orange;
+  }
+}
+
+.popular{
+  @extend .filter-sports;
+  border-left: 1px solid $dark-grey !important;
+  padding-left: 3rem;
+}
+
+.nopadding {
+   padding: 0 !important;
+}
+
+.black{
+  background-color: $black;
+}
+
+.title{
+  margin-bottom: 7.3rem;
+}
+
+.top{
+  margin: 1.8rem 0;
+}
+
+.top-subscribe{
+  display: inline-block;
+  width: 400px;
+}
+
+.subscriptions{
+  background-color: transparent;
+  border: 1px solid #dadada;
+  color: $grey;
+  display: inline-block;
+  font:  1.2rem/2.4rem 'source_sans_prosemibold', arial, sans-serif;
+  letter-spacing: 0.02em;
+  padding: 1.2rem;
+  text-transform: uppercase;
+}
+
+.top-user{
+  display: inline-block;
+  width: 593px;
+  text-align: right;
+  p{
+    color: $grey;
+    display: inline-block;
+    font:  1.4rem/2.4rem 'source_sans_probold', arial, sans-serif;
+    margin-right: 1rem;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+  }
+  img{
+    @include box-shadow($orange 3px 3px 0);
+    display: inline-block;
+    max-width: 100%;
+    width: 35px;
   }
 }

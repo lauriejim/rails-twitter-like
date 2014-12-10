@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
-  skip_before_action :require_login_admin
+  skip_before_action :require_login_admin, only: [:home]
   layout "admin"
+
+  def home
+    @events = Event.find_all
+    render '/home', layout: 'application'
+  end
 
   def index
     @events = Event.all
