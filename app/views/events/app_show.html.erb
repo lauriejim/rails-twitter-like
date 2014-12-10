@@ -1,5 +1,61 @@
-<section class="col-md-12">
-  <div class="event-img">
-    <%= image_tag("basket.jpg") %>
+<body class="page-event">
+  <div class="container">
+    <div class="row">
+      <section class="col-md-12 nopadding top">
+        <div class="top-back">
+          <i class="icon-fleche"></i><span class="back">Retour</span>
+        </div>
+        <div class="top-user">
+          <p>Turquand Audrey</p>
+          <%= image_tag("basket.jpg") %>
+        </div>
+      </section>
+      <section class="col-md-12 nopadding">
+        <div class="event-img">
+          <%= image_tag("basket.jpg") %>
+        </div>
+        <div class="event-informations">
+          <ul>
+            <li><i class="icon-adresse"></i>Rue Lorem Ipsum - 75000 Paris</li>
+            <li><i class="icon-date"></i>01.12.14</li>
+            <li><i class="icon-like"></i>23 likes</li>
+          </ul>
+        </div>
+      </section>
+      <section class="col-md-12 nopadding">
+        <div class="col-md-8 col-md-offset-2 event-description">
+          <h1>Plateau quarts et demi-finales - Coupe de France U17</h1>
+          <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque <br>
+          10h : Aenean sollicitudin, lorem quis bibendum <br>
+          12h : Morbi accumsan ipsum velit <br>
+          16h : Class aptent taciti sociosqu <br>
+          18h : Iinceptos himenaeos mauris in era</p>
+        </div>
+        <div class="col-md-8 col-md-offset-2 event-comments">
+          <div class="comment">
+            <p class="author">Marie - 17.01.2014</p>
+            <p class="message">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet </p>
+            <hr>
+          </div>
+          <div class="comment">
+            <p class="author">Marie - 17.01.2014</p>
+            <p class="message">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet </p>
+            <hr>
+          </div>
+          <div class="comment">
+            <p class="author">Marie - 17.01.2014</p>
+            <p class="message">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet </p>
+            <hr>
+          </div>
+          <div class="response">
+            <p>Qu'en pensez-vous ?</p>
+            <%= form_tag('/users/create', method: "post") do %>
+            <%= text_area_tag "message", nil, :placeholder => 'Je pense que ...' %>
+            <%= submit_tag("Répondre") %>
+            <% end %>
+          </div>
+        </div>
+      </section>
+    </div>
   </div>
-</section>
+</body>

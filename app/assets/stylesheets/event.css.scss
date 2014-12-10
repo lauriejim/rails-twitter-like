@@ -1,0 +1,93 @@
+.top-back{
+  color: $grey;
+  display: inline-block;
+  font:  1.4rem/2.4rem 'source_sans_probold', arial, sans-serif;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  width: 400px;
+  i{
+    margin-right: 1rem;
+  }
+}
+
+.event-img{
+  img{
+    position: absolute;
+  }
+}
+
+.event-informations{
+  background-color: #232323;
+  position: absolute;
+  top: 33.7rem;
+  left: 50.3rem;
+  width: 32.7rem;
+  min-height: 17rem;
+  ul{
+    margin: 3rem;
+    padding-left: 0;
+  }
+  li{
+    color: $white;
+    font:  1.4rem/1.8rem 'source_sans_proregular', arial, sans-serif;
+    list-style: none;
+    margin-bottom: 1.7rem;
+  }
+  i{
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    margin-right: 2rem;
+    font-size: 21px;
+    vertical-align: middle;
+  }
+}
+
+.event-description{
+  background-color: $white;
+  width: 66.3rem;
+  padding-left: 8.4rem;
+  padding-right: 8.4rem;
+  padding-bottom: 8.8rem;
+  margin-top: 50.6rem;
+  h1{
+    font: 2.4rem/3rem 'kelson_sansbold', arial, sans-serif;
+    margin-top: 5.8rem;
+    margin-bottom: 5rem;
+  }
+  p{
+    font:  1.6rem/2.4rem 'source_sans_proregular', arial, sans-serif;
+  }
+}
+
+.event-comments{
+  background-color: #f2f2f2;
+  padding-left: 8.4rem;
+  padding-right: 8.4rem;
+  padding-top: 6.1rem;
+}
+
+.author{
+  font:  1.2rem/2rem 'source_sans_prosemibold', arial, sans-serif;
+  text-transform: uppercase;
+}
+
+.message{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font:  1.4rem/2rem 'source_sans_proregular', arial, sans-serif;
+  hr{
+    border-top: 1px solid #e1e1e1;
+    margin: 0;
+  }
+}
+
+.response{
+  p{
+    font: 1.8rem/2.4rem 'kelson_sansregular', arial, sans-serif;
+    margin-bottom: 2rem;
+  }
+  textarea{
+    margin-bottom: 1.5rem;
+  }
+}
