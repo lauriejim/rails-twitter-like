@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20141204130111) do
     t.string   "lastname"
     t.string   "email"
     t.string   "password"
-    t.string   "rank",       default: "t"
+    t.string   "rank",       default: "user"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
