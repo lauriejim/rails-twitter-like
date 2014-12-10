@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   before_create :encrypt
   before_update :encrypt
+  has_many :follows
+  has_many :sports, :through => :follows
 
   def self.index
     User.all
