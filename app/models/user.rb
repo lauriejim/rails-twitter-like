@@ -35,10 +35,10 @@ class User < ActiveRecord::Base
 
   private
   def encrypt
-    if self.password
+    unless self.password == ''
       self.password = Digest::MD5.hexdigest(self.password)
     else
-      self.password = nil
+      self.password = User.find(self.id).password
     end
   end
 end
