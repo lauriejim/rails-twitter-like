@@ -1,5 +1,5 @@
-  class SportsController < ApplicationController
-    layout "admin"
+class SportsController < ApplicationController
+  layout "admin"
 
   def index
     @sports = Sport.index()
