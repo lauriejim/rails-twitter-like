@@ -10,6 +10,7 @@ RSpec.describe Follow, :type => :model do
     Follow.create(user: user, sport: sport_2)
 
     user = User.last
+
     expect(user.follows[0].sport.title).to eq("Basket-ball")
     expect(user.follows[1].sport.title).to eq("Foot-ball")
   end

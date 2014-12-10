@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   before_update :encrypt
   has_many :follows
   has_many :sports, :through => :follows
+  has_many :likes
+  has_many :events, :through => :likes
 
   def self.index
     User.all
