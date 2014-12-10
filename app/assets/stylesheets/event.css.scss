@@ -91,3 +91,58 @@
     margin-bottom: 1.5rem;
   }
 }
+
+.sidebar-user{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 27%;
+  min-height: 700px;
+  max-height: 800px;
+  background-color: $black;
+  h1{
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: $white;
+    font: 2.4rem/2.4rem 'kelson_sansregular', arial, sans-serif;
+    margin-bottom: 4.8rem;
+  }
+  hr{
+    border: 1px solid $grey;
+    margin:0;
+  }
+}
+
+.sidebar-img{
+  margin-top: 4.2rem;
+  margin-bottom: 4.8rem;
+  text-align: center;
+  img{
+    max-width: 100%;
+    @include box-shadow($orange 9px 9px 0);
+    width: 22.8rem;
+  }
+}
+
+.sidebar-like{
+  padding-left: 5.1rem;
+  padding-right: 5.1rem;
+  padding-top: 3.9rem;
+  color: $white;
+  span{
+    margin-left: 1rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font:  1.4rem/2rem 'source_sans_proregular', arial, sans-serif;
+  }
+  ul{
+    margin-top: 3.7rem;
+    padding: 0;
+  }
+  li{
+    color: $grey;
+    font:  1.4rem/2rem 'source_sans_proregular', arial, sans-serif;
+    list-style: none;
+    margin-bottom: 3.3rem;
+  }
+}
