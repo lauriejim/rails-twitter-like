@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
   layout "admin"
 
+  def home
+
+    render '/home', layout: 'application'
+  end
+
   def index
     @events = Event.all
   end
