@@ -15,7 +15,7 @@ class AuthController < ApplicationController
       session[:user_rank] = user.rank
       session[:user_firstname] = user.firstname
       session[:user_lastname] = user.lastname
-      redirect_to users_path
+      redirect_to '/'
     else
       render :login
     end
@@ -26,7 +26,7 @@ class AuthController < ApplicationController
     session[:user_rank] = nil
     session[:user_firstname] = nil
     session[:user_lastname] = nil
-    redirect_to users_path
+    redirect_to '/'
   end
 
   private

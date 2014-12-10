@@ -18,13 +18,17 @@ class UsersController < ApplicationController
     @user = User.new(user_params);
     if @user.save
       if request.fullpath == '/users/create'
-        redirect_to auth_login
+        redirect_to auth_login_path
       else
         redirect_to users_path
       end
     else
       @ranks = RailsTwitterLike::Application::RANKS
-      render :new
+      if request.fullpath == '/users/create'
+        render '/auth/register', :layout => 'application'
+      else
+        render :new
+      end
     end
   end
 
