@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  skip_before_action :require_login_admin
   layout "admin"
 
   def home

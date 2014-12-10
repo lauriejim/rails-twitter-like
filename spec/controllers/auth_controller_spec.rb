@@ -9,7 +9,7 @@ RSpec.describe AuthController, :type => :controller do
       user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
 
       post :create, email: user.email, password: 'pcw123'
-      expect(response).to redirect_to(users_path)
+      expect(response).to redirect_to('/')
 
       expect(session[:user_firstname]).to eq(user.firstname)
       expect(session[:user_lastname]).to eq(user.lastname)
