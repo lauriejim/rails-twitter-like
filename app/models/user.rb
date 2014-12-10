@@ -24,6 +24,15 @@ class User < ActiveRecord::Base
     User.destroy(user_id)
   end
 
+  def self.auth(auth_info)
+    password = Digest::MD5.hexdigest(auth_info['password'])
+    begin
+      user = User.where(email: auth_info['email'], password: password).take!
+    rescue ActiveRecord::RecordNotFound 
+      user = nil
+    end
+  end
+
   private
   def encrypt
     if self.password

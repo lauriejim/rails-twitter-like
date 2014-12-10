@@ -1,0 +1,13 @@
+</header>
+<section class="col-md-12">
+  <div class="col-md-4 col-md-offset-4 auth">
+    <h3>Créer votre compte</h3>
+    <%= form_tag("/users/create", method: "post") do %>
+      <%= text_field_tag "lastname", nil, :placeholder => 'Nom' %>
+      <%= text_field_tag "firstname", nil, :placeholder => 'Prénom' %>
+      <%= email_field_tag "email", nil, :placeholder => 'Adresse e-mail' %>
+      <%= password_field_tag "password", nil, :placeholder => 'Mot de passe' %>
+      <%= submit_tag("Créer") %>
+    <% end %>
+  </div>
+</section>

@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
-  get 'events/display_by_sport/:id', to: 'events#display_by_sport'
-  
-  resources :events
-  resources :sports
-  resources :users
+  get 'auth/login'
+
+  get 'auth/register'
+
+  post 'auth/create'
+
+  get 'auth/destroy'
+
+  scope '/admin' do
+    get 'events/display_by_sport/:id', to: 'events#display_by_sport'
+    
+    resources :events
+    resources :sports
+    resources :users
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
