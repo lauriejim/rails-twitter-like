@@ -36,26 +36,27 @@
           </ul>
         </li>
       </ul>
+
       <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
           <li>
-            <%= link_to "Create user", controller: "users", action: "new"%>
+            <%= link_to "List users", users_path, class: currentPath(users_path) %>
           </li>
           <li>
-            <%= link_to "List users", controller: "users", action: "index"%>
+            <%= link_to "Create user", new_user_path, class: currentPath(new_user_path) %>
           </li>
           <li>
-            <%= link_to "Create sport", controller: "sports", action: "new"%>
+            <%= link_to "List sports", sports_path, class: currentPath(sports_path) %>
           </li>
           <li>
-            <%= link_to "List sport", controller: "sports", action: "index"%>
+            <%= link_to "Create sport", new_sport_path, class: currentPath(new_sport_path) %>
           </li>
           <li>
-            <%= link_to "Create event", controller: "events", action: "new"%>
+            <%= link_to "List events", events_path, class: currentPath(events_path) %>
           </li>
           <li>
-            <%= link_to "List sports", controller: "events", action: "index"%>
+            <%= link_to "Create event", new_event_path, class: currentPath(new_event_path) %>
           </li>
         </ul>
       </div>

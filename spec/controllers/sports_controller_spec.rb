@@ -22,4 +22,17 @@ RSpec.describe SportsController, :type => :controller do
     end
   end
 
+  describe "GET show" do
+    it "returns one sport" do
+      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
+      sport.save!
+
+      get :show, id: sport.id
+      expect(response).to have_http_status(:success)
+
+      expect(response.body).to include("#{sport.title}")
+      expect(response.body).to include("/uploads/#{sport.icon}")
+    end
+  end
+
 end

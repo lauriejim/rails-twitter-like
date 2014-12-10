@@ -26,6 +26,19 @@ RSpec.describe Event, :type => :model do
     expect(event.valid?).to eq(false)
   end
 
+  it "get number of events" do
+    sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
+    sport.save!
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", likes:"0", description:"This is a short description", adresse:"Paris, Basket")
+    event.sport = sport
+    event.save!
+    other_event = Event.create(title: "Tournoi de basket à Montreuil", cover:"http://www.ffbb.png", likes:"0", description:"This is a short description", adresse:"Montreuil, Basket")
+    other_event.sport = sport
+    other_event.save!
+
+    expect(Event.count()).to eq(2)
+  end
+
   it "display one event" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
     sport.save!

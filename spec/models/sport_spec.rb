@@ -10,6 +10,15 @@ RSpec.describe Sport, :type => :model do
     expect(found.icon).to eq("http://www.ffbb.png")
   end
 
+  it "get number of sport" do
+    sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
+    sport.save!
+    other_sport = Sport.create(title: "Football", icon: "http://www.fff.png")
+    other_sport.save!
+
+    expect(Sport.count()).to eq(2)
+  end
+
   it "requires a title and an icon" do
     sport = Sport.new
     expect(sport.valid?).to eq(false)
