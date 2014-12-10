@@ -17,7 +17,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params);
     if @user.save
-      redirect_to users_path
+      if request.fullpath == '/users/create'
+        redirect_to auth_login
+      else
+        redirect_to users_path
+      end
     else
       @ranks = RailsTwitterLike::Application::RANKS
       render :new
@@ -45,6 +49,10 @@ class UsersController < ApplicationController
 
   private
   def user_params
-   params.require(:user).permit(:firstname, :lastname, :email, :password, :rank)
+    if request.fullpath == '/users/create'
+      params.permit(:firstname, :lastname, :email, :password)
+    else
+      params.require(:user).permit(:firstname, :lastname, :email, :password, :rank)
+    end
   end
 end
