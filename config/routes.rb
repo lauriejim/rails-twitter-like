@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post 'auth/create'
 
   get 'auth/destroy'
+
+  get 'event/:id', to: 'events#app_show'
   
   post 'users/create', to: 'users#create'
 

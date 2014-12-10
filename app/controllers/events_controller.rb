@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_action :require_login_admin, only: [:home]
+  skip_before_action :require_login_admin, only: [:home, :app_show]
   layout "admin"
 
   def home
@@ -18,6 +18,16 @@ class EventsController < ApplicationController
     rescue => e
       logger.warn "#{e}" 
       redirect_to events_path
+    end
+  end
+
+  def app_show
+     begin
+      @event = Event.find_one(params[:id])
+      render 'events/app_show', layout: 'application'
+    rescue => e
+      logger.warn "#{e}" 
+      render :status => 404
     end
   end
 
