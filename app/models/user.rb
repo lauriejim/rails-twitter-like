@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
   before_create :encrypt
   before_update :encrypt
+  has_many :follows
+  has_many :sports, :through => :follows
+  has_many :likes
+  has_many :events, :through => :likes
 
   def self.index
     User.all
@@ -35,10 +39,10 @@ class User < ActiveRecord::Base
 
   private
   def encrypt
-    if self.password
+    unless self.password == ''
       self.password = Digest::MD5.hexdigest(self.password)
     else
-      self.password = nil
+      self.password = User.find(self.id).password
     end
   end
 end

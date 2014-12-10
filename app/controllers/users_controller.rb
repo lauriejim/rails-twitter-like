@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login_admin, only: [:create, :user_params]
   layout "admin"
 
   def index
@@ -17,10 +18,18 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params);
     if @user.save
-      redirect_to users_path
+      if request.fullpath == '/users/create'
+        redirect_to auth_login_path
+      else
+        redirect_to users_path
+      end
     else
       @ranks = RailsTwitterLike::Application::RANKS
-      render :new
+      if request.fullpath == '/users/create'
+        render '/auth/register', :layout => 'application'
+      else
+        render :new
+      end
     end
   end
 
@@ -45,6 +54,10 @@ class UsersController < ApplicationController
 
   private
   def user_params
-   params.require(:user).permit(:firstname, :lastname, :email, :password, :rank)
+    if request.fullpath == '/users/create'
+      params.permit(:firstname, :lastname, :email, :password)
+    else
+      params.require(:user).permit(:firstname, :lastname, :email, :password, :rank)
+    end
   end
 end
