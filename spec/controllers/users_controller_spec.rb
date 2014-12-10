@@ -6,6 +6,7 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "User creation" do
     it "display creation form" do
+      session[:user_rank] = "admin"
       get :new
       expect(response).to have_http_status(:success)
 
@@ -62,6 +63,7 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "User edit" do
     it "set user infos in form" do
+      session[:user_rank] = "admin"
       user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
 
       get :edit, id: user.id
@@ -76,6 +78,7 @@ RSpec.describe UsersController, :type => :controller do
     end
 
     it "update user" do
+      session[:user_rank] = "admin"
       user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
       user_update_informations = {firstname: "Jean1", lastname: "Bon1", email: "jean1@bon.by", password: "pcw1234", rank: "admin"}
 
@@ -92,6 +95,7 @@ RSpec.describe UsersController, :type => :controller do
 
   describe "User edit" do
     it "delete one user" do
+      session[:user_rank] = "admin"
       user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
       expect(User.count()).to eq(1)
 
