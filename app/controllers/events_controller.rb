@@ -21,6 +21,16 @@ class EventsController < ApplicationController
     end
   end
 
+  def app_show
+     begin
+      @event = Event.find_one(params[:id])
+      render 'events/app_show', layout: 'application'
+    rescue => e
+      logger.warn "#{e}" 
+      render :status => 404
+    end
+  end
+
   def show
     begin
       @event = Event.find_one(params[:id])

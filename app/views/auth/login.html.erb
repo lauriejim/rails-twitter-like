@@ -1,11 +1,31 @@
-</header>
-<section class="col-md-12 black">
-  <div class="col-md-4 col-md-offset-4 auth">
-    <h3>Connectez-vous</h3>
-    <%= form_tag("/auth/create", method: "post") do %>
-      <%= email_field_tag "email", nil, :placeholder => 'Adresse e-mail' %>
-      <%= password_field_tag "password", nil, :placeholder => 'Mot de passe' %>
-      <%= submit_tag("Go !") %>
-    <% end %>
+<body>
+  <div class="container">
+    <div class="row">
+      <section class="col-md-12 nopadding top">
+        <div class="top-subscribe">
+          <button type="button" class="subscriptions">Gérer vos abonnements</button>
+        </div>
+        <div class="top-user">
+          <p>Turquand Audrey</p>
+          <%= image_tag("basket.jpg") %>
+        </div>
+      </section>
+      <header class="col-md-12">
+        <div class="title">
+          <h1>Sports<br>events</h1>
+          <h2>Tous vos événements sportifs <br> à un seul endroit</h2>
+        </div>
+      </header>
+      <section class="col-md-12 black">
+        <div class="col-md-4 col-md-offset-4 auth">
+          <h3>Connectez-vous</h3>
+          <%= form_tag("/auth/create", method: "post") do %>
+            <%= email_field_tag "email", nil, :placeholder => 'Adresse e-mail' %>
+            <%= password_field_tag "password", nil, :placeholder => 'Mot de passe' %>
+            <%= submit_tag("Go !") %>
+          <% end %>
+        </div>
+      </section>
+    </div>
   </div>
-</section>
+</body>
