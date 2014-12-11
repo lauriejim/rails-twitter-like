@@ -4,6 +4,9 @@ class Sport < ActiveRecord::Base
   has_many :users, :through => :follows
   validates :icon, presence: true
   validates :title, presence: true, uniqueness: true
+  validates :background, presence: true
+  validates :color, presence: true
+
 
   def self.index
     Sport.all

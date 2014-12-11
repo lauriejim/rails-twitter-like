@@ -5,6 +5,8 @@
     <%= f.input :title %>
     <%= image_tag("/uploads/"+@event.cover, size: "150") %>
     <%= f.file_field(:cover, accept: 'image/png,image/gif,image/jpeg') %>
+    <%= image_tag("/uploads/"+@event.background, size: "150") %>
+    <%= f.file_field(:background, accept: 'image/png,image/gif,image/jpeg') %>
     <%= f.input :description %>
     <%= f.input :adresse %>
     <%= f.button :submit %>

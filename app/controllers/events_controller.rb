@@ -51,8 +51,15 @@ class EventsController < ApplicationController
       redirect_to edit_event_path
     end
 
-    if params[:event].key?('cover')
+    if params[:event].key?('cover') && params[:event].key?('background')
       hash = upload(params[:event][:cover], event_params, "cover")
+      hash = upload(params[:event][:background], hash, "background")
+      @event.update(hash)
+    elsif params[:event].key?('cover')
+      hash = upload(params[:event][:cover], event_params, "cover")
+      @event.update(hash)
+    elsif params[:event].key?('background')
+      hash = upload(params[:event][:background], event_params, "background")
       @event.update(hash)
     else
       @event.update(event_params)
@@ -63,6 +70,7 @@ class EventsController < ApplicationController
 
   def create
     hash = upload(params[:event][:cover], event_params, "cover")
+    hash = upload(params[:event][:background], hash, "background")
 
     @event = Event.create(hash)
     @event.save!
@@ -81,7 +89,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:title, :likes, :description, :adresse, :sport_id, :cover => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
+      params.require(:event).permit(:title, :likes, :description, :adresse, :sport_id, :cover => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]], :background => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
     end
 
 end
