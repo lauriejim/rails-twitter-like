@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   validates :cover, presence: true
   validates :description, presence: true
   validates :adresse, presence: true
+  validates :date, presence: true
 
   def self.find_by_sport(sport_id)
     Event.where(:sport_id => sport_id)

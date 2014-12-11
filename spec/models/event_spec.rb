@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Event, :type => :model do
   it "create an event" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
-    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket", date: Date.today)
     event.sport = sport
     event.save!
 
@@ -16,7 +16,7 @@ RSpec.describe Event, :type => :model do
 
   it "event linked with a sport" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
-    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket", date: Date.today)
     event.sport = sport
     expect(event.sport).to eq(sport)
     expect(event.sport_id).to eq(sport.id)
@@ -29,10 +29,10 @@ RSpec.describe Event, :type => :model do
   it "get number of events" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
     sport.save!
-    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket", date: Date.today)
     event.sport = sport
     event.save!
-    other_event = Event.create(title: "Tournoi de basket à Montreuil", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Montreuil, Basket")
+    other_event = Event.create(title: "Tournoi de basket à Montreuil", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Montreuil, Basket", date: Date.today)
     other_event.sport = sport
     other_event.save!
 
@@ -42,7 +42,7 @@ RSpec.describe Event, :type => :model do
   it "display one event" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
     sport.save!
-    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket", date: Date.today)
     event.sport = sport
     event.save!
 
@@ -52,10 +52,10 @@ RSpec.describe Event, :type => :model do
   it "display all events in sport" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
     sport.save!
-    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket", date: Date.today)
     event.sport = sport
     event.save!
-    other_event = Event.create(title: "Tournoi de basket à Montreuil", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Montreuil, Basket")
+    other_event = Event.create(title: "Tournoi de basket à Montreuil", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Montreuil, Basket", date: Date.today)
     other_event.sport = sport
     other_event.save!
 
@@ -65,7 +65,7 @@ RSpec.describe Event, :type => :model do
   it "delete one event" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
     sport.save!
-    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket", date: Date.today)
     event.sport = sport
     event.save!
 

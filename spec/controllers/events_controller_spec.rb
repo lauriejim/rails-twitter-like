@@ -8,12 +8,12 @@ RSpec.describe EventsController, :type => :controller do
     it "returns all events" do
       session[:user_rank] = "admin"
       sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
-      event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket")
+      event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket", date: Date.today)
       event.sport = sport
       event.save!
 
       other_sport = Sport.create(title: "Football", icon: "http://www.fff.png", background: "http://www.ffbb.png", color: "#FFFFFF")
-      other_event = Event.create(title: "Tournoi de football à Paris", cover:"http://www.fff.png", description:"Football event", adresse:"Paris, Foot")
+      other_event = Event.create(title: "Tournoi de football à Paris", cover:"http://www.fff.png", description:"Football event", adresse:"Paris, Foot", date: Date.today)
       other_event.sport = other_sport
       other_event.save!
 
@@ -31,11 +31,11 @@ RSpec.describe EventsController, :type => :controller do
     it "returns all events" do
       session[:user_rank] = "admin"
       sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
-      event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket")
+      event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket", date: Date.today)
       event.sport = sport
       event.save!
 
-      other_event = Event.create(title: "Tournoi de football à Montreuil", cover:"http://www.ffbbm.png", description:"Basket-ball event in Montreuil", adresse:"Montreuil, Basket")
+      other_event = Event.create(title: "Tournoi de football à Montreuil", cover:"http://www.ffbbm.png", description:"Basket-ball event in Montreuil", adresse:"Montreuil, Basket", date: Date.today)
       other_event.sport = sport
       other_event.save!
 
@@ -56,7 +56,7 @@ RSpec.describe EventsController, :type => :controller do
       session[:user_rank] = "admin"
       sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
       sport.save!
-      event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket")
+      event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket", date: Date.today)
       event.sport = sport
       event.save!
 
