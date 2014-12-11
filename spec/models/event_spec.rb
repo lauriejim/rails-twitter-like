@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Event, :type => :model do
   it "create an event" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
-    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", background:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
     event.sport = sport
     event.save!
 
@@ -28,10 +28,10 @@ RSpec.describe Event, :type => :model do
   it "get number of events" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
     sport.save!
-    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", background:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
     event.sport = sport
     event.save!
-    other_event = Event.create(title: "Tournoi de basket à Montreuil", cover:"http://www.ffbb.png", background:"http://www.ffbb.png", description:"This is a short description", adresse:"Montreuil, Basket")
+    other_event = Event.create(title: "Tournoi de basket à Montreuil", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Montreuil, Basket")
     other_event.sport = sport
     other_event.save!
 

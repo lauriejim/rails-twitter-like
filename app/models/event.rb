@@ -4,7 +4,6 @@ class Event < ActiveRecord::Base
   belongs_to :sport
   validates :sport_id, presence: true
   validates :cover, presence: true
-  validates :background, presence: true
   validates :description, presence: true
   validates :adresse, presence: true
 
