@@ -7,12 +7,12 @@ RSpec.describe EventsController, :type => :controller do
   describe "GET displayAll" do
     it "returns all events" do
       session[:user_rank] = "admin"
-      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
+      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
       event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket")
       event.sport = sport
       event.save!
 
-      other_sport = Sport.create(title: "Football", icon: "http://www.fff.png")
+      other_sport = Sport.create(title: "Football", icon: "http://www.fff.png", background: "http://www.ffbb.png", color: "#FFFFFF")
       other_event = Event.create(title: "Tournoi de football à Paris", cover:"http://www.fff.png", description:"Football event", adresse:"Paris, Foot")
       other_event.sport = other_sport
       other_event.save!
@@ -30,7 +30,7 @@ RSpec.describe EventsController, :type => :controller do
   describe "GET displayBySport" do
     it "returns all events" do
       session[:user_rank] = "admin"
-      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
+      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
       event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket")
       event.sport = sport
       event.save!
@@ -54,7 +54,7 @@ RSpec.describe EventsController, :type => :controller do
   describe "GET displayBySport" do
     it "display one event" do
       session[:user_rank] = "admin"
-      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
+      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
       sport.save!
       event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"Basket-ball event", adresse:"Paris, Basket")
       event.sport = sport

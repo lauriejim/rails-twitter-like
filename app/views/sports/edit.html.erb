@@ -4,6 +4,9 @@
     <%= f.input :title %>
     <%= image_tag("/uploads/"+@sport.icon, size: "150") %>
     <%= f.file_field(:icon, accept: 'image/png,image/gif,image/jpeg') %>
+    <%= image_tag("/uploads/"+@sport.background, size: "150") %>
+    <%= f.file_field(:background, accept: 'image/png,image/gif,image/jpeg') %>
+    <%= f.input :color %>
     <%= f.button :submit %>
   <% end %>
 </div>

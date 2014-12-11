@@ -3,6 +3,8 @@
   <%= simple_form_for @sport do |f| %>
     <%= f.input :title %>
     <%= f.input :icon, :as => :file, :accept => 'image/png,image/gif,image/jpeg' %>
+    <%= f.input :background, :as => :file, :accept => 'image/png,image/gif,image/jpeg' %>
+    <%= f.input :color %>
     <%= f.button :submit %>
   <% end %>
 </div>

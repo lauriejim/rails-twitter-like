@@ -41,8 +41,15 @@ class SportsController < ApplicationController
       redirect_to sport_path
     end
 
-    if params[:sport].key?('icon')
+    if params[:sport].key?('icon') && params[:sport].key?('background')
       hash = upload(params[:sport][:icon], sport_params, "icon")
+      hash = upload(params[:sport][:background], hash, "background")
+      @sport.update(hash)
+    elsif params[:sport].key?('icon')
+      hash = upload(params[:sport][:icon], sport_params, "icon")
+      @sport.update(hash)
+    elsif params[:sport].key?('background')
+      hash = upload(params[:sport][:background], sport_params, "background")
       @sport.update(hash)
     else
       @sport.update(event_params)
@@ -53,6 +60,7 @@ class SportsController < ApplicationController
 
   def create
     hash = upload(params[:sport][:icon], sport_params, "icon")
+    hash = upload(params[:sport][:background], hash, "background")
 
     @sport = Sport.create(hash)
     @sport.save!
@@ -71,7 +79,7 @@ class SportsController < ApplicationController
 
   private
     def sport_params
-      params.require(:sport).permit(:title, :icon => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
+      params.require(:sport).permit(:title, :color, :icon => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]], :background => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
     end
 
 end
