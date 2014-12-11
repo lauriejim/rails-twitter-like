@@ -3,7 +3,12 @@ class SportsController < ApplicationController
   layout "admin"
 
   def index
-    @sports = Sport.index()
+    @sports = Sport.index
+  end
+
+  def app_list
+    @sports = Sport.index
+    render layout: 'application'
   end
 
   def show

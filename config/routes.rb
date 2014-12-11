@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'auth/destroy'
 
   get 'event/:id', to: 'events#app_show'
+
+  get 'sports/selection', to: 'sports#app_list'
   
   post 'users/create', to: 'users#create'
 
