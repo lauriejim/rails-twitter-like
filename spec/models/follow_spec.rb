@@ -17,8 +17,8 @@ RSpec.describe Follow, :type => :model do
 
   it "user unfolow sport" do
     user = User.create(firstname: "Jean", lastname: "Bon", email: "jean@bon.by", password: "pcw123", rank: "user")
-    sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
-    sport_2 = Sport.create(title: "Foot-ball", icon: "http://www.ffbb.png")
+    sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
+    sport_2 = Sport.create(title: "Foot-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
 
     Follow.create(user: user, sport: sport)
     Follow.create(user: user, sport: sport_2)
