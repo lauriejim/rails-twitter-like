@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   layout "admin"
 
   def home
+    @sports = Sport.all
     @events = Event.find_all
     render '/home', layout: 'application'
   end
@@ -16,7 +17,7 @@ class EventsController < ApplicationController
       @events = Event.find_by_sport(params[:id])
       @sport = Sport.find_one(params[:id])
     rescue => e
-      logger.warn "#{e}" 
+      logger.warn "#{e}"
       redirect_to events_path
     end
   end
@@ -26,7 +27,7 @@ class EventsController < ApplicationController
       @event = Event.find_one(params[:id])
       render 'events/app_show', layout: 'application'
     rescue => e
-      logger.warn "#{e}" 
+      logger.warn "#{e}"
       render :status => 404
     end
   end
@@ -35,7 +36,7 @@ class EventsController < ApplicationController
     begin
       @event = Event.find_one(params[:id])
     rescue => e
-      logger.warn "#{e}" 
+      logger.warn "#{e}"
       redirect_to events_path
     end
   end
@@ -48,7 +49,7 @@ class EventsController < ApplicationController
     begin
       @event = Event.find_one(params[:id])
     rescue => e
-      logger.warn "#{e}" 
+      logger.warn "#{e}"
       redirect_to edit_event_path
     end
   end
@@ -57,7 +58,7 @@ class EventsController < ApplicationController
     begin
       @event = Event.find_one(params[:id])
     rescue => e
-      logger.warn "#{e}" 
+      logger.warn "#{e}"
       redirect_to edit_event_path
     end
 
@@ -84,7 +85,7 @@ class EventsController < ApplicationController
     begin
       Event.delete_one(params[:id])
     rescue => e
-      logger.warn "#{e}" 
+      logger.warn "#{e}"
       redirect_to edit_event_path
     end
   end

@@ -222,12 +222,13 @@ header {
   width: 593px;
   text-align: right; }
   .top-user p {
-    color: #a6a6a6;
     display: inline-block;
     font: 1.4rem/2.4rem 'source_sans_probold', arial, sans-serif;
     margin-right: 1rem;
     letter-spacing: 0.025em;
     text-transform: uppercase; }
+    .top-user p a {
+      color: #a6a6a6; }
   .top-user img {
     -webkit-box-shadow: #ffa505 3px 3px 0;
     -moz-box-shadow: #ffa505 3px 3px 0;
@@ -238,6 +239,9 @@ header {
 
 .tooltip-inner {
   text-align: left; }
+
+a:hover {
+  text-decoration: none; }
 
 .auth {
   margin-top: 4.2rem;
@@ -295,7 +299,6 @@ header {
   margin-bottom: 1rem;
   width: 242px !important; }
   .event-small hr {
-    border-top: 4px solid #ffa505;
     margin-top: 2.5rem;
     margin-bottom: 0;
     width: 17.5rem; }
@@ -323,7 +326,8 @@ header {
 .event-small-title {
   font: 1.6rem/2rem 'kelson_sansbold', arial, sans-serif;
   margin-top: 2rem;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  height: 6rem; }
 
 .event-small-date {
   font: 1.2rem/2rem 'source_sans_proregular', arial, sans-serif;

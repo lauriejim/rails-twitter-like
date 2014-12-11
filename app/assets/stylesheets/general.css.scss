@@ -311,12 +311,14 @@ header{
   width: 593px;
   text-align: right;
   p{
-    color: $grey;
     display: inline-block;
     font:  1.4rem/2.4rem 'source_sans_probold', arial, sans-serif;
     margin-right: 1rem;
     letter-spacing: 0.025em;
     text-transform: uppercase;
+    a{
+      color: $grey;
+    }
   }
   img{
     @include box-shadow($orange 3px 3px 0);
@@ -327,4 +329,10 @@ header{
 }
 .tooltip-inner {
   text-align: left;
+}
+
+a{
+  &:hover{
+    text-decoration: none;
+  }
 }
