@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login_admin
+  before_action :require_login_admin, only: [:index]
   layout "admin"
 
   def index
