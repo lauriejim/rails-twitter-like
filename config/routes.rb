@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'actions/follow'
+
+  get 'actions/unfollow'
+
+  get 'actions/like'
+
+  get 'actions/unlike'
+
   get '/', to: 'events#home'
 
   get 'auth/login'
