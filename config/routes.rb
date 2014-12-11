@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  get 'actions/follow'
+  post 'actions/follow'
 
-  get 'actions/unfollow'
+  post 'actions/unfollow'
 
-  get 'actions/like'
+  post 'actions/like'
 
-  get 'actions/unlike'
+  post 'actions/unlike'
 
   get '/', to: 'events#home'
 
