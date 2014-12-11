@@ -1,4 +1,5 @@
 class SportsController < ApplicationController
+  before_action :require_login_admin, only: [:index, :show, :new, :edit, :update, :create, :destroy]
   layout "admin"
 
   def index

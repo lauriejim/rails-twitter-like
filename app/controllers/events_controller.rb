@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_action :require_login_admin, only: [:home, :app_show]
+  before_action :require_login_admin, only: [:index, :display_by_sport, :show, :new, :edit, :update, :create, :destroy]
   layout "admin"
 
   def home

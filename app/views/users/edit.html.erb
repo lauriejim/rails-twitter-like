@@ -5,7 +5,9 @@
     <%= f.input :lastname %>
     <%= f.input :email %>
     <%= f.input :password %>
-    <%= f.input :rank, :collection => @ranks %>
+    <% if session[:user_rank] == "admin" %>
+      <%= f.input :rank, :collection => @ranks %>
+    <% end %>
     <%= f.button :submit %>
   <% end %>
 </div>

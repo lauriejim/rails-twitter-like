@@ -1,5 +1,4 @@
 class AuthController < ApplicationController
-  skip_before_action :require_login_admin
 
   def login
     # render login form
