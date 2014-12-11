@@ -6,7 +6,7 @@
     <%= f.file_field(:cover, accept: 'image/png,image/gif,image/jpeg') %>
     <%= f.input :description %>
     <%= f.input :adresse %>
-    <%= f.input :date %>
+    <%= f.input :date, as: :string, placeholder: '01-01-1999 23:58:58' %>
     <%= f.button :submit %>
   <% end %>
 </div>
