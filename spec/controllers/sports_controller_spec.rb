@@ -7,10 +7,10 @@ RSpec.describe SportsController, :type => :controller do
   describe "GET index" do
     it "returns all sports" do
       session[:user_rank] = "admin"
-      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
+      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
       sport.save!
 
-      other_sport = Sport.create(title: "Football", icon: "http://www.fff.png")
+      other_sport = Sport.create(title: "Football", icon: "http://www.fff.png", background: "http://www.ffbb.png", color: "#FFFFFF")
       other_sport.save!
 
       get :index
@@ -26,7 +26,7 @@ RSpec.describe SportsController, :type => :controller do
   describe "GET show" do
     it "returns one sport" do
       session[:user_rank] = "admin"
-      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png")
+      sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
       sport.save!
 
       get :show, id: sport.id

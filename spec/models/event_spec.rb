@@ -16,7 +16,8 @@ RSpec.describe Event, :type => :model do
 
   it "event linked with a sport" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
-    event = Event.new(sport: sport)
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event.sport = sport
     expect(event.sport).to eq(sport)
     expect(event.sport_id).to eq(sport.id)
 
@@ -41,7 +42,8 @@ RSpec.describe Event, :type => :model do
   it "display one event" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
     sport.save!
-    event = Event.new(sport: sport)
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event.sport = sport
     event.save!
 
     expect(Event.find_one(event.id)).to eq(event)
@@ -50,9 +52,11 @@ RSpec.describe Event, :type => :model do
   it "display all events in sport" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
     sport.save!
-    event = Event.new(sport: sport)
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event.sport = sport
     event.save!
-    other_event = Event.new(sport: sport)
+    other_event = Event.create(title: "Tournoi de basket à Montreuil", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Montreuil, Basket")
+    other_event.sport = sport
     other_event.save!
 
     expect(Event.find_by_sport(sport.id)).to eq([event, other_event])
@@ -61,7 +65,8 @@ RSpec.describe Event, :type => :model do
   it "delete one event" do
     sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
     sport.save!
-    event = Event.new(sport: sport)
+    event = Event.create(title: "Tournoi de basket à Paris", cover:"http://www.ffbb.png", description:"This is a short description", adresse:"Paris, Basket")
+    event.sport = sport
     event.save!
 
     count = Event.count()

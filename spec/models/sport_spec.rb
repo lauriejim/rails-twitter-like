@@ -19,14 +19,14 @@ RSpec.describe Sport, :type => :model do
     expect(Sport.count()).to eq(2)
   end
 
-  it "requires a title and an icon" do
-    sport = Sport.new
+  it "requires a title, an icon, an background and color" do
+    sport = Sport.create(title: "Basket-ball", icon: "http://www.ffbb.png", background: "http://www.ffbb.png", color: "#FFFFFF")
+    expect(sport.valid?).to eq(true)
+
+    sport.title = nil
     expect(sport.valid?).to eq(false)
 
-    sport.title = "Rigby"
-    expect(sport.valid?).to eq(false)
-
-    sport.icon = "http://www.ffbb.png"
+    sport.title = "Basket-ball"
     expect(sport.valid?).to eq(true)
   end
 
