@@ -192,12 +192,14 @@ header{
     padding-top: 6.4rem;
     text-align: center;
   }
-
   nav{
     border-top: 1px solid $black-grey;
     height: 6.9rem;
     margin: 0 -1.5rem 0 -1.5rem;
     padding: 2.4rem 0em 2.4rem 3rem;
+  }
+  .subtitle{
+    margin-bottom: 4rem;
   }
 
 }

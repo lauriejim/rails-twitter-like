@@ -137,6 +137,8 @@ header {
     height: 6.9rem;
     margin: 0 -1.5rem 0 -1.5rem;
     padding: 2.4rem 0em 2.4rem 3rem; }
+  header .subtitle {
+    margin-bottom: 4rem; }
 
 .icon-filtre {
   color: #fefefe;
@@ -206,10 +208,6 @@ header {
   letter-spacing: 0.02em;
   padding: 1.2rem;
   text-transform: uppercase; }
-  
-a:hover {
-  text-decoration: none;
-}
 
 .top-user {
   display: inline-block;
