@@ -1,0 +1,19 @@
+<section class="col-md-12 nopadding top">
+  <div class="top-subscribe">
+    <% if session[:user_id] %>
+      <%= link_to 'Gérer vos abonnements', auth_login_path, class: "subscriptions" %>
+    <% end %>
+  </div>
+  <div class="top-user">
+    <% if session[:user_id] %>
+      <p>
+        <%= link_to session[:user_firstname] + " " + session[:user_lastname], controller: "users", action: "show", id: session[:user_id] %>
+      <p>
+      <%= image_tag("basket.jpg") %>
+    <% else %>
+      <%= link_to 'Register', auth_register_path, class: "subscriptions" %>
+
+      <%= link_to 'Login', auth_login_path, class: "subscriptions" %>
+    <% end %>
+  </div>
+</section>
