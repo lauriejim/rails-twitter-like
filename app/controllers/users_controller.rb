@@ -10,6 +10,11 @@ class UsersController < ApplicationController
     @user = User.find_one(params[:id])
   end
 
+  def user_json
+    @user = User.find_one(params[:id])
+    render json: @user.to_json
+  end
+
   def new
     @user = User.new
     @ranks = RailsTwitterLike::Application::RANKS
