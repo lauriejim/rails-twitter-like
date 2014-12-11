@@ -11,9 +11,9 @@
       <p>
       <%= image_tag("basket.jpg") %>
     <% else %>
-      <%= link_to 'Register', auth_register_path, class: "subscriptions" %>
+      <%= link_to 'Connectez-vous', auth_login_path, class: "login" %>
 
-      <%= link_to 'Login', auth_login_path, class: "subscriptions" %>
+      <span class="has-tooltip" data-toggle="tooltip" data-placement="bottom"  title="Et bénéficiez de services personnalisés : abonnements à des sports, filtres de tris…"><%= link_to 'Inscrivez-vous', auth_register_path, class: "register" %></span>
     <% end %>
   </div>
 </section>

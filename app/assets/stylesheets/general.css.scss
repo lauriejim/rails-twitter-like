@@ -293,6 +293,19 @@ header{
   text-transform: uppercase;
 }
 
+.register{
+  color: $grey;
+  display: inline-block;
+  font:  1.4rem/2.4rem 'source_sans_probold', arial, sans-serif;
+  letter-spacing: 0.025em;
+  padding: 1.2rem;
+  text-transform: uppercase;
+}
+
+.login{
+  @extend .register;
+}
+
 .top-user{
   display: inline-block;
   width: 593px;
@@ -311,4 +324,7 @@ header{
     max-width: 100%;
     width: 35px;
   }
+}
+.tooltip-inner {
+  text-align: left;
 }
