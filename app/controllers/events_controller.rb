@@ -92,7 +92,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:title, :likes, :description, :adresse, :sport_id, :cover => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
+      params.require(:event).permit(:title, :likes, :description, :adresse, :sport_id, :date, :cover => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
     end
 
 end
