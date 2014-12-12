@@ -1,17 +1,7 @@
 <body id="page-event" class="page-event">
   <div class="container">
     <div class="row">
-      <section id="event" class="col-md-12 nopadding top" data-sport="<%= @event.sport.background %>">
-        <div class="top-back">
-          <i class="icon-fleche"></i><span class="back"><a href="/" title="Retour vers la home">Retour</a></span>
-        </div>
-        <div class="top-user">
-          <p>
-            <%= link_to session[:user_firstname] + " " + session[:user_lastname], controller: "users", action: "show", id: session[:user_id] %>
-          </p>
-          <%= image_tag("basket.jpg") %>
-        </div>
-      </section>
+      <%= render "partials/profil_bar"%>
       <section class="col-md-12 nopadding">
         <div class="event-img">
           <%= image_tag("/uploads/"+@event.cover) %>
@@ -20,7 +10,7 @@
           <ul>
             <li><i class="icon-adresse"></i><%= @event.adresse %></li>
             <li><i class="icon-date"></i>01.12.14</li>
-            <li><i class="icon-like"></i>0 like</li>
+            <li><i class="icon-like"></i><%= @event.likes.count %> like</li>
           </ul>
         </div>
       </section>

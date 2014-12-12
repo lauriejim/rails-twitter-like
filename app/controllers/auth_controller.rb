@@ -16,6 +16,7 @@ class AuthController < ApplicationController
       session[:user_rank] = user.rank
       session[:user_firstname] = user.firstname
       session[:user_lastname] = user.lastname
+      session[:user_picture] = user.picture
       if user.rank == "admin"
         redirect_to users_path
       else

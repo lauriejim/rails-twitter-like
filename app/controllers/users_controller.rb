@@ -49,6 +49,7 @@ class UsersController < ApplicationController
     if params[:user].key?('picture')
       hash = upload(params[:user][:picture], user_params, "picture")
       @user.update(hash)
+      session[:user_picture] = hash['picture']
       redirect_to @user
     elsif @user.update_attributes(user_params)
       redirect_to @user
