@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20141212090342) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "sport_id"
+    t.datetime "date"
   end
 
   create_table "follows", force: true do |t|

@@ -52,7 +52,7 @@ class SportsController < ApplicationController
       hash = upload(params[:sport][:background], sport_params, "background")
       @sport.update(hash)
     else
-      @sport.update(event_params)
+      @sport.update(sport_params)
     end
 
     redirect_to edit_sport_path(@sport)
