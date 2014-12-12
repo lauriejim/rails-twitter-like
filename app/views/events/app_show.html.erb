@@ -1,35 +1,36 @@
-<body class="page-event">
+<body id="page-event" class="page-event">
   <div class="container">
     <div class="row">
-      <section class="col-md-12 nopadding top">
+      <section id="event" class="col-md-12 nopadding top" data-sport="<%= @event.sport.background %>">
         <div class="top-back">
-          <i class="icon-fleche"></i><span class="back">Retour</span>
+          <i class="icon-fleche"></i><span class="back"><a href="/" title="Retour vers la home">Retour</a></span>
         </div>
         <div class="top-user">
-          <p>Turquand Audrey</p>
+          <p>
+            <%= link_to session[:user_firstname] + " " + session[:user_lastname], controller: "users", action: "show", id: session[:user_id] %>
+          </p>
           <%= image_tag("basket.jpg") %>
         </div>
       </section>
       <section class="col-md-12 nopadding">
         <div class="event-img">
-          <%= image_tag("basket.jpg") %>
+          <%= image_tag("/uploads/"+@event.cover) %>
         </div>
         <div class="event-informations">
           <ul>
-            <li><i class="icon-adresse"></i>Rue Lorem Ipsum - 75000 Paris</li>
+            <li><i class="icon-adresse"></i><%= @event.adresse %></li>
             <li><i class="icon-date"></i>01.12.14</li>
-            <li><i class="icon-like"></i>23 likes</li>
+            <li><i class="icon-like"></i>0 like</li>
           </ul>
         </div>
       </section>
       <section class="col-md-12 nopadding">
         <div class="col-md-8 col-md-offset-2 event-description">
-          <h1>Plateau quarts et demi-finales - Coupe de France U17</h1>
-          <p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque <br>
-          10h : Aenean sollicitudin, lorem quis bibendum <br>
-          12h : Morbi accumsan ipsum velit <br>
-          16h : Class aptent taciti sociosqu <br>
-          18h : Iinceptos himenaeos mauris in era</p>
+          <h1><%= @event.title %></h1>
+          <p><%= @event.description %></p>
+          <div class="liker">
+            <%= link_to 'Like', sports_selection_path, class: "subscriptions" %>
+          </div>
         </div>
         <div class="col-md-8 col-md-offset-2 event-comments">
           <div class="comment">
@@ -57,7 +58,7 @@
         </div>
       </section>
 
-      <section class="sidebar-user">
+      <section class="sidebar-user" style="display:none">
         <div class="sidebar-img">
           <%= image_tag("basket.jpg") %>
         </div>

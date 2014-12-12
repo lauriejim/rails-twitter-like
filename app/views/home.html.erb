@@ -7,77 +7,35 @@
           <h1>Sports<br>events</h1>
           <h2>Tous vos événements sportifs <br> à un seul endroit</h2>
         </div>
+        <% if session[:user_id] %>
         <nav>
           <i class="icon-filtre"></i>
           <p class="filter">Filtres</p>
           <ul class="popular">
-            <li>Populaires</li>
+            <li class="filter-sport pop" data-color="#fefefe">Populaires</li>
           </ul>
           <ul class="filter-sports">
-            <li class="basket">Basket</li>
-            <li class="football">Football</li>
-            <li>Course à pied</li>
-            <li>Basket</li>
-            <li>Basket</li>
+            <% @sports.each do |sport| %>
+              <li class="filter-sport <%= sport.title.downcase %>" data-color="<%= sport.color %>"><%= sport.title %></li>
+            <% end %>
           </ul>
         </nav>
+        <% end %>
       </header>
       <section class="col-md-12 nopadding home">
+        <% @events.each do |event| %>
         <div class="col-md-3 nopadding event-small">
           <div class="event-small-img">
-            <%= image_tag("basket.jpg") %>
+            <%= image_tag("/uploads/"+event.cover) %>
           </div>
           <div class="event-small-description">
-            <p class="event-small-sport">Basket</p>
-            <p class="event-small-title">Plateau quarts et demi-finales - Coupe de France U17</p>
+            <p class="event-small-sport"><%= event.sport.title %></p>
+            <p class="event-small-title"><%= event.title %></p>
             <p class="event-small-date">10.12.2014</p>
           </div>
-          <hr class="basket">
+          <hr class="event-border" data-color="<%= event.sport.color %>">
         </div>
-        <div class="col-md-3 nopadding event-small">
-          <div class="event-small-img">
-            <%= image_tag("basket.jpg") %>
-          </div>
-          <div class="event-small-description">
-            <p class="event-small-sport">Basket</p>
-            <p class="event-small-title">Plateau quarts et demi-finales - Coupe de France U17</p>
-            <p class="event-small-date">10.12.2014</p>
-          </div>
-          <hr class="basket">
-        </div>
-        <div class="col-md-3 nopadding event-small">
-          <div class="event-small-img">
-            <%= image_tag("basket.jpg") %>
-          </div>
-          <div class="event-small-description">
-            <p class="event-small-sport">Basket</p>
-            <p class="event-small-title">Plateau quarts et demi-finales - Coupe de France U17</p>
-            <p class="event-small-date">10.12.2014</p>
-          </div>
-          <hr class="basket">
-        </div>
-         <div class="col-md-3 nopadding event-small">
-          <div class="event-small-img">
-            <%= image_tag("basket.jpg") %>
-          </div>
-          <div class="event-small-description">
-            <p class="event-small-sport">Basket</p>
-            <p class="event-small-title">Plateau quarts et demi-finales - Coupe de France U17</p>
-            <p class="event-small-date">10.12.2014</p>
-          </div>
-          <hr class="basket">
-        </div>
-         <div class="col-md-3 nopadding event-small">
-          <div class="event-small-img">
-            <%= image_tag("basket.jpg") %>
-          </div>
-          <div class="event-small-description">
-            <p class="event-small-sport">Basket</p>
-            <p class="event-small-title">Plateau quarts et demi-finales - Coupe de France U17</p>
-            <p class="event-small-date">10.12.2014</p>
-          </div>
-          <hr class="basket">
-        </div>
+        <% end %>
       </section>
     </div>
   </div>

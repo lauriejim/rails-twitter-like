@@ -114,9 +114,9 @@ body{
   -o-font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   &.page-event{
-    background-image: url('basket.png');
     background-repeat: no-repeat;
     background-position-y: 800px;
+    background-position-x: 50px;
   }
 }
 input{
@@ -140,6 +140,10 @@ input{
     padding: 0;
     text-transform: uppercase;
     width: 7.4rem;
+    @include transition(all, 0.3s linear);
+    &:hover{
+      background-color: #eb9605;
+    }
   }
   &:focus {
     outline:none;
@@ -196,7 +200,6 @@ header{
     border-top: 1px solid $black-grey;
     height: 6.9rem;
     margin: 0 -1.5rem 0 -1.5rem;
-    padding: 2.4rem 0em 2.4rem 3rem;
   }
   .subtitle{
     margin-bottom: 4rem;
@@ -207,6 +210,8 @@ header{
 .icon-filtre{
   color: $white;
   display: inline-block;
+  margin-left: 3rem;
+  margin-top: 2.4rem;
 }
 
 .filter{
@@ -218,18 +223,18 @@ header{
 
 .filter-sports{
   display: inline-block;
-  margin-top: -2.5rem;
-  padding-top: 2.5rem;
   margin-bottom: 0;
-  padding-bottom: 2.5rem;
   float: right;
   li{
+    cursor: pointer;
     position: relative;
     color: $grey;
-    display: inline;
+    display: inline-block;
+    padding-top: 2.5rem;
     font:  1.4rem 'source_sans_prosemibold', arial, sans-serif;
     margin-right: 3rem;
     text-transform: uppercase;
+    height: 69px;
     &:before{
       content: "";
       position: absolute;
@@ -237,16 +242,43 @@ header{
       height: 4px;
       left: 50%;
       margin-left: -10px;
-      top: -27px;
+      top: 0;
     }
-    &.basket{
-      &:before{
-        background-color: $orange;
+    &.active{
+      &.basket{
+        &:before{
+          background-color: #ffa505;
+        }
       }
-    }
-    &.football{
-      &:before{
-        background-color: green;
+      &.football{
+        &:before{
+          background-color: #779c00;
+        }
+      }
+      &.volley{
+        &:before{
+          background-color: #31d0ed;
+        }
+      }
+      &.rugby{
+        &:before{
+          background-color: #e51638;
+        }
+      }
+      &.tennis{
+        &:before{
+          background-color: #eeef00;
+        }
+      }
+      &.running{
+        &:before{
+          background-color: #e51638;
+        }
+      }
+      &.pop{
+        &:before{
+          background-color: #fefefe;
+        }
       }
     }
   }
@@ -291,6 +323,9 @@ header{
   letter-spacing: 0.02em;
   padding: 1.2rem;
   text-transform: uppercase;
+  &:hover{
+    border: 1px solid $grey;
+  }
 }
 
 .register{
@@ -311,12 +346,14 @@ header{
   width: 593px;
   text-align: right;
   p{
-    color: $grey;
     display: inline-block;
     font:  1.4rem/2.4rem 'source_sans_probold', arial, sans-serif;
     margin-right: 1rem;
     letter-spacing: 0.025em;
     text-transform: uppercase;
+    a{
+      color: $grey;
+    }
   }
   img{
     @include box-shadow($orange 3px 3px 0);
@@ -327,4 +364,14 @@ header{
 }
 .tooltip-inner {
   text-align: left;
+}
+
+
+a{
+  color: $grey;
+  @include transition(all, 0.3s linear);
+  &:hover{
+    color: $dark-grey;
+    text-decoration: none;
+  }
 }

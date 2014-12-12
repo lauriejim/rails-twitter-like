@@ -14,36 +14,14 @@
       </header>
       <section class="col-md-12 black">
         <div class="row">
-          <div class="col-md-4 sports-selection basket">
-            <p class="sport-name">Basket</p>
+          <% @sports.each do |sport| %>
+          <div class="col-md-4 sports-selection sport-selection">
+            <%= image_tag("/uploads/"+sport.icon) %>
+            <p class="sport-name"><%= sport.title %></p>
             <button type="button" class="sport-subscription">S'abonner ?</button>
-            <hr class="basket">
+            <hr class="sport-border" data-color="<%= sport.color %>">
           </div>
-          <div class="col-md-4 sports-selection basket">
-            <p class="sport-name">Basket</p>
-            <button type="button" class="sport-subscription">S'abonner ?</button>
-            <hr class="basket">
-          </div>
-          <div class="col-md-4 sports-selection basket">
-            <p class="sport-name">Basket</p>
-            <button type="button" class="sport-subscription">S'abonner ?</button>
-            <hr class="basket">
-          </div>
-          <div class="col-md-4 sports-selection basket">
-            <p class="sport-name">Basket</p>
-            <button type="button" class="sport-subscription">S'abonner ?</button>
-            <hr class="basket">
-          </div>
-          <div class="col-md-4 sports-selection basket">
-            <p class="sport-name">Basket</p>
-            <button type="button" class="sport-subscription">S'abonner ?</button>
-            <hr class="basket">
-          </div>
-          <div class="col-md-4 sports-selection basket">
-            <p class="sport-name">Basket</p>
-            <button type="button" class="sport-subscription">S'abonner ?</button>
-            <hr class="basket">
-          </div>
+          <% end %>
         </div>
       </section>
     </div>
