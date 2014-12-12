@@ -30,7 +30,7 @@
           </div>
           <div class="event-small-description">
             <p class="event-small-sport"><%= event.sport.title %></p>
-            <p class="event-small-title"><%= event.title %></p>
+            <p class="event-small-title"><%= link_to event.title, controller: "events", action: "app_show", id: event %></p>
             <p class="event-small-date">10.12.2014</p>
           </div>
           <hr class="event-border" data-color="<%= event.sport.color %>">
