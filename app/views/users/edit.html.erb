@@ -4,6 +4,8 @@
     <%= f.input :firstname %>
     <%= f.input :lastname %>
     <%= f.input :email %>
+    <%= image_tag("/uploads/"+@user.picture, size: "150") %>
+    <%= f.file_field(:picture, accept: 'image/png,image/gif,image/jpeg') %>
     <%= f.input :password %>
     <% if session[:user_rank] == "admin" %>
       <%= f.input :rank, :collection => @ranks %>
