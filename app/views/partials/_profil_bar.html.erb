@@ -3,6 +3,9 @@
     <% if session[:user_id] %>
       <%= link_to 'Gérer vos abonnements', sports_selection_path, class: "subscriptions" %>
     <% end %>
+    <% unless currentPath("/") %>
+      <i class="icon-fleche"></i><span class="back"><a href="/" title="Retour vers la home">Retour</a></span>
+    <% end %>
   </div>
   <div class="top-user">
     <% if session[:user_id] %>
