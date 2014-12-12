@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211192035) do
+ActiveRecord::Schema.define(version: 20141212090342) do
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20141211192035) do
     t.string   "rank",       default: "user"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "picture",    default: "user/default_profil.jpg"
   end
 
 end
