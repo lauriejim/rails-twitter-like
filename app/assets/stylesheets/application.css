@@ -64,7 +64,8 @@ body {
   -webkit-font-smoothing: antialiased; }
   body.page-event {
     background-repeat: no-repeat;
-    background-position-y: 800px; }
+    background-position-y: 800px;
+    background-position-x: 50px; }
 
 input {
   background-color: #232325;
@@ -88,7 +89,13 @@ input {
     font: 1.2rem/2rem 'source_sans_prosemibold', arial, sans-serif;
     padding: 0;
     text-transform: uppercase;
-    width: 7.4rem; }
+    width: 7.4rem;
+    -webkit-transition: all, 0.3s linear;
+    -moz-transition: all, 0.3s linear;
+    -o-transition: all, 0.3s linear;
+    transition: all, 0.3s linear; }
+    input[type="submit"]:hover {
+      background-color: #eb9605; }
   input:focus {
     outline: none; }
 
@@ -184,6 +191,8 @@ header {
       background-color: #eeef00; }
     .filter-sports li.active.running:before, .popular li.active.running:before {
       background-color: #e51638; }
+    .filter-sports li.active.pop:before, .popular li.active.pop:before {
+      background-color: #fefefe; }
   .filter-sports .border, .popular .border {
     border-top: 1px solid #ffa505; }
 
@@ -216,6 +225,8 @@ header {
   letter-spacing: 0.02em;
   padding: 1.2rem;
   text-transform: uppercase; }
+  .subscriptions:hover {
+    border: 1px solid #a6a6a6; }
 
 .register, .login {
   color: #a6a6a6;
@@ -248,8 +259,15 @@ header {
 .tooltip-inner {
   text-align: left; }
 
-a:hover {
-  text-decoration: none; }
+a {
+  color: #a6a6a6;
+  -webkit-transition: all, 0.3s linear;
+  -moz-transition: all, 0.3s linear;
+  -o-transition: all, 0.3s linear;
+  transition: all, 0.3s linear; }
+  a:hover {
+    color: #2f2e2c;
+    text-decoration: none; }
 
 .auth {
   margin-top: 4.2rem;
@@ -353,7 +371,13 @@ a:hover {
   font: 1.4rem/2.4rem 'source_sans_probold', arial, sans-serif;
   letter-spacing: 0.025em;
   text-transform: uppercase;
-  width: 400px; }
+  width: 400px;
+  -webkit-transition: all, 0.3s linear;
+  -moz-transition: all, 0.3s linear;
+  -o-transition: all, 0.3s linear;
+  transition: all, 0.3s linear; }
+  .top-back:hover {
+    color: #2f2e2c; }
   .top-back i {
     margin-right: 1rem; }
 
@@ -388,14 +412,15 @@ a:hover {
   width: 66.3rem;
   padding-left: 8.4rem;
   padding-right: 8.4rem;
-  padding-bottom: 8.8rem;
+  padding-bottom: 7.3rem;
   margin-top: 50.6rem; }
   .event-description h1 {
     font: 2.4rem/3rem 'kelson_sansbold', arial, sans-serif;
     margin-top: 5.8rem;
     margin-bottom: 5rem; }
   .event-description p {
-    font: 1.6rem/2.4rem 'source_sans_proregular', arial, sans-serif; }
+    font: 1.6rem/2.4rem 'source_sans_proregular', arial, sans-serif;
+    margin-bottom: 6.3rem; }
 
 .event-comments {
   background-color: #f2f2f2;
@@ -411,9 +436,9 @@ a:hover {
   margin-top: 2rem;
   margin-bottom: 2rem;
   font: 1.4rem/2rem 'source_sans_proregular', arial, sans-serif; }
-  .message hr {
-    border-top: 1px solid #e1e1e1;
-    margin: 0; }
+
+.comment hr {
+  border-top: 1px solid #d9d9d9; }
 
 .response p {
   font: 1.8rem/2.4rem 'kelson_sansregular', arial, sans-serif;
@@ -468,3 +493,25 @@ a:hover {
     font: 1.4rem/2rem 'source_sans_proregular', arial, sans-serif;
     list-style: none;
     margin-bottom: 3.3rem; }
+
+.liker {
+  text-align: center; }
+  .liker a {
+    padding: 1.3rem 2.5rem;
+    background-color: transparent;
+    -webkit-box-shadow: #c47e04 3px 3px 0;
+    -moz-box-shadow: #c47e04 3px 3px 0;
+    box-shadow: #c47e04 3px 3px 0;
+    color: #ffa505;
+    font: 1.2rem/2rem 'source_sans_probold', arial, sans-serif;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    border: 1px solid #ffa505;
+    -webkit-transition: all, 0.3s linear;
+    -moz-transition: all, 0.3s linear;
+    -o-transition: all, 0.3s linear;
+    transition: all, 0.3s linear; }
+    .liker a:hover {
+      border: 1px solid #eb9605;
+      background-color: #eb9605;
+      color: #fefefe; }

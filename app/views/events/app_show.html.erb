@@ -3,7 +3,7 @@
     <div class="row">
       <section id="event" class="col-md-12 nopadding top" data-sport="<%= @event.sport.background %>">
         <div class="top-back">
-          <i class="icon-fleche"></i><span class="back">Retour</span>
+          <i class="icon-fleche"></i><span class="back"><a href="/" title="Retour vers la home">Retour</a></span>
         </div>
         <div class="top-user">
           <p>
@@ -28,6 +28,9 @@
         <div class="col-md-8 col-md-offset-2 event-description">
           <h1><%= @event.title %></h1>
           <p><%= @event.description %></p>
+          <div class="liker">
+            <%= link_to 'Like', sports_selection_path, class: "subscriptions" %>
+          </div>
         </div>
         <div class="col-md-8 col-md-offset-2 event-comments">
           <div class="comment">

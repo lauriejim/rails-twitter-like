@@ -116,6 +116,7 @@ body{
   &.page-event{
     background-repeat: no-repeat;
     background-position-y: 800px;
+    background-position-x: 50px;
   }
 }
 input{
@@ -139,6 +140,10 @@ input{
     padding: 0;
     text-transform: uppercase;
     width: 7.4rem;
+    @include transition(all, 0.3s linear);
+    &:hover{
+      background-color: #eb9605;
+    }
   }
   &:focus {
     outline:none;
@@ -270,6 +275,11 @@ header{
           background-color: #e51638;
         }
       }
+      &.pop{
+        &:before{
+          background-color: #fefefe;
+        }
+      }
     }
   }
   .border{
@@ -313,6 +323,9 @@ header{
   letter-spacing: 0.02em;
   padding: 1.2rem;
   text-transform: uppercase;
+  &:hover{
+    border: 1px solid $grey;
+  }
 }
 
 .register{
@@ -353,8 +366,12 @@ header{
   text-align: left;
 }
 
+
 a{
+  color: $grey;
+  @include transition(all, 0.3s linear);
   &:hover{
+    color: $dark-grey;
     text-decoration: none;
   }
 }
