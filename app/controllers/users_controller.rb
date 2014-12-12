@@ -45,7 +45,12 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_one(params[:id])
-    if @user.update_attributes(user_params)
+
+    if params[:user].key?('picture')
+      hash = upload(params[:user][:picture], user_params, "picture")
+      @user.update(hash)
+      redirect_to @user
+    elsif @user.update_attributes(user_params)
       redirect_to @user
     else
       render :action => 'edit'
@@ -63,9 +68,9 @@ class UsersController < ApplicationController
       return params.permit(:firstname, :lastname, :email, :password)
     end
     if !session[:user_rank] || session[:user_rank] == 'user'
-      params.require(:user).permit(:firstname, :lastname, :email, :password)
+      params.require(:user).permit(:firstname, :lastname, :email, :password, :picture => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
     else
-      params.require(:user).permit(:firstname, :lastname, :email, :password, :rank)
+      params.require(:user).permit(:firstname, :lastname, :email, :password, :rank, :picture => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
     end
   end
 end
