@@ -9,7 +9,7 @@
       <p>
         <%= link_to session[:user_firstname] + " " + session[:user_lastname], controller: "users", action: "show", id: session[:user_id] %>
       <p>
-      <%= image_tag("basket.jpg") %>
+      <%= image_tag("/uploads/" + session[:user_picture]) %>
     <% else %>
       <%= link_to 'Connectez-vous', auth_login_path, class: "login" %>
 
