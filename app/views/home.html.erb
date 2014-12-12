@@ -16,7 +16,7 @@
           </ul>
           <ul class="filter-sports">
             <% @sports.each do |sport| %>
-              <li data-color="<%= sport.color %>"><%= sport.title %></li>
+              <li class="filter-sport <%= sport.title.downcase %>" data-color="<%= sport.color %>"><%= sport.title %></li>
             <% end %>
           </ul>
         </nav>

@@ -114,7 +114,6 @@ body{
   -o-font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
   &.page-event{
-    background-image: url('basket.png');
     background-repeat: no-repeat;
     background-position-y: 800px;
   }
@@ -196,7 +195,6 @@ header{
     border-top: 1px solid $black-grey;
     height: 6.9rem;
     margin: 0 -1.5rem 0 -1.5rem;
-    padding: 2.4rem 0em 2.4rem 3rem;
   }
   .subtitle{
     margin-bottom: 4rem;
@@ -207,6 +205,8 @@ header{
 .icon-filtre{
   color: $white;
   display: inline-block;
+  margin-left: 3rem;
+  margin-top: 2.4rem;
 }
 
 .filter{
@@ -218,18 +218,18 @@ header{
 
 .filter-sports{
   display: inline-block;
-  margin-top: -2.5rem;
-  padding-top: 2.5rem;
   margin-bottom: 0;
-  padding-bottom: 2.5rem;
   float: right;
   li{
+    cursor: pointer;
     position: relative;
     color: $grey;
-    display: inline;
+    display: inline-block;
+    padding-top: 2.5rem;
     font:  1.4rem 'source_sans_prosemibold', arial, sans-serif;
     margin-right: 3rem;
     text-transform: uppercase;
+    height: 69px;
     &:before{
       content: "";
       position: absolute;
@@ -237,16 +237,38 @@ header{
       height: 4px;
       left: 50%;
       margin-left: -10px;
-      top: -27px;
+      top: 0;
     }
-    &.basket{
-      &:before{
-        background-color: $orange;
+    &.active{
+      &.basket{
+        &:before{
+          background-color: #ffa505;
+        }
       }
-    }
-    &.football{
-      &:before{
-        background-color: green;
+      &.football{
+        &:before{
+          background-color: #779c00;
+        }
+      }
+      &.volley{
+        &:before{
+          background-color: #31d0ed;
+        }
+      }
+      &.rugby{
+        &:before{
+          background-color: #e51638;
+        }
+      }
+      &.tennis{
+        &:before{
+          background-color: #eeef00;
+        }
+      }
+      &.running{
+        &:before{
+          background-color: #e51638;
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
-<body class="page-event">
+<body id="page-event" class="page-event">
   <div class="container">
     <div class="row">
-      <section class="col-md-12 nopadding top">
+      <section id="event" class="col-md-12 nopadding top" data-sport="<%= @event.sport.background %>">
         <div class="top-back">
           <i class="icon-fleche"></i><span class="back">Retour</span>
         </div>
@@ -55,7 +55,7 @@
         </div>
       </section>
 
-      <section class="sidebar-user">
+      <section class="sidebar-user" style="display:none">
         <div class="sidebar-img">
           <%= image_tag("basket.jpg") %>
         </div>

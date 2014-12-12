@@ -63,7 +63,6 @@ body {
   -o-font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased; }
   body.page-event {
-    background-image: url("basket.png");
     background-repeat: no-repeat;
     background-position-y: 800px; }
 
@@ -135,14 +134,15 @@ header {
   header nav {
     border-top: 1px solid #2e2e2e;
     height: 6.9rem;
-    margin: 0 -1.5rem 0 -1.5rem;
-    padding: 2.4rem 0em 2.4rem 3rem; }
+    margin: 0 -1.5rem 0 -1.5rem; }
   header .subtitle {
     margin-bottom: 4rem; }
 
 .icon-filtre {
   color: #fefefe;
-  display: inline-block; }
+  display: inline-block;
+  margin-left: 3rem;
+  margin-top: 2.4rem; }
 
 .filter {
   color: #fefefe;
@@ -152,18 +152,18 @@ header {
 
 .filter-sports, .popular {
   display: inline-block;
-  margin-top: -2.5rem;
-  padding-top: 2.5rem;
   margin-bottom: 0;
-  padding-bottom: 2.5rem;
   float: right; }
   .filter-sports li, .popular li {
+    cursor: pointer;
     position: relative;
     color: #a6a6a6;
-    display: inline;
+    display: inline-block;
+    padding-top: 2.5rem;
     font: 1.4rem 'source_sans_prosemibold', arial, sans-serif;
     margin-right: 3rem;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    height: 69px; }
     .filter-sports li:before, .popular li:before {
       content: "";
       position: absolute;
@@ -171,11 +171,19 @@ header {
       height: 4px;
       left: 50%;
       margin-left: -10px;
-      top: -27px; }
-    .filter-sports li.basket:before, .popular li.basket:before {
+      top: 0; }
+    .filter-sports li.active.basket:before, .popular li.active.basket:before {
       background-color: #ffa505; }
-    .filter-sports li.football:before, .popular li.football:before {
-      background-color: green; }
+    .filter-sports li.active.football:before, .popular li.active.football:before {
+      background-color: #779c00; }
+    .filter-sports li.active.volley:before, .popular li.active.volley:before {
+      background-color: #31d0ed; }
+    .filter-sports li.active.rugby:before, .popular li.active.rugby:before {
+      background-color: #e51638; }
+    .filter-sports li.active.tennis:before, .popular li.active.tennis:before {
+      background-color: #eeef00; }
+    .filter-sports li.active.running:before, .popular li.active.running:before {
+      background-color: #e51638; }
   .filter-sports .border, .popular .border {
     border-top: 1px solid #ffa505; }
 
@@ -267,12 +275,17 @@ a:hover {
   border-right: 1px solid #2e2e2e;
   height: 21.4rem;
   text-align: center; }
-  .sports-selection.basket {
-    background-image: url("hoverBasket.png"); }
-    .sports-selection.basket hr {
-      border: 4px solid #ffa505;
-      margin-top: 3.7rem;
-      width: 17.5rem; }
+  .sports-selection img {
+    -webkit-transition: opacity, 0.3s linear;
+    -moz-transition: opacity, 0.3s linear;
+    -o-transition: opacity, 0.3s linear;
+    transition: opacity, 0.3s linear;
+    position: absolute;
+    margin-left: -50%;
+    opacity: 0; }
+  .sports-selection hr {
+    margin-top: 4rem;
+    width: 17.5rem; }
 
 .sport-name {
   color: #fefefe;

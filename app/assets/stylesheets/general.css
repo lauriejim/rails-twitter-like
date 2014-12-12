@@ -1,11 +1,11 @@
 /*
 Syntax error: Undefined mixin 'box-shadow'.
-        on line 134 of /Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss, in `box-shadow'
-        from line 134 of /Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss
+        on line 133 of /Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss, in `box-shadow'
+        from line 133 of /Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss
 
 Backtrace:
-/Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss:134:in `box-shadow'
-/Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss:134
+/Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss:133:in `box-shadow'
+/Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss:133
 /Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:253:in `visit_mixin'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
 /Library/Ruby/Gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
@@ -68,4 +68,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'box-shadow'.\A         on line 134 of /Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss, in `box-shadow'\A         from line 134 of /Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss"; }
+  content: "Syntax error: Undefined mixin 'box-shadow'.\A         on line 133 of /Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss, in `box-shadow'\A         from line 133 of /Applications/MAMP/htdocs/rails-twitter-like/app/assets/stylesheets/general.css.scss"; }
