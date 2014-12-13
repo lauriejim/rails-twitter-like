@@ -2,14 +2,14 @@ class ActionsController < ApplicationController
   def follow
     @user = User.find(session[:user_id])
     @sport = Sport.find(params[:id])
-
+    session[:user_follows][@sport.title] = true
     Follow.create(user: @user, sport: @sport)
   end
 
   def unfollow
     @user = User.find(session[:user_id])
     @sport = Sport.find(params[:id])
-
+    session[:user_follows][@sport.title] = false
     Follow.where(user: @user, sport: @sport)[0].destroy
   end
 
@@ -36,5 +36,9 @@ class ActionsController < ApplicationController
 
     Comment.create(user: @user, event: @event, message: message)
     render 'events/app_show', layout: 'application'
+  end
+
+  def filter
+
   end
 end
