@@ -171,10 +171,15 @@
     padding: 0;
   }
   li{
-    color: $grey;
     font:  1.4rem/2rem 'source_sans_proregular', arial, sans-serif;
     list-style: none;
     margin-bottom: 3.3rem;
+    a{
+      color: $white;
+      &:hover{
+        color: $grey;
+      }
+    }
   }
 }
 

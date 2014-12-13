@@ -45,12 +45,17 @@ $(document).ready(function() {
           beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
           data: { "id": '1' },
           success: function( data ){
-            $('#sidebar-user-title').text(data.firstname+' '+data.lastname);
-            $('#sidebar-user-img').attr("src", '/uploads/'+data.picture);
+            $('#sidebar-user-title').text(data.user.firstname+' '+data.user.lastname);
+            $('#sidebar-user-img').attr("src", '/uploads/'+data.user.picture);
+            $('#sidebar-list').empty();
+            if(data.likes.length == 0)
+              $('#sidebar-list').append('<li>Pas de like pour le moment</li>');
+            for (i = 0; i < data.likes.length; i++) {
+              $('#sidebar-list').append('<li><a href="/event/'+data.likes[i].id+'">'+data.likes[i].title+'</a></li>');
+            }
           }
       });
     });
-  });
 
   $('#sidebar-close').on('click', function() {
     $('#sidebar-user').removeClass('active');

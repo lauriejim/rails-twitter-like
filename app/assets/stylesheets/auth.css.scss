@@ -18,6 +18,10 @@
   margin-right: 8.5rem;
   padding: 1.2rem;
   text-transform: uppercase;
+  &:hover{
+    color: $white;
+    border-color: $white;
+  }
 }
 
 .sports-selection{
@@ -50,7 +54,8 @@
   z-index: 9;
   background-color: $dark-black;
   border: 0;
-  color: $white;
+  color: $grey;
+  @include transition(opacity, 0.3s linear);
   font: 1.2rem/2rem 'source_sans_proregular', arial, sans-serif;
   padding: 1rem 2rem;
   position: relative;
@@ -58,5 +63,8 @@
   width: auto;
   &:focus{
     outline:0 !important;
+  }
+  &:hover{
+    color: $white;
   }
 }
