@@ -39,11 +39,22 @@ class ActionsController < ApplicationController
   end
 
   def filter
-    @sport = Sport.find(params[:id])
-    if session[:user_follows][@sport.title]
-      session[:user_follows].delete(@sport.title)
+    if params[:id] == 'pop'
+      if session[:user_follows][params[:id]]
+        session[:user_follows] = session[:filter_back]
+      else
+        session[:filter_back] = session[:user_follows]
+        session[:user_follows] = {}
+        session[:user_follows][params[:id]] = true
+      end
     else
-      session[:user_follows][@sport.title] = true
+      session[:user_follows].delete('pop') if session[:user_follows]['pop']
+      @sport = Sport.find(params[:id])
+      if session[:user_follows][@sport.title]
+        session[:user_follows].delete(@sport.title)
+      else
+        session[:user_follows][@sport.title] = true
+      end
     end
     redirect_to '/'
   end

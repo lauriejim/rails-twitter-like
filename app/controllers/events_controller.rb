@@ -5,7 +5,12 @@ class EventsController < ApplicationController
   def home
     @sports = Sport.all
     if session[:user_id]
-      @events = Event.where(sport: Sport.where(title: session[:user_follows].keys))
+      if session[:user_follows]['pop']
+        @events = Event.joins(:likes).group("likes.event_id").order("count(likes.event_id) desc")
+        # @events = Event.where(sport: Sport.where(title: session[:user_follows].keys))
+      else
+        @events = Event.where(sport: Sport.where(title: session[:user_follows].keys))
+      end
     else
       @events = Event.find_all
     end
