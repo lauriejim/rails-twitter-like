@@ -88,6 +88,14 @@
   hr{
     border-top: 1px solid #d9d9d9;
   }
+  input[type='submit']{
+    margin-left: 1rem;
+    background-color: $grey;
+    @include box-shadow(none);
+    &:hover{
+      background-color: $dark-grey;
+    }
+  }
 }
 
 .response{

@@ -228,13 +228,19 @@ header{
   li{
     cursor: pointer;
     position: relative;
-    color: $grey;
     display: inline-block;
     padding-top: 2.5rem;
     font:  1.4rem 'source_sans_prosemibold', arial, sans-serif;
     margin-right: 3rem;
     text-transform: uppercase;
     height: 69px;
+    @include transition(all, 0.3s linear);
+    a{
+      color: $grey;
+      &:hover{
+        color: $white;
+      }
+    }
     &:before{
       content: "";
       position: absolute;

@@ -44,7 +44,7 @@ class ActionsController < ApplicationController
     comment = Comment.find(params[:id])
     event_id = comment.event_id
     comment.destroy
-    redirect_to Event.find(event_id)
+    redirect_to url_for(:controller => :events, :action => :app_show, :id => event_id)
   end
 
   def filter

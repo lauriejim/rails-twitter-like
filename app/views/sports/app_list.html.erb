@@ -23,7 +23,11 @@
               <button type="button" data-sport="<%= sport.id %>" class="sport-subscription subscriber">Se désabonner</button>
             <% end %>
             <hr class="sport-border" data-color="<%= sport.color %>">
-            <%= image_tag("/uploads/"+sport.icon) %>
+            <% if @follows.where(sport: sport).count==0 %>
+              <%= image_tag("/uploads/"+sport.icon) %>
+            <% else %>
+              <%= image_tag("/uploads/"+sport.icon, :class => "img-active") %>
+            <% end %>
           </div>
           <% end %>
         </div>

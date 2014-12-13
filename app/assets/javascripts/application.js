@@ -12,21 +12,12 @@ $(document).ready(function() {
   });
 
   $(".sport-selection").mouseover(function() {
-    $(this).find('img').css('opacity', '0.7');
+    if(!$(this).find('img').hasClass('img-active')){
+      $(this).find('img').css('opacity', '0.7');
+    }
   }).mouseout(function() {
-    $(this).find('img').css('opacity', '0');
-  });
-
-  $('.filter-sport').on('click', function() {
-    if ($(this).hasClass('active')) {
-      $(this).removeClass('active');
-    } else {
-      if ($(this).hasClass('pop')) {
-        $('.filter-sport').removeClass('active');
-      } else {
-        $('#pop').removeClass('active');
-      }
-      $(this).addClass('active');
+    if(!$(this).find('img').hasClass('img-active')){
+      $(this).find('img').css('opacity', '0');
     }
   });
 
@@ -118,6 +109,7 @@ $(document).ready(function() {
         success: function(data) {
           $this.removeClass('subscriber');
           $this.text('S\'abonner');
+           $this.parent().children('img').removeClass('img-active');
         }
       });
     } else {
@@ -133,6 +125,7 @@ $(document).ready(function() {
         success: function(data) {
           $this.addClass('subscriber');
           $this.text('Se désabonner');
+          $this.parent().children('img').addClass('img-active');
         }
       });
     }

@@ -32,7 +32,8 @@
             <div class="col-md-8 col-md-offset-2 event-comments">
               <% @event.comments.each do |comment| %>
                 <div class="comment">
-                  <p class="author" data-user="<%= comment.user.id %>"><%= comment.user.firstname %> - <%= comment.created_at %></p>
+                  <p class="author" data-user="<%= comment.user.id %>"><%= comment.user.firstname %> - <%= comment.created_at %>
+                      <%= button_to "Supprimer", controller: 'actions', action: 'uncomment', id: comment.id %> </p>
                   <p class="message"><%= comment.message %></p>
                   <hr>
                 </div>
