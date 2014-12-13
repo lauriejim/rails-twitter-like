@@ -164,13 +164,20 @@ header {
   .filter-sports li, .popular li {
     cursor: pointer;
     position: relative;
-    color: #a6a6a6;
     display: inline-block;
     padding-top: 2.5rem;
     font: 1.4rem 'source_sans_prosemibold', arial, sans-serif;
     margin-right: 3rem;
     text-transform: uppercase;
-    height: 69px; }
+    height: 69px;
+    -webkit-transition: all, 0.3s linear;
+    -moz-transition: all, 0.3s linear;
+    -o-transition: all, 0.3s linear;
+    transition: all, 0.3s linear; }
+    .filter-sports li a, .popular li a {
+      color: #a6a6a6; }
+      .filter-sports li a:hover, .popular li a:hover {
+        color: #fefefe; }
     .filter-sports li:before, .popular li:before {
       content: "";
       position: absolute;
@@ -214,7 +221,12 @@ header {
 
 .top-subscribe {
   display: inline-block;
-  width: 400px; }
+  width: 400px;
+  font: 1.4rem/2.4rem 'source_sans_probold', arial, sans-serif;
+  letter-spacing: 0.025em;
+  text-transform: uppercase; }
+  .top-subscribe i {
+    margin-right: 1rem; }
 
 .subscriptions {
   background-color: transparent;
@@ -248,6 +260,8 @@ header {
     text-transform: uppercase; }
     .top-user p a {
       color: #a6a6a6; }
+      .top-user p a:hover {
+        color: #2f2e2c; }
   .top-user img {
     -webkit-box-shadow: #ffa505 3px 3px 0;
     -moz-box-shadow: #ffa505 3px 3px 0;
@@ -287,6 +301,9 @@ a {
   margin-right: 8.5rem;
   padding: 1.2rem;
   text-transform: uppercase; }
+  .sports-send:hover {
+    color: #fefefe;
+    border-color: #fefefe; }
 
 .sports-selection {
   border-top: 1px solid #2e2e2e;
@@ -303,6 +320,8 @@ a {
     margin-left: -50%;
     opacity: 0;
     top: 0; }
+    .sports-selection img.img-active {
+      opacity: 0.7; }
   .sports-selection hr {
     margin-top: 4rem;
     width: 17.5rem; }
@@ -317,7 +336,11 @@ a {
   z-index: 9;
   background-color: #1c1c1c;
   border: 0;
-  color: #fefefe;
+  color: #a6a6a6;
+  -webkit-transition: opacity, 0.3s linear;
+  -moz-transition: opacity, 0.3s linear;
+  -o-transition: opacity, 0.3s linear;
+  transition: opacity, 0.3s linear;
   font: 1.2rem/2rem 'source_sans_proregular', arial, sans-serif;
   padding: 1rem 2rem;
   position: relative;
@@ -325,6 +348,8 @@ a {
   width: auto; }
   .sport-subscription:focus {
     outline: 0 !important; }
+  .sport-subscription:hover {
+    color: #fefefe; }
 
 .home {
   margin-top: 2.9rem; }
@@ -450,6 +475,14 @@ a {
 
 .comment hr {
   border-top: 1px solid #d9d9d9; }
+.comment input[type='submit'] {
+  margin-left: 1rem;
+  background-color: #a6a6a6;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
+  .comment input[type='submit']:hover {
+    background-color: #2f2e2c; }
 
 .response p {
   font: 1.8rem/2.4rem 'kelson_sansregular', arial, sans-serif;
@@ -523,10 +556,13 @@ a {
     margin-top: 3.7rem;
     padding: 0; }
   .sidebar-like li {
-    color: #a6a6a6;
     font: 1.4rem/2rem 'source_sans_proregular', arial, sans-serif;
     list-style: none;
     margin-bottom: 3.3rem; }
+    .sidebar-like li a {
+      color: #fefefe; }
+      .sidebar-like li a:hover {
+        color: #a6a6a6; }
 
 .liker {
   text-align: center; }

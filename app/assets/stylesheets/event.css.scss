@@ -88,6 +88,14 @@
   hr{
     border-top: 1px solid #d9d9d9;
   }
+  input[type='submit']{
+    margin-left: 1rem;
+    background-color: $grey;
+    @include box-shadow(none);
+    &:hover{
+      background-color: $dark-grey;
+    }
+  }
 }
 
 .response{
@@ -171,10 +179,15 @@
     padding: 0;
   }
   li{
-    color: $grey;
     font:  1.4rem/2rem 'source_sans_proregular', arial, sans-serif;
     list-style: none;
     margin-bottom: 3.3rem;
+    a{
+      color: $white;
+      &:hover{
+        color: $grey;
+      }
+    }
   }
 }
 

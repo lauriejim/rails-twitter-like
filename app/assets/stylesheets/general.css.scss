@@ -228,13 +228,19 @@ header{
   li{
     cursor: pointer;
     position: relative;
-    color: $grey;
     display: inline-block;
     padding-top: 2.5rem;
     font:  1.4rem 'source_sans_prosemibold', arial, sans-serif;
     margin-right: 3rem;
     text-transform: uppercase;
     height: 69px;
+    @include transition(all, 0.3s linear);
+    a{
+      color: $grey;
+      &:hover{
+        color: $white;
+      }
+    }
     &:before{
       content: "";
       position: absolute;
@@ -312,6 +318,12 @@ header{
 .top-subscribe{
   display: inline-block;
   width: 400px;
+  font:  1.4rem/2.4rem 'source_sans_probold', arial, sans-serif;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  i{
+    margin-right: 1rem;
+  }
 }
 
 .subscriptions{
@@ -353,6 +365,9 @@ header{
     text-transform: uppercase;
     a{
       color: $grey;
+      &:hover{
+        color: $dark-grey;
+      }
     }
   }
   img{
