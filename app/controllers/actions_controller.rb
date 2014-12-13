@@ -39,6 +39,12 @@ class ActionsController < ApplicationController
   end
 
   def filter
-
+    @sport = Sport.find(params[:id])
+    if session[:user_follows][@sport.title]
+      session[:user_follows][@sport.title] = false
+    else
+      session[:user_follows][@sport.title] = true
+    end
+    redirect_to '/'
   end
 end

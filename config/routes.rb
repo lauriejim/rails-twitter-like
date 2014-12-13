@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   post 'actions/comment'
 
-  post 'actions/filter'
+  get 'actions/filter'
 
   get '/', to: 'events#home'
 
