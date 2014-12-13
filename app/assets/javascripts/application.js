@@ -39,10 +39,11 @@ $(document).ready(function() {
     });
 
     $('.author').on('click', function(){
+      $this = $(this);
       $('#sidebar-user').addClass('active');
       $.ajax({
           type: 'POST',
-          url: "/user/1",
+          url: "/user/"+$this.data('user'),
           beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
           data: { "id": '1' },
           success: function( data ){

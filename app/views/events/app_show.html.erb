@@ -32,7 +32,7 @@
             <div class="col-md-8 col-md-offset-2 event-comments">
               <% @event.comments.each do |comment| %>
                 <div class="comment">
-                  <p class="author"><%= comment.user.firstname %> - 17.01.2014</p>
+                  <p class="author" data-user="<%= comment.user.id %>"><%= comment.user.firstname %> - 17.01.2014</p>
                   <p class="message"><%= comment.message %></p>
                   <hr>
                 </div>
