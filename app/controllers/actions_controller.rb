@@ -17,19 +17,21 @@ class ActionsController < ApplicationController
     @user = User.find(session[:user_id])
     @event = Event.find(params[:id])
 
-    Follow.create(user: @user, event: @sport)
+    Like.create(user: @user, event: @event)
+    render :status => 200
   end
 
   def unlike
     @user = User.find(session[:user_id])
     @event = Event.find(params[:id])
 
-    Follow.where(user: @user, event: @sport)[0].destroy
+    Like.where(user: @user, event: @event)[0].destroy
   end
 
   def comment
     @user = User.find(session[:user_id])
     @event = Event.find(params[:id])
+    @have_like = @user.likes.where(user_id: session[:user_id], event_id: @event.id).count
     message = params[:message]
 
     Comment.create(user: @user, event: @event, message: message)

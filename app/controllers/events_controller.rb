@@ -25,6 +25,7 @@ class EventsController < ApplicationController
   def app_show
      begin
       @event = Event.find_one(params[:id])
+      @have_like = User.find(session[:user_id]).likes.where(user_id: session[:user_id], event_id: @event.id).count
       render 'events/app_show', layout: 'application'
     rescue => e
       logger.warn "#{e}"

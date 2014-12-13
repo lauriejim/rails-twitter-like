@@ -189,11 +189,13 @@
     letter-spacing: 0.02em;
     text-transform: uppercase;
     border: 1px solid $orange;
+    text-decoration: none;
     @include transition(all, 0.3s linear);
-    &:hover{
+    &:hover, &.active{
       border: 1px solid #eb9605;
       background-color: #eb9605;
       color: $white;
+      text-decoration: none;
     }
   }
 }

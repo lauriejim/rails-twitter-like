@@ -16,10 +16,14 @@
         <div class="row">
           <% @sports.each do |sport| %>
           <div class="col-md-4 sports-selection sport-selection">
-            <%= image_tag("/uploads/"+sport.icon) %>
             <p class="sport-name"><%= sport.title %></p>
-            <button type="button" class="sport-subscription">S'abonner ?</button>
+            <% if @follows.where(sport: sport).count==0 %>
+              <button type="button" data-sport="<%= sport.id %>" class="sport-subscription">S'abonner</button>
+            <% else %>
+              <button type="button" data-sport="<%= sport.id %>" class="sport-subscription subscriber">Se désabonner</button>
+            <% end %>
             <hr class="sport-border" data-color="<%= sport.color %>">
+            <%= image_tag("/uploads/"+sport.icon) %>
           </div>
           <% end %>
         </div>

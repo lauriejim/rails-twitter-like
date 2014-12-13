@@ -25,6 +25,9 @@ $(document).ready(function() {
         if($(this).hasClass('pop')){
           $('.filter-sport').removeClass('active');
         }
+        else{
+          $('#pop').removeClass('active');
+        }
         $(this).addClass('active');
       }
     });
@@ -37,10 +40,82 @@ $(document).ready(function() {
 
     $('.author').on('click', function(){
       $('#sidebar-user').addClass('active');
-      // ajax
+      $.ajax({
+          type: 'POST',
+          url: "/user/1",
+          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+          data: { "id": '1' },
+          success: function( data ){
+            $('#sidebar-user-title').text(data.firstname+' '+data.lastname);
+            $('#sidebar-user-img').attr("src", '/uploads/'+data.picture);
+          }
+      });
     });
 
     $('#sidebar-close').on('click', function(){
       $('#sidebar-user').removeClass('active');
-    })
+    });
+
+    $('#event-like').on('click', function(e){
+      var $this = $(this);
+      e.preventDefault();
+      if($(this).hasClass('active')){
+        $.ajax({
+            type: 'POST',
+            url: "/actions/unlike",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: { "id": $('#page-event').data('event') },
+            success: function( data ){
+              $this.removeClass('active');
+              $this.text('Like');
+              var count = parseInt($('#event-count').text());
+              $('#event-count').text(count - 1);
+            }
+        });
+      }
+      else{
+        $.ajax({
+            type: 'POST',
+            url: "/actions/like",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: { "id": $('#page-event').data('event') },
+            success: function( data ){
+              $this.addClass('active');
+              $this.text('Unlike');
+              var count = parseInt($('#event-count').text());
+              $('#event-count').text(count + 1);
+            }
+        });
+      }
+    });
+
+    $('.sport-subscription').on('click', function(e){
+      var $this = $(this);
+      e.preventDefault();
+      console.log('oui');
+      if($(this).hasClass('subscriber')){
+        $.ajax({
+            type: 'POST',
+            url: "/actions/unfollow",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: { "id": $(this).data('sport') },
+            success: function( data ){
+              $this.removeClass('subscriber');
+              $this.text('S\'abonner');
+            }
+        });
+      }
+      else{
+        $.ajax({
+            type: 'POST',
+            url: "/actions/follow",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: { "id": $(this).data('sport') },
+            success: function( data ){
+              $this.addClass('subscriber');
+              $this.text('Se désabonner');
+            }
+        });
+      }
+    });
 });

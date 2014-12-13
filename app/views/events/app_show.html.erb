@@ -1,4 +1,4 @@
-<body id="page-event" data-sport="<%= @event.sport.background %>" class="page-event">
+<body id="page-event" data-sport="<%= @event.sport.background %>" data-event="<%= @event.id %>" class="page-event">
   <div class="container">
     <div class="row">
       <%= render "partials/profil_bar"%>
@@ -10,7 +10,7 @@
           <ul>
             <li><i class="icon-adresse"></i><%= @event.adresse %></li>
             <li><i class="icon-date"></i>01.12.14</li>
-            <li><i class="icon-like"></i><%= @event.likes.count %> like</li>
+            <li><i class="icon-like"></i><span id="event-count"><%= @event.likes.count %></span> like</li>
           </ul>
         </div>
       </section>
@@ -20,7 +20,11 @@
             <p><%= @event.description %></p>
             <% if session[:user_id] %>
               <div class="liker">
-                <%= link_to 'Like', sports_selection_path, class: "subscriptions" %>
+                <% if @have_like > 0 %>
+                  <%= link_to 'Unlike', sports_selection_path, id: "event-like", class: "active" %>
+                <% else %>
+                  <%= link_to 'Like', sports_selection_path, id: "event-like" %>
+                <% end %>
               </div>
             <% end %>
           </div>
@@ -50,9 +54,9 @@
           <i class="icon-close"></i>
         </div>
         <div class="sidebar-img">
-          <%= image_tag("basket.jpg") %>
+          <img id="sidebar-user-img" src="" alt="" />
         </div>
-        <h1>Jeffrey Williamson</h1>
+        <h1 id="sidebar-user-title"></h1>
         <hr>
         <div class="sidebar-like">
           <i class="icon-like"></i><span>Likes</span>
