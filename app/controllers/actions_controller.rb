@@ -9,7 +9,7 @@ class ActionsController < ApplicationController
   def unfollow
     @user = User.find(session[:user_id])
     @sport = Sport.find(params[:id])
-    session[:user_follows][@sport.title] = false
+    session[:user_follows].delete(@sport.title)
     Follow.where(user: @user, sport: @sport)[0].destroy
   end
 
@@ -41,7 +41,7 @@ class ActionsController < ApplicationController
   def filter
     @sport = Sport.find(params[:id])
     if session[:user_follows][@sport.title]
-      session[:user_follows][@sport.title] = false
+      session[:user_follows].delete(@sport.title)
     else
       session[:user_follows][@sport.title] = true
     end

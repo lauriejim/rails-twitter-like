@@ -4,7 +4,11 @@ class EventsController < ApplicationController
 
   def home
     @sports = Sport.all
-    @events = Event.find_all
+    if session[:user_id]
+      @events = Event.where(sport: Sport.where(title: session[:user_follows].keys))
+    else
+      @events = Event.find_all
+    end
     render '/home', layout: 'application'
   end
 
