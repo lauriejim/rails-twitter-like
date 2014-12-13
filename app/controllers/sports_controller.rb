@@ -8,6 +8,7 @@ class SportsController < ApplicationController
 
   def app_list
     @sports = Sport.index
+    @follows = User.find(session[:user_id]).follows
     render layout: 'application'
   end
 

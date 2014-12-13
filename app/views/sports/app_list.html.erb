@@ -16,6 +16,7 @@
         <div class="row">
           <% @sports.each do |sport| %>
           <div class="col-md-4 sports-selection sport-selection">
+            <%= @follows.where(sport: sport).count %>
             <%= image_tag("/uploads/"+sport.icon) %>
             <p class="sport-name"><%= sport.title %></p>
             <button type="button" class="sport-subscription">S'abonner ?</button>
