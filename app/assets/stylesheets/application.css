@@ -535,11 +535,13 @@ a {
     letter-spacing: 0.02em;
     text-transform: uppercase;
     border: 1px solid #ffa505;
+    text-decoration: none;
     -webkit-transition: all, 0.3s linear;
     -moz-transition: all, 0.3s linear;
     -o-transition: all, 0.3s linear;
     transition: all, 0.3s linear; }
-    .liker a:hover {
+    .liker a:hover, .liker a.active {
       border: 1px solid #eb9605;
       background-color: #eb9605;
-      color: #fefefe; }
+      color: #fefefe;
+      text-decoration: none; }
