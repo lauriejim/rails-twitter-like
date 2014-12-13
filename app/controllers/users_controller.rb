@@ -24,7 +24,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params);
     if @user.save
       if request.fullpath == '/users/create'
-        redirect_to auth_login_path
+        user = User.auth(user_params)
+        session[:user_id] = user.id
+        session[:user_rank] = user.rank
+        session[:user_firstname] = user.firstname
+        session[:user_lastname] = user.lastname
+        session[:user_picture] = user.picture
+        redirect_to sports_selection_path
       else
         redirect_to users_path
       end
