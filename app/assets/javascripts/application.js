@@ -86,7 +86,36 @@ $(document).ready(function() {
               $('#event-count').text(count + 1);
             }
         });
-
       }
-    })
+    });
+
+    $('.sport-subscription').on('click', function(e){
+      var $this = $(this);
+      e.preventDefault();
+      console.log('oui');
+      if($(this).hasClass('subscriber')){
+        $.ajax({
+            type: 'POST',
+            url: "/actions/unfollow",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: { "id": $(this).data('sport') },
+            success: function( data ){
+              $this.removeClass('subscriber');
+              $this.text('S\'abonner');
+            }
+        });
+      }
+      else{
+        $.ajax({
+            type: 'POST',
+            url: "/actions/follow",
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+            data: { "id": $(this).data('sport') },
+            success: function( data ){
+              $this.addClass('subscriber');
+              $this.text('Se désabonner');
+            }
+        });
+      }
+    });
 });

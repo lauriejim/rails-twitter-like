@@ -26,10 +26,12 @@
   height: 21.4rem;
   text-align: center;
   img{
+    z-index: 1;
     @include transition(opacity, 0.3s linear);
     position: absolute;
     margin-left: -50%;
     opacity: 0;
+    top: 0;
   }
   hr{
     margin-top: 4rem;
@@ -45,11 +47,16 @@
 }
 
 .sport-subscription{
+  z-index: 9;
   background-color: $dark-black;
   border: 0;
   color: $white;
   font: 1.2rem/2rem 'source_sans_proregular', arial, sans-serif;
   padding: 1rem 2rem;
+  position: relative;
   text-transform: uppercase;
   width: auto;
+  &:focus{
+    outline:0 !important;
+  }
 }
