@@ -46,6 +46,12 @@
   margin-top: 2rem;
   margin-bottom: 0;
   height: 6rem;
+  a{
+    color: #4a4745;
+    &:hover{
+      color: $dark-grey;
+    }
+  }
 }
 
 .event-small-date{

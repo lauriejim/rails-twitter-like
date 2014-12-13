@@ -75,6 +75,7 @@
 .author{
   font:  1.2rem/2rem 'source_sans_prosemibold', arial, sans-serif;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .message{
@@ -102,11 +103,12 @@
 .sidebar-user{
   position: fixed;
   bottom: 0;
-  right: 0;
+  right: -999px;
   width: 27%;
-  min-height: 700px;
-  max-height: 800px;
+  top: 0;
+  height: 100%;
   background-color: $black;
+  @include transition(all, 0.7s linear);
   h1{
     letter-spacing: 0.02em;
     text-align: center;
@@ -117,6 +119,28 @@
   hr{
     border: 1px solid $grey;
     margin:0;
+  }
+  &.active{
+    transform: translateX(-999px);
+  }
+}
+
+.sidebar-close{
+  position: absolute;
+  background-color: $black;
+  cursor: pointer;
+  top: 0;
+  left: -4.9rem;
+  width: 4.9rem;
+  text-align: center;
+  height: 5rem;
+  padding-top: 1.6rem;
+  border-right: 1px solid $grey;
+  i{
+    color: $white;
+    font-size: 1.4rem;
+    margin: 0;
+    padding: 0;
   }
 }
 

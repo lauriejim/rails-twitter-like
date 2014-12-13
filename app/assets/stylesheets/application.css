@@ -359,6 +359,10 @@ a {
   margin-top: 2rem;
   margin-bottom: 0;
   height: 6rem; }
+  .event-small-title a {
+    color: #4a4745; }
+    .event-small-title a:hover {
+      color: #2f2e2c; }
 
 .event-small-date {
   font: 1.2rem/2rem 'source_sans_proregular', arial, sans-serif;
@@ -430,7 +434,8 @@ a {
 
 .author {
   font: 1.2rem/2rem 'source_sans_prosemibold', arial, sans-serif;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  cursor: pointer; }
 
 .message {
   margin-top: 2rem;
@@ -449,11 +454,15 @@ a {
 .sidebar-user {
   position: fixed;
   bottom: 0;
-  right: 0;
+  right: -999px;
   width: 27%;
-  min-height: 700px;
-  max-height: 800px;
-  background-color: #232325; }
+  top: 0;
+  height: 100%;
+  background-color: #232325;
+  -webkit-transition: all, 0.7s linear;
+  -moz-transition: all, 0.7s linear;
+  -o-transition: all, 0.7s linear;
+  transition: all, 0.7s linear; }
   .sidebar-user h1 {
     letter-spacing: 0.02em;
     text-align: center;
@@ -463,6 +472,25 @@ a {
   .sidebar-user hr {
     border: 1px solid #a6a6a6;
     margin: 0; }
+  .sidebar-user.active {
+    transform: translateX(-999px); }
+
+.sidebar-close {
+  position: absolute;
+  background-color: #232325;
+  cursor: pointer;
+  top: 0;
+  left: -4.9rem;
+  width: 4.9rem;
+  text-align: center;
+  height: 5rem;
+  padding-top: 1.6rem;
+  border-right: 1px solid #a6a6a6; }
+  .sidebar-close i {
+    color: #fefefe;
+    font-size: 1.4rem;
+    margin: 0;
+    padding: 0; }
 
 .sidebar-img {
   margin-top: 4.2rem;

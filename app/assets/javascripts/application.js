@@ -22,9 +22,25 @@ $(document).ready(function() {
         $(this).removeClass('active');
       }
       else{
+        if($(this).hasClass('pop')){
+          $('.filter-sport').removeClass('active');
+        }
         $(this).addClass('active');
       }
     });
 
-    $('#page-event').css('background-image', 'url(/uploads/'+$('#event').data('sport')+')');
+    $('#page-event').css('background-image', 'url(/uploads/'+$('#page-event').data('sport')+')');
+
+    $('#sidebar-user').css( "width", function( index ) {
+      return (($('body').width()-1000)/2+200);
+    });
+
+    $('.author').on('click', function(){
+      $('#sidebar-user').addClass('active');
+      // ajax
+    });
+
+    $('#sidebar-close').on('click', function(){
+      $('#sidebar-user').removeClass('active');
+    })
 });

@@ -1,4 +1,4 @@
-<body id="page-event" class="page-event">
+<body id="page-event" data-sport="<%= @event.sport.background %>" class="page-event">
   <div class="container">
     <div class="row">
       <%= render "partials/profil_bar"%>
@@ -48,7 +48,10 @@
         </div>
       </section>
 
-      <section class="sidebar-user" style="display:none">
+      <section id="sidebar-user" class="sidebar-user">
+        <div id="sidebar-close" class="sidebar-close">
+          <i class="icon-close"></i>
+        </div>
         <div class="sidebar-img">
           <%= image_tag("basket.jpg") %>
         </div>
