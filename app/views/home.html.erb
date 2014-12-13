@@ -12,11 +12,11 @@
           <i class="icon-filtre"></i>
           <p class="filter">Filtres</p>
           <ul class="popular">
-            <li id="pop" class="filter-sport pop" data-color="#fefefe">Populaires</li>
+            <li id="pop" class="filter-sport pop <% if session[:user_follows]['pop'] %>active<% end %>" data-color="#fefefe"><%= link_to "Populaires", controller: 'actions', action: 'filter', id: 'pop' %></li>
           </ul>
           <ul class="filter-sports">
             <% @sports.each do |sport| %>
-              <li class="filter-sport <%= sport.title.downcase %>" data-color="<%= sport.color %>"><%= sport.title %></li>
+              <li class="filter-sport <%= sport.title.downcase %> <% if session[:user_follows][sport.title] %>active<% end %>" data-color="<%= sport.color %>"><%= link_to sport.title, controller: 'actions', action: 'filter', id: sport.id %></li>
             <% end %>
           </ul>
         </nav>

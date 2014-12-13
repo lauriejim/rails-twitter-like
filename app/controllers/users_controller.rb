@@ -45,6 +45,7 @@ class UsersController < ApplicationController
         session[:user_firstname] = user.firstname
         session[:user_lastname] = user.lastname
         session[:user_picture] = user.picture
+        session[:user_follows] = {}
         redirect_to sports_selection_path
       else
         redirect_to users_path

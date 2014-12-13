@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   post 'actions/comment'
 
+  post 'actions/uncomment'
+
+  get 'actions/filter'
+
   get '/', to: 'events#home'
 
   get 'auth/login'

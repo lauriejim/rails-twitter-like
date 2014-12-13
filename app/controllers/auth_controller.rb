@@ -17,6 +17,10 @@ class AuthController < ApplicationController
       session[:user_firstname] = user.firstname
       session[:user_lastname] = user.lastname
       session[:user_picture] = user.picture
+      session[:user_follows] = {}
+      user.follows.each do |follow|
+        session[:user_follows][follow.sport.title] = true
+      end
       if user.rank == "admin"
         redirect_to users_path
       else
@@ -32,6 +36,7 @@ class AuthController < ApplicationController
     session[:user_rank] = nil
     session[:user_firstname] = nil
     session[:user_lastname] = nil
+    session[:user_picture] = nil
     redirect_to '/'
   end
 
