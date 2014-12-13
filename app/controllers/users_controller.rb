@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login_admin, only: [:index]
+  before_action :require_login_admin, only: [:index, :destroy]
   layout "admin"
 
   def index
