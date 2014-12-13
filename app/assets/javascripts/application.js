@@ -25,6 +25,9 @@ $(document).ready(function() {
         if($(this).hasClass('pop')){
           $('.filter-sport').removeClass('active');
         }
+        else{
+          $('#pop').removeClass('active');
+        }
         $(this).addClass('active');
       }
     });
