@@ -27,4 +27,14 @@ class ActionsController < ApplicationController
 
     Like.where(user: @user, event: @event)[0].destroy
   end
+
+  def comment
+    @user = User.find(session[:user_id])
+    @event = Event.find(params[:id])
+    @have_like = @user.likes.where(user_id: session[:user_id], event_id: @event.id).count
+    message = params[:message]
+
+    Comment.create(user: @user, event: @event, message: message)
+    render 'events/app_show', layout: 'application'
+  end
 end

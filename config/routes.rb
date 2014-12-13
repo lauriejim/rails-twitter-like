@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   post 'actions/unlike'
 
+  post 'actions/comment'
+
   get '/', to: 'events#home'
 
   get 'auth/login'
