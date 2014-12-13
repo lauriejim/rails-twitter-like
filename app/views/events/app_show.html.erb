@@ -14,42 +14,36 @@
           </ul>
         </div>
       </section>
-      <section class="col-md-12 nopadding">
-        <div class="col-md-8 col-md-offset-2 event-description">
-          <h1><%= @event.title %></h1>
-          <p><%= @event.description %></p>
-          <div class="liker">
-            <%= link_to 'Like', sports_selection_path, class: "subscriptions" %>
-          </div>
-        </div>
-        <div class="col-md-8 col-md-offset-2 event-comments">
-        <% @event.comments.each do |comment| %>
-          <div class="comment">
-            <p class="author"><%= comment.user.firstname %> - 17.01.2014</p>
-            <p class="message"><%= comment.message %></p>
-            <hr>
-          </div>
-        <% end %>
-          <!-- <div class="comment">
-            <p class="author">Marie - 17.01.2014</p>
-            <p class="message">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet </p>
-            <hr>
-          </div>
-          <div class="comment">
-            <p class="author">Marie - 17.01.2014</p>
-            <p class="message">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet </p>
-            <hr>
-          </div> -->
-          <div class="response">
-            <p>Qu'en pensez-vous ?</p>
-            <%= form_tag('/actions/comment', method: "post") do %>
-              <%= text_area_tag "message", nil, :placeholder => 'Je pense que ...' %>
-              <%= hidden_field_tag 'id', @event.id %>
-              <%= submit_tag("Répondre") %>
+        <section class="col-md-12 nopadding">
+          <div class="col-md-8 col-md-offset-2 event-description">
+            <h1><%= @event.title %></h1>
+            <p><%= @event.description %></p>
+            <% if session[:user_id] %>
+              <div class="liker">
+                <%= link_to 'Like', sports_selection_path, class: "subscriptions" %>
+              </div>
             <% end %>
           </div>
-        </div>
-      </section>
+          <% if session[:user_id] %>
+            <div class="col-md-8 col-md-offset-2 event-comments">
+              <% @event.comments.each do |comment| %>
+                <div class="comment">
+                  <p class="author"><%= comment.user.firstname %> - 17.01.2014</p>
+                  <p class="message"><%= comment.message %></p>
+                  <hr>
+                </div>
+              <% end %>
+              <div class="response">
+                <p>Qu'en pensez-vous ?</p>
+                <%= form_tag('/actions/comment', method: "post") do %>
+                  <%= text_area_tag "message", nil, :placeholder => 'Je pense que ...' %>
+                  <%= hidden_field_tag 'id', @event.id %>
+                  <%= submit_tag("Répondre") %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </section>
 
       <section id="sidebar-user" class="sidebar-user">
         <div id="sidebar-close" class="sidebar-close">
