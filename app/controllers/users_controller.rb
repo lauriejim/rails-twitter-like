@@ -11,8 +11,23 @@ class UsersController < ApplicationController
   end
 
   def user_json
+    @data = {}
+    @likes = []
+
     @user = User.find_one(params[:id])
-    render json: @user.to_json
+
+    @user_likes = @user.likes.take(5)
+    @user_likes.each do |like|
+      event = {
+        'id' => like.event.id,
+        'title' => like.event.title
+      }
+      @likes.push(event)
+    end
+    @data['user'] = @user
+    @data['likes'] = @likes
+
+    render json: @data
   end
 
   def new
