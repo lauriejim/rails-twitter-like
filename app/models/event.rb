@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   has_many :likes
+  has_many :comments
   has_many :users, :through => :likes
   belongs_to :sport
   validates :sport_id, presence: true

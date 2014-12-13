@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :sports, :through => :follows
   has_many :likes
   has_many :events, :through => :likes
+  has_many :comments
 
   def self.index
     User.all

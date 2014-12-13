@@ -32,7 +32,7 @@ class ActionsController < ApplicationController
     @event = Event.find(params[:id])
     message = params[:message]
 
-    Comment.create(user: @user, event: @sport, message: message)
-    redirect_to event_path(@event)
+    Comment.create(user: @user, event: @event, message: message)
+    render 'events/app_show', layout: 'application'
   end
 end

@@ -23,7 +23,14 @@
           </div>
         </div>
         <div class="col-md-8 col-md-offset-2 event-comments">
+        <% @event.comments.each do |comment| %>
           <div class="comment">
+            <p class="author"><%= comment.user.firstname %> - 17.01.2014</p>
+            <p class="message"><%= comment.message %></p>
+            <hr>
+          </div>
+        <% end %>
+          <!-- <div class="comment">
             <p class="author">Marie - 17.01.2014</p>
             <p class="message">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet </p>
             <hr>
@@ -32,12 +39,7 @@
             <p class="author">Marie - 17.01.2014</p>
             <p class="message">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet </p>
             <hr>
-          </div>
-          <div class="comment">
-            <p class="author">Marie - 17.01.2014</p>
-            <p class="message">This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet </p>
-            <hr>
-          </div>
+          </div> -->
           <div class="response">
             <p>Qu'en pensez-vous ?</p>
             <%= form_tag('/actions/comment', method: "post") do %>
