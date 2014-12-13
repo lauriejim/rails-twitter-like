@@ -1,4 +1,6 @@
 class ActionsController < ApplicationController
+  before_action :require_login_admin, only: [:uncomment]
+
   def follow
     @user = User.find(session[:user_id])
     @sport = Sport.find(params[:id])
@@ -36,6 +38,13 @@ class ActionsController < ApplicationController
 
     Comment.create(user: @user, event: @event, message: message)
     render 'events/app_show', layout: 'application'
+  end
+
+  def uncomment
+    comment = Comment.find(params[:id])
+    event_id = comment.event_id
+    comment.destroy
+    redirect_to Event.find(event_id)
   end
 
   def filter
