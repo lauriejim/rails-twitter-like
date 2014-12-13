@@ -26,4 +26,13 @@ class ActionsController < ApplicationController
 
     Follow.where(user: @user, event: @sport)[0].destroy
   end
+
+  def comment
+    @user = User.find(session[:user_id])
+    @event = Event.find(params[:id])
+    message = params[:message]
+
+    Comment.create(user: @user, event: @sport, message: message)
+    redirect_to event_path(@event)
+  end
 end

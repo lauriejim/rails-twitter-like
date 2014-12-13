@@ -40,9 +40,10 @@
           </div>
           <div class="response">
             <p>Qu'en pensez-vous ?</p>
-            <%= form_tag('/users/create', method: "post") do %>
-            <%= text_area_tag "message", nil, :placeholder => 'Je pense que ...' %>
-            <%= submit_tag("Répondre") %>
+            <%= form_tag('/actions/comment', method: "post") do %>
+              <%= text_area_tag "message", nil, :placeholder => 'Je pense que ...' %>
+              <%= hidden_field_tag 'id', @event.id %>
+              <%= submit_tag("Répondre") %>
             <% end %>
           </div>
         </div>
