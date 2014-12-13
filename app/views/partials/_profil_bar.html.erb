@@ -1,10 +1,10 @@
 <section class="col-md-12 nopadding top">
   <div class="top-subscribe">
-    <% if (session[:user_id] && currentPath('/') ) %>
-      <%= link_to 'Gérer vos abonnements', sports_selection_path, class: "subscriptions" %>
-    <% end %>
     <% unless currentPath("/") %>
       <i class="icon-fleche"></i><span class="back"><a href="/" title="Retour vers la home">Retour</a></span>
+    <% end %>
+    <% if session[:user_id] and currentPath("/") %>
+      <%= link_to 'Gérer vos abonnements', sports_selection_path, class: "subscriptions" %>
     <% end %>
   </div>
   <div class="top-user">
