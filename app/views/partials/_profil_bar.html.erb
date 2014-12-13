@@ -1,6 +1,6 @@
 <section class="col-md-12 nopadding top">
   <div class="top-subscribe">
-    <% if session[:user_id] %>
+    <% if (session[:user_id] && currentPath('/') ) %>
       <%= link_to 'Gérer vos abonnements', sports_selection_path, class: "subscriptions" %>
     <% end %>
     <% unless currentPath("/") %>
