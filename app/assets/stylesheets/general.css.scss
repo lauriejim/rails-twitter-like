@@ -165,7 +165,7 @@ textarea{
 
 
 .container{
-  margin: 0 auto 1.6rem auto;
+  margin: 0 auto 1.8rem auto;
   width: 1000px;
 }
 
@@ -388,5 +388,14 @@ a{
   &:hover{
     color: $dark-grey;
     text-decoration: none;
+  }
+}
+
+.not-found{
+  @extend .auth;
+  text-align: center;
+  a{
+    margin-right: 0;
+    float: none;
   }
 }

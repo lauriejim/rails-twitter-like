@@ -7,16 +7,16 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
   def upload(uploaded_io, strong_parameters, entry)
-    
+
     tmp_hash1 = strong_parameters
     tmp_hash2 = {entry => uploaded_io.original_filename}
     tmp_hash1.merge!(tmp_hash2)
-    
+
     File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
       file.write(uploaded_io.read)
     end
 
-    tmp_hash1 
+    tmp_hash1
   end
 
   def currentPath(path)
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   def render_404
     respond_to do |format|
-      format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+      format.html { render '/not_found', layout: 'application' }
       format.xml  { head :not_found }
       format.any  { head :not_found }
     end
