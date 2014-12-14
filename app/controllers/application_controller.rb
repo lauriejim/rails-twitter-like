@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :upload, :currentPath
-  
+
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+
   def upload(uploaded_io, strong_parameters, entry)
     
     tmp_hash1 = strong_parameters
@@ -19,6 +21,14 @@ class ApplicationController < ActionController::Base
 
   def currentPath(path)
     'active' if request.fullpath.eql?(path)
+  end
+
+  def render_404
+    respond_to do |format|
+      format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+      format.xml  { head :not_found }
+      format.any  { head :not_found }
+    end
   end
 
   private

@@ -20,7 +20,6 @@ class ActionsController < ApplicationController
     @event = Event.find(params[:id])
 
     Like.create(user: @user, event: @event)
-    render :status => 200
   end
 
   def unlike

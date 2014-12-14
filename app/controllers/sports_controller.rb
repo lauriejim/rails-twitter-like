@@ -13,12 +13,7 @@ class SportsController < ApplicationController
   end
 
   def show
-    begin
-      @sport = Sport.find_one(params[:id])
-    rescue => e
-      logger.warn "#{e}" 
-      redirect_to sport_path
-    end
+    @sport = Sport.find_one(params[:id])
   end
 
   def new
@@ -26,21 +21,11 @@ class SportsController < ApplicationController
   end
 
   def edit
-    begin
-      @sport = Sport.find_one(params[:id])
-    rescue => e
-      logger.warn "#{e}" 
-      redirect_to sport_path
-    end
+    @sport = Sport.find_one(params[:id])
   end
 
   def update
-    begin
-      @sport = Sport.find_one(params[:id])
-    rescue => e
-      logger.warn "#{e}" 
-      redirect_to sport_path
-    end
+    @sport = Sport.find_one(params[:id])
 
     if params[:sport].key?('icon') && params[:sport].key?('background')
       hash = upload(params[:sport][:icon], sport_params, "icon")
@@ -60,27 +45,28 @@ class SportsController < ApplicationController
   end
 
   def create
-    hash = upload(params[:sport][:icon], sport_params, "icon")
-    hash = upload(params[:sport][:background], hash, "background")
+    if params[:sport].key?('icon')
+      hash = upload(params[:sport][:icon], sport_params, "icon")
+    end
+    if params[:sport].key?('background')
+      hash = upload(params[:sport][:background], hash, "background")
+    end
 
-    @sport = Sport.create(hash)
-    @sport.save!
+    @sport = Sport.new(hash)
+    if @sport.save
+      redirect_to new_sport_path
+    else
+      render :new
+    end
 
-    redirect_to new_sport_path
   end
 
   def destroy
-    begin
-      Sport.delete_one(params[:id])
-    rescue => e
-      logger.warn "#{e}" 
-      redirect_to edit_event_path
-    end
+    Sport.delete_one(params[:id])
   end
 
   private
     def sport_params
       params.require(:sport).permit(:title, :color, :icon => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]], :background => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
     end
-
 end

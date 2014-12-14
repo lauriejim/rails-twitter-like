@@ -7,7 +7,6 @@ class EventsController < ApplicationController
     if session[:user_id]
       if session[:user_follows]['pop']
         @events = Event.joins(:likes).group("likes.event_id").order("count(likes.event_id) desc")
-        # @events = Event.where(sport: Sport.where(title: session[:user_follows].keys))
       else
         @events = Event.where(sport: Sport.where(title: session[:user_follows].keys))
       end
@@ -32,25 +31,15 @@ class EventsController < ApplicationController
   end
 
   def app_show
-     begin
-      @event = Event.find_one(params[:id])
-      if session[:user_id]
-        @have_like = User.find(session[:user_id]).likes.where(user_id: session[:user_id], event_id: @event.id).count
-      end
-      render 'events/app_show', layout: 'application'
-    rescue => e
-      logger.warn "#{e}"
-      render :status => 404
+    @event = Event.find_one(params[:id])
+    if session[:user_id]
+      @have_like = User.find(session[:user_id]).likes.where(user_id: session[:user_id], event_id: @event.id).count
     end
+    render 'events/app_show', layout: 'application'
   end
 
   def show
-    begin
-      @event = Event.find_one(params[:id])
-    rescue => e
-      logger.warn "#{e}"
-      redirect_to events_path
-    end
+    @event = Event.find_one(params[:id])
   end
 
   def new
@@ -58,21 +47,11 @@ class EventsController < ApplicationController
   end
 
   def edit
-    begin
-      @event = Event.find_one(params[:id])
-    rescue => e
-      logger.warn "#{e}"
-      redirect_to edit_event_path
-    end
+    @event = Event.find_one(params[:id])
   end
 
   def update
-    begin
-      @event = Event.find_one(params[:id])
-    rescue => e
-      logger.warn "#{e}"
-      redirect_to edit_event_path
-    end
+    @event = Event.find_one(params[:id])
 
     if params[:event].key?('cover')
       hash = upload(params[:event][:cover], event_params, "cover")
@@ -85,21 +64,21 @@ class EventsController < ApplicationController
   end
 
   def create
-    hash = upload(params[:event][:cover], event_params, "cover")
+    if params[:event].key?('cover')
+      hash = upload(params[:event][:cover], event_params, "cover")
+    end
 
-    @event = Event.create(hash)
-    @event.save!
+    @event = Event.new(hash)
+    if @event.save
+      redirect_to new_event_path
+    else
+      render :new
+    end
 
-    redirect_to new_event_path
   end
 
   def destroy
-    begin
-      Event.delete_one(params[:id])
-    rescue => e
-      logger.warn "#{e}"
-      redirect_to edit_event_path
-    end
+    Event.delete_one(params[:id])
   end
 
   private
