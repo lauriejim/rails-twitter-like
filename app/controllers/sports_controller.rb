@@ -13,12 +13,7 @@ class SportsController < ApplicationController
   end
 
   def show
-    begin
-      @sport = Sport.find_one(params[:id])
-    rescue => e
-      logger.warn "#{e}" 
-      redirect_to sport_path
-    end
+    @sport = Sport.find_one(params[:id])
   end
 
   def new
@@ -26,21 +21,11 @@ class SportsController < ApplicationController
   end
 
   def edit
-    begin
-      @sport = Sport.find_one(params[:id])
-    rescue => e
-      logger.warn "#{e}" 
-      redirect_to sport_path
-    end
+    @sport = Sport.find_one(params[:id])
   end
 
   def update
-    begin
-      @sport = Sport.find_one(params[:id])
-    rescue => e
-      logger.warn "#{e}" 
-      redirect_to sport_path
-    end
+    @sport = Sport.find_one(params[:id])
 
     if params[:sport].key?('icon') && params[:sport].key?('background')
       hash = upload(params[:sport][:icon], sport_params, "icon")
@@ -70,12 +55,7 @@ class SportsController < ApplicationController
   end
 
   def destroy
-    begin
-      Sport.delete_one(params[:id])
-    rescue => e
-      logger.warn "#{e}" 
-      redirect_to edit_event_path
-    end
+    Sport.delete_one(params[:id])
   end
 
   private
