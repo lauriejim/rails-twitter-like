@@ -2,7 +2,7 @@
 <div class="col-lg-6">
   <%= simple_form_for @event do |f| %>
     <%= f.input :sport_id, :collection => Sport.all.map{|u| [u.title, u.id]} %>
-    <%= f.input :title %>
+    <%= f.input :title, required: true %>
     <%= image_tag("/uploads/"+@event.cover, size: "150") %>
     <%= f.file_field(:cover, accept: 'image/png,image/gif,image/jpeg') %>
     <%= f.input :description %>
