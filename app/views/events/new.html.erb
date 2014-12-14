@@ -1,12 +1,12 @@
 <h1>Create a new event</h1>
 <div class="col-lg-6">
   <%= simple_form_for @event do |f| %>
-    <%= f.input :sport_id, :collection => Sport.all.map{|u| [u.title, u.id]} %>
-    <%= f.input :title %>
-    <%= f.file_field(:cover, accept: 'image/png,image/gif,image/jpeg') %>
-    <%= f.input :description %>
-    <%= f.input :adresse %>
-    <%= f.input :date, as: :string, placeholder: '01-01-1999 23:58:58' %>
+    <%= f.input :sport_id, :collection => Sport.all.map{|u| [u.title, u.id]}, required: true %>
+    <%= f.input :title, required: true %>
+    <%= f.input :cover, :as => :file, :accept => 'image/png,image/gif,image/jpeg' %>
+    <%= f.input :description, required: true%>
+    <%= f.input :adresse, required: true %>
+    <%= f.input :date, as: :string, placeholder: '01-01-1999 23:58:58', required: true %>
     <%= f.button :submit %>
   <% end %>
 </div>

@@ -8,7 +8,9 @@
             <th>Firstname</th>
             <th>Lastname</th>
             <th>Email</th>
-            <th>More</th>
+            <th>Show</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -18,9 +20,13 @@
               <td><%= user.lastname %></td>
               <td><%= user.email %></td>
               <td>
-                <%= link_to "Show", user, :class => "btn btn-xs btn-default" %>
-                <%= link_to "Edit", edit_user_path(user), :class => "btn btn-xs btn-default" %>
-                <%= button_to "Destroy", user, :method => :delete, :class => "btn btn-xs btn-default" %>
+                <%= link_to "Show", user, :class => "btn btn-xs btn-primary" %>
+              </td>
+              <td>
+                <%= link_to "Edit", edit_user_path(user), :class => "btn btn-xs btn-info" %>
+              </td>
+              <td>
+                <%= button_to "Delete", user, :method => :delete, :class => "btn btn-xs btn-danger" %>
               </td>
             </tr>
           <% end %>
