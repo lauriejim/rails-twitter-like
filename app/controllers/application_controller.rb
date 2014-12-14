@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :upload, :currentPath
 
-  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
   def upload(uploaded_io, strong_parameters, entry)
     
@@ -23,22 +23,18 @@ class ApplicationController < ActionController::Base
     'active' if request.fullpath.eql?(path)
   end
 
-  private
-  def require_login_admin
-    unless session[:user_rank] == "admin"
-      redirect_to auth_login_path
-    end
-  end
-
-  def record_not_found
-    render_404
-  end
-
   def render_404
     respond_to do |format|
       format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
       format.xml  { head :not_found }
       format.any  { head :not_found }
+    end
+  end
+
+  private
+  def require_login_admin
+    unless session[:user_rank] == "admin"
+      redirect_to auth_login_path
     end
   end
 end
