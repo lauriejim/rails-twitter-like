@@ -45,13 +45,20 @@ class SportsController < ApplicationController
   end
 
   def create
-    hash = upload(params[:sport][:icon], sport_params, "icon")
-    hash = upload(params[:sport][:background], hash, "background")
+    if params[:sport].key?('icon')
+      hash = upload(params[:sport][:icon], sport_params, "icon")
+    end
+    if params[:sport].key?('background')
+      hash = upload(params[:sport][:background], hash, "background")
+    end
 
-    @sport = Sport.create(hash)
-    @sport.save!
+    @sport = Sport.new(hash)
+    if @sport.save
+      redirect_to new_sport_path
+    else
+      render :new
+    end
 
-    redirect_to new_sport_path
   end
 
   def destroy
@@ -62,5 +69,4 @@ class SportsController < ApplicationController
     def sport_params
       params.require(:sport).permit(:title, :color, :icon => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]], :background => [:filename => [:@tempfile,:@original_filename,:@content_type,:@headers]])
     end
-
 end
