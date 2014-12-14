@@ -64,12 +64,17 @@ class EventsController < ApplicationController
   end
 
   def create
-    hash = upload(params[:event][:cover], event_params, "cover")
+    if params[:event].key?('cover')
+      hash = upload(params[:event][:cover], event_params, "cover")
+    end
 
-    @event = Event.create(hash)
-    @event.save!
+    @event = Event.new(hash)
+    if @event.save
+      redirect_to new_event_path
+    else
+      render :new
+    end
 
-    redirect_to new_event_path
   end
 
   def destroy
