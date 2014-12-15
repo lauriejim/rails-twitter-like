@@ -17,9 +17,7 @@ RSpec.describe SportsController, :type => :controller do
       expect(response).to have_http_status(:success)
 
       expect(response.body).to include("#{sport.title}")
-      expect(response.body).to include("/uploads/#{sport.icon}")
       expect(response.body).to include("#{other_sport.title}")
-      expect(response.body).to include("/uploads/#{other_sport.icon}")
     end
   end
 
