@@ -11,8 +11,15 @@
       <section class="col-md-12 black">
         <div class="col-md-4 col-md-offset-4 auth">
           <h3>Connectez-vous</h3>
+          <% if @user %>
+            Password ou mot de passe incorrecte
+          <% end %>
           <%= form_tag("/auth/create", method: "post") do %>
-            <%= email_field_tag "email", nil, :placeholder => 'Adresse e-mail' %>
+            <% if @user %>
+              <%= email_field_tag "email", nil, :placeholder => 'Adresse e-mail', :value => @user.email %>
+            <% else %>
+              <%= email_field_tag "email", nil, :placeholder => 'Adresse e-mail' %>
+            <% end %>
             <%= password_field_tag "password", nil, :placeholder => 'Mot de passe' %>
             <%= submit_tag("Go !") %>
           <% end %>
