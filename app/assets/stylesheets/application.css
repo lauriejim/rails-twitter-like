@@ -289,6 +289,11 @@ a {
     margin-right: 0;
     float: none; }
 
+.error li {
+  list-style: none;
+  font: 1.4rem/2rem 'source_sans_proitalic', arial, sans-serif;
+  color: #eb3338; }
+
 .auth, .not-found {
   margin-top: 4.2rem;
   padding-bottom: 11rem; }

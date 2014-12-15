@@ -11,6 +11,11 @@
       <section class="col-md-12 black">
         <div class="col-md-4 col-md-offset-4 auth">
           <h3>Créer votre compte</h3>
+          <ul class="error">
+            <% @user.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+            <% end %>
+          </ul>
           <%= form_tag('/users/create', method: "post") do %>
             <%= text_field_tag "lastname", nil, :placeholder => 'Nom' %>
             <%= text_field_tag "firstname", nil, :placeholder => 'Prénom' %>
