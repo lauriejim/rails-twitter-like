@@ -11,7 +11,7 @@
       <section class="col-md-12 black">
         <div class="col-md-4 col-md-offset-4 auth">
           <h3>Créer votre compte</h3>
-          <ul>
+          <ul class="error">
             <% @user.errors.full_messages.each do |error| %>
             <li><%= error %></li>
             <% end %>
